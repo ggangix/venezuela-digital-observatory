@@ -1,0 +1,5820 @@
+{
+  "_meta": {
+    "description": "WHOIS data for Venezuelan government domains (.gob.ve)",
+    "source": "whois.nic.ve",
+    "generated": "2026-01-30T19:27:12.889Z",
+    "total": 381,
+    "recent_2025_2026": 15,
+    "privacy_note": "Personal names of registrants have been excluded",
+    "license": "CC0 - Public Domain"
+  },
+  "domains": [
+    {
+      "domain": "1x10delbuengobierno.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Comision Nacional De Telecomunicaciones Conatel",
+      "city": "1020",
+      "country": "VE",
+      "nameservers": [
+        "dahlia.ns.cloudflare.com",
+        "nile.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "abae.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.abae.gob.ve",
+        "ns2.abae.gob.ve"
+      ]
+    },
+    {
+      "domain": "acav.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "5224",
+      "country": "VE",
+      "nameservers": [
+        "ns1.mppct.gob.ve",
+        "ns2.mppct.gob.ve"
+      ]
+    },
+    {
+      "domain": "agn.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular Para La Cultura",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns1.agnve.gob.ve",
+        "ns2.agnve.gob.ve"
+      ]
+    },
+    {
+      "domain": "aguasdeyaracuy.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Aguas De Yaracuy C A",
+      "city": "3201",
+      "country": "VE",
+      "nameservers": [
+        "dorthy.ns.cloudflare.com",
+        "rajeev.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "alcaldiabaruta.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "1080",
+      "country": "VE",
+      "nameservers": [
+        "dns.site5.com",
+        "dns2.site5.com"
+      ]
+    },
+    {
+      "domain": "alcaldiacaroni.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "San Felix",
+      "country": "VE",
+      "nameservers": [
+        "dns2.cant.net",
+        "dns1.cantv.net",
+        "ns1.alcaldiacaroni.gob.ve"
+      ]
+    },
+    {
+      "domain": "alcaldiadeatures.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "NO APLICA",
+      "city": "7101",
+      "country": "VE",
+      "nameservers": [
+        "da2.dns40.com",
+        "da1.dns40.com"
+      ]
+    },
+    {
+      "domain": "alcaldiadeguacara.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Guacara",
+      "country": "VE",
+      "nameservers": [
+        "pdns2.registrar-servers.com",
+        "pdns1.registrar-servers.com"
+      ]
+    },
+    {
+      "domain": "alcaldiadeguaicaipuro.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Alcaldia Del Municipio Guaicaipuro",
+      "city": "1201",
+      "country": "VE",
+      "nameservers": [
+        "peter.ns.cloudflare.com",
+        "jen.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "alcaldiadeguarenas.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Alcaldia Del Municipio Plaza",
+      "city": "1220",
+      "country": "VE",
+      "nameservers": [
+        "ns1.centos-webpanel.com",
+        "ns2.centos-webpanel.com",
+        "ns3.centos-webpanel.com",
+        "ns4.centos-webpanel.com"
+      ]
+    },
+    {
+      "domain": "alcaldiadeheres.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Bolivar",
+      "country": "VE",
+      "nameservers": [
+        "dns1.alcaldiadeheres.gob.ve",
+        "dns2.alcaldiadeheres.gob.ve"
+      ]
+    },
+    {
+      "domain": "alcaldiadeindependencia.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "NO APLICA",
+      "city": "San Felipe",
+      "country": "VE",
+      "nameservers": [
+        "kira.ns.cloudflare.com",
+        "ethan.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "alcaldiademara.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Maracaibo",
+      "country": "VE",
+      "nameservers": [
+        "ns18.tepuyserver.net",
+        "ns17.tepuyserver.net"
+      ]
+    },
+    {
+      "domain": "alcaldiademiranda.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "NO APLICA",
+      "city": "2041",
+      "country": "VE",
+      "nameservers": [
+        "iris.ns.cloudflare.com",
+        "ethan.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "alcaldiadenaguanagua.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fisco Municipal De Naguanagua",
+      "city": "2005",
+      "country": "VE",
+      "nameservers": [
+        "yolanda.ns.cloudflare.com",
+        "lochlan.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "alcaldiadenirgua.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Nirgua",
+      "country": "VE",
+      "nameservers": [
+        "ns1.8ssi.com",
+        "ns2.8ssi.com"
+      ]
+    },
+    {
+      "domain": "alcaldiadepalavecino.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "David Enrique",
+      "city": "3023",
+      "country": "VE",
+      "nameservers": [
+        "pola.ns.cloudflare.com",
+        "ezra.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "alcaldiaderibas.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Alcaldia Del Municipio Jose Felix Ribas",
+      "city": "2121",
+      "country": "VE",
+      "nameservers": [
+        "ns2.enchantservices.com",
+        "ns1.enchantservices.com"
+      ]
+    },
+    {
+      "domain": "alcaldiadesandiego.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Valencia",
+      "country": "VE",
+      "nameservers": [
+        "dns1.alcaldiadesandiego.gob.ve",
+        "201.248.64.44",
+        "dns2.alcaldiadesandiego.gob.ve"
+      ]
+    },
+    {
+      "domain": "alcaldiadesanfelipe.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "NO APLICA",
+      "city": "3201",
+      "country": "VE",
+      "nameservers": [
+        "ns29.tepuyserver.net",
+        "ns30.tepuyserver.net"
+      ]
+    },
+    {
+      "domain": "alcaldiadevalencia.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Valencia",
+      "country": "VE",
+      "nameservers": [
+        "dns1.alcaldiadevalencia.gob.ve",
+        "dns2.alcaldiadevalencia.gob.ve"
+      ]
+    },
+    {
+      "domain": "alcaldiaelhatillo.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Alcaldia Del Municp El Hatllo",
+      "city": "1083",
+      "country": "VE",
+      "nameservers": [
+        "ram.ns.cloudflare.com",
+        "celine.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "alcaldiagirardot.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Maracay",
+      "country": "VE",
+      "nameservers": [
+        "ns0.alcaldiagirardot.gob.ve",
+        "ns1.alcaldiagirardot.gob.ve",
+        "ns2.alcaldiagirardot.gob.ve"
+      ]
+    },
+    {
+      "domain": "alcaldiaguanare.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Guanare",
+      "country": "VE",
+      "nameservers": [
+        "ns2.corpohosting.com",
+        "ns1.corpohosting.com"
+      ]
+    },
+    {
+      "domain": "alcaldialibertador-carabobo.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Valencia",
+      "country": "VE",
+      "nameservers": [
+        "ns23.tepuyserver.net",
+        "ns24.tepuyserver.net"
+      ]
+    },
+    {
+      "domain": "alcaldialossalias.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Jose Luis",
+      "city": "1204",
+      "country": "VE",
+      "nameservers": [
+        "ns2.alcaldialossalias.gob.ve",
+        "ns1.alcaldialossalias.gob.ve"
+      ]
+    },
+    {
+      "domain": "alcaldiamunicipiosucre.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.daycohost.net",
+        "ns2.daycohost.net"
+      ]
+    },
+    {
+      "domain": "alcaldiapaez.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Miguel Oswaldo",
+      "city": "3301",
+      "country": "VE",
+      "nameservers": [
+        "ns2.dattaapure.com",
+        "ns1.dattaapure.com"
+      ]
+    },
+    {
+      "domain": "alcaldiasancristobal.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Alcaldia Del Municipio San Cristobal",
+      "city": "5001",
+      "country": "VE",
+      "nameservers": [
+        "ns2.uanesi.net",
+        "ns1.uanesi.net"
+      ]
+    },
+    {
+      "domain": "alcaldiasanfrancisco.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Larry Juvenal",
+      "city": "4004",
+      "country": "VE",
+      "nameservers": [
+        "ruth.ns.cloudflare.com",
+        "ajay.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "alcaldiasantarosalia.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "El Playon",
+      "country": "VE",
+      "nameservers": [
+        "ns3.netquatro.net",
+        "ns4.netquatro.net"
+      ]
+    },
+    {
+      "domain": "alcaldiasimonbolivar.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Barcelona",
+      "country": "VE",
+      "nameservers": [
+        "ns1.cdmon.net",
+        "ns2.cdmon.net",
+        "ns3.cdmon.net",
+        "ns4.cdmondns-01.org",
+        "ns5.cdmondns-01.com"
+      ]
+    },
+    {
+      "domain": "almccs.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.dattaapure.com",
+        "ns2.dattaapure.com"
+      ]
+    },
+    {
+      "domain": "amazonas.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Pto. Ayacucho",
+      "country": "VE",
+      "nameservers": [
+        "ns4.tepuyserver.net",
+        "ns3.tepuyserver.net"
+      ]
+    },
+    {
+      "domain": "an.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.asambleanacional.gob.ve",
+        "ns2.asambleanacional.gob.ve",
+        "ns3.asambleanacional.gob.ve",
+        "ns4.asambleanacional.gob.ve"
+      ]
+    },
+    {
+      "domain": "antimonopolio.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Superintendencia Antimonopolio",
+      "city": "1015",
+      "country": "VE",
+      "nameservers": [
+        "dns2.cantv.net",
+        "dns1.cantv.net"
+      ]
+    },
+    {
+      "domain": "anzoategui.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Barcelona",
+      "country": "VE",
+      "nameservers": [
+        "ns5.globalhost.com.ve",
+        "ns6.globalhost.com.ve"
+      ]
+    },
+    {
+      "domain": "apn.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns2.mppp.gob.ve",
+        "ns1.mppp.gob.ve"
+      ]
+    },
+    {
+      "domain": "apure.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Gobernacion Del Estado Apure",
+      "city": "7001",
+      "country": "VE",
+      "nameservers": [
+        "ns1.apure.gob.ve",
+        "correo.apure.gob.ve"
+      ]
+    },
+    {
+      "domain": "araguena.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "NO APLICA",
+      "city": "2103",
+      "country": "VE",
+      "nameservers": [
+        "ns7.conectarhosting.com",
+        "ns8.conectarhosting.com"
+      ]
+    },
+    {
+      "domain": "archivodellibertador.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns2.agnve.gob.ve",
+        "ns1.mppc.gob.ve",
+        "ns2.mppc.gob.ve",
+        "ns1.agnve.gob.ve"
+      ]
+    },
+    {
+      "domain": "asambleanacional.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Pablo Gualberto",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns4.asambleanacional.gob.ve",
+        "ns1.asambleanacional.gob.ve",
+        "ns3.asambleanacional.gob.ve",
+        "ns2.asambleanacional.gob.ve"
+      ]
+    },
+    {
+      "domain": "austria.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Viena",
+      "country": "VE",
+      "nameservers": [
+        "ns1.safehoster.com",
+        "ns2.safehoster.com"
+      ]
+    },
+    {
+      "domain": "avilatv.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "baer.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.baer.gob.ve",
+        "dns2.baer.gob.ve"
+      ]
+    },
+    {
+      "domain": "banavih.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Wilson Junior",
+      "city": "1050",
+      "country": "VE",
+      "nameservers": [
+        "ns2.banavih.gob.ve",
+        "ns1.banavih.gob.ve"
+      ]
+    },
+    {
+      "domain": "bandes.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.bandes.gob.ve",
+        "ns2.bandes.gob.ve",
+        "ns3.bandes.gob.ve",
+        "ns4.bandes.gob.ve"
+      ]
+    },
+    {
+      "domain": "bnv.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns.bnv.gob.ve"
+      ]
+    },
+    {
+      "domain": "bolipuertos.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Carcas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "bomberosdeamazonas.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Francisco Javier",
+      "city": "7101",
+      "country": "VE",
+      "nameservers": [
+        "ns6.gconex.com",
+        "ns5.gconex.com"
+      ]
+    },
+    {
+      "domain": "bomberosmerida.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Gregori Alejandro",
+      "city": "5101",
+      "country": "VE",
+      "nameservers": [
+        "ns1.wthosting.net",
+        "ns2.wthosting.net"
+      ]
+    },
+    {
+      "domain": "bpvb.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Elide Maritza",
+      "city": "1060",
+      "country": "VE",
+      "nameservers": [
+        "dns1.bpvb.gob.ve",
+        "dns2.bpvb.gob.ve"
+      ]
+    },
+    {
+      "domain": "bt.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Banco Del Tesoro  C A   Banco Universal",
+      "city": "1060",
+      "country": "VE",
+      "nameservers": [
+        "ns01.bt.gob.ve",
+        "ns02.bt.gob.ve"
+      ]
+    },
+    {
+      "domain": "bustaguanes.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "San Carlos",
+      "country": "VE",
+      "nameservers": [
+        "kai.ns.cloudflare.com",
+        "sandy.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "cabelum.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "CVG Conductores de Aluminio del Caroní (CVG CABELUM)",
+      "city": "8001",
+      "country": "VE",
+      "nameservers": [
+        "ns2.rochendns.net",
+        "ns1.rochendns.net"
+      ]
+    },
+    {
+      "domain": "caracas.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Darwin Rafael",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns1.caracas.gob.ve",
+        "ns2.caracas.gob.ve"
+      ]
+    },
+    {
+      "domain": "cass.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Comision Antidumping Y Sobre Subsidios",
+      "city": "1060",
+      "country": "VE",
+      "nameservers": [
+        "ns19.tepuyserver.net",
+        "ns20.tepuyserver.net"
+      ]
+    },
+    {
+      "domain": "cebm.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "NO APLICA",
+      "city": "1201",
+      "country": "VE",
+      "nameservers": [
+        "ns2.cebm.gob.ve",
+        "ns1.cebm.gob.ve"
+      ]
+    },
+    {
+      "domain": "cedocabar.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Maracay",
+      "country": "VE",
+      "nameservers": [
+        "ns8.conectarhosting.com",
+        "ns7.conectarhosting.com"
+      ]
+    },
+    {
+      "domain": "cenal.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular Para La Cultura",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cenal.gob.ve",
+        "dns2.cenal.gob.ve"
+      ]
+    },
+    {
+      "domain": "cenaoz.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns2.cenaoz.gob.ve",
+        "ns1.cenaoz.gob.ve"
+      ]
+    },
+    {
+      "domain": "cendis.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular Para La Cultura",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns2.mincultura.gob.ve",
+        "ns1.mincultura.gob.ve"
+      ]
+    },
+    {
+      "domain": "cendit.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.mppct.gob.ve",
+        "ns2.mppct.gob.ve"
+      ]
+    },
+    {
+      "domain": "cenditel.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "NO APLICA",
+      "city": "5101",
+      "country": "VE",
+      "nameservers": [
+        "ns00.cenditel.gob.ve",
+        "ns05.cenditel.gob.ve",
+        "ns02.cenditel.gob.ve",
+        "ns03.cenditel.gob.ve",
+        "ns04.cenditel.gob.ve",
+        "ns01.cenditel.gob.ve"
+      ]
+    },
+    {
+      "domain": "cenipa.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Centro Nacional De Investigacion De Pesca Y Agricultura",
+      "city": "1015",
+      "country": "VE",
+      "nameservers": [
+        "dns2.cenipa.gob.ve",
+        "dns1.cenipa.gob.ve"
+      ]
+    },
+    {
+      "domain": "cenvih.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Angela Tibisay",
+      "city": "1080",
+      "country": "VE",
+      "nameservers": [
+        "ns2.mppct.gob.ve",
+        "ns1.mppct.gob.ve",
+        "ns3.mppct.gob.ve"
+      ]
+    },
+    {
+      "domain": "cfg.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fondo De Compensacion Interterritorial",
+      "city": "1050",
+      "country": "VE",
+      "nameservers": [
+        "ns4.cfg.gob.ve",
+        "ns3.cfg.gob.ve"
+      ]
+    },
+    {
+      "domain": "cgesucre.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Cuman&#225;",
+      "country": "VE",
+      "nameservers": [
+        "ns1.afraid.org",
+        "ns2.afraid.org",
+        "ns3.afraid.org",
+        "ns4.afraid.org"
+      ]
+    },
+    {
+      "domain": "cgr.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Julio Isaac",
+      "city": "1050",
+      "country": "VE",
+      "nameservers": [
+        "aldo.ns.cloudflare.com",
+        "sue.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "chacao.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Alcaldia Del Municipio Chacao",
+      "city": "1060",
+      "country": "VE",
+      "nameservers": [
+        "jihoon.ns.cloudflare.com",
+        "harleigh.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "chambajuvenil.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns2.gmsaberytrabajo.gob.ve",
+        "externo1.gmsaberytrabajo.gob.ve"
+      ]
+    },
+    {
+      "domain": "ciara.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.ciara.gob.ve"
+      ]
+    },
+    {
+      "domain": "cida.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Centro De Investigaciones De Astronomia Francisco J Duarte",
+      "city": "5101",
+      "country": "VE",
+      "nameservers": [
+        "ns2.nocdirect.com",
+        "ns.nocdirect.com"
+      ]
+    },
+    {
+      "domain": "cidata.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Centro De Investigaciones De Astronomia Francisco J Duarte",
+      "city": "5101",
+      "country": "VE",
+      "nameservers": [
+        "ns.nocdirect.com",
+        "ns2.nocdirect.com"
+      ]
+    },
+    {
+      "domain": "ciepe.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Alexis Jose",
+      "city": "3201",
+      "country": "VE",
+      "nameservers": [
+        "dns20.dnsx5.com",
+        "dns10.dnsx5.com"
+      ]
+    },
+    {
+      "domain": "circuitoscomunales.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Comision Nacional De Telecomunicaciones Conatel",
+      "city": "1020",
+      "country": "VE",
+      "nameservers": [
+        "romina.ns.cloudflare.com",
+        "jonah.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "cmao.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Concejo Municipal Angostura Del Orinoco",
+      "city": "8001",
+      "country": "VE",
+      "nameservers": [
+        "ns2.cmao.gob.ve",
+        "ns1.cmao.gob.ve"
+      ]
+    },
+    {
+      "domain": "cmb.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.dattaapure.com",
+        "ns2.dattaapure.com"
+      ]
+    },
+    {
+      "domain": "cmbnaguanagua.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Concejo Municipal Bolivariano De Naguanagua",
+      "city": "2005",
+      "country": "VE",
+      "nameservers": [
+        "ns24.tepuyserver.net",
+        "ns23.tepuyserver.net"
+      ]
+    },
+    {
+      "domain": "cmcarvajal.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Trujillo",
+      "country": "VE",
+      "nameservers": [
+        "ns1.cdmon.net",
+        "ns2.cdmon.net",
+        "ns3.cdmon.net"
+      ]
+    },
+    {
+      "domain": "cmchacao.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Contraloria Municipal Del Municipio Chacao",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "harvey.ns.cloudflare.com",
+        "kristina.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "cmldc.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Contraloria Municipal Del Municipio Bolivariano Libertador Del Distrito Capital",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns4.reacciun.ve",
+        "ns3.reacciun.ve"
+      ]
+    },
+    {
+      "domain": "cnc.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Dixon Alexander",
+      "city": "1060",
+      "country": "VE",
+      "nameservers": [
+        "ns62.cloudns.com",
+        "ns61.cloudns.net"
+      ]
+    },
+    {
+      "domain": "cne.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "cneh.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fundacion Centro Nacional De Estudios Historicos",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns1.cneh.gob.ve"
+      ]
+    },
+    {
+      "domain": "cnti.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns3.reacciun.ve",
+        "ns4.reacciun.ve",
+        "dns2.cnti.gob.ve",
+        "dns1.cnti.gob.ve"
+      ]
+    },
+    {
+      "domain": "cntq.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.mppct.gob.ve",
+        "ns2.mppct.gob.ve"
+      ]
+    },
+    {
+      "domain": "cnu.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Consejo Nacional De Universidades",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns4.reacciun.ve",
+        "ns3.reacciun.ve"
+      ]
+    },
+    {
+      "domain": "codecyt.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.mppct.gob.ve",
+        "ns2.mppct.gob.ve"
+      ]
+    },
+    {
+      "domain": "comex.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular De Econom  A Y Finanzas",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns2.mppef.gob.ve",
+        "dns1.mppef.gob.ve"
+      ]
+    },
+    {
+      "domain": "comisionesequibo.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Compa  Ia Anonima Venezolana De Television",
+      "city": "1071",
+      "country": "VE",
+      "nameservers": [
+        "dns2.cantv.net",
+        "dns1.cantv.net"
+      ]
+    },
+    {
+      "domain": "comisionpresidencialucv.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fundaci  N Misi  N Venezuela Bella",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns2.siteground.net",
+        "ns1.siteground.net"
+      ]
+    },
+    {
+      "domain": "comunas.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular Para Las Comunas Y Los Movimientos Sociales",
+      "city": "1050",
+      "country": "VE",
+      "nameservers": [
+        "dns2.comunas.gob.ve",
+        "dns1.comunas.gob.ve"
+      ]
+    },
+    {
+      "domain": "conalot.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Corina Del Carmen",
+      "city": "1050",
+      "country": "VE",
+      "nameservers": [
+        "ns1.conalot.gob.ve",
+        "ns2.conalot.gob.ve"
+      ]
+    },
+    {
+      "domain": "conapdis.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net",
+        "dns3.conapdis.gob.ve",
+        "dns4.conapdis.gob.ve"
+      ]
+    },
+    {
+      "domain": "conatel.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns3.conatel.gob.ve",
+        "dns2.conatel.gob.ve",
+        "dns1.conatel.gob.ve"
+      ]
+    },
+    {
+      "domain": "conati.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Comisi  N Nacional De Las Tecnologias De Informaci  N",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns2.mppct.gob.ve",
+        "ns1.mppct.gob.ve",
+        "ns3.mppct.gob.ve"
+      ]
+    },
+    {
+      "domain": "concejolossalias.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Concejo Municipal Del Municipio Los Salias",
+      "city": "1204",
+      "country": "VE",
+      "nameservers": [
+        "ns20.tepuyserver.net",
+        "ns19.tepuyserver.net"
+      ]
+    },
+    {
+      "domain": "concejomunicipalacevedo.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caucagua",
+      "country": "VE",
+      "nameservers": [
+        "ns4.netquatro.net",
+        "ns3.netquatro.net"
+      ]
+    },
+    {
+      "domain": "concejomunicipalelhatillo.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Concejo Municipal El Hatillo",
+      "city": "1083",
+      "country": "VE",
+      "nameservers": [
+        "nspro33.hostgator.mx",
+        "nspro32.hostgator.mx"
+      ]
+    },
+    {
+      "domain": "concejomunicipalplaza.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Guarenas",
+      "country": "VE",
+      "nameservers": [
+        "ns3.netquatro.net",
+        "ns4.netquatro.net"
+      ]
+    },
+    {
+      "domain": "concejomunicipalzamora.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Guatire",
+      "country": "VE",
+      "nameservers": [
+        "ns3.netquatro.net",
+        "ns4.netquatro.net"
+      ]
+    },
+    {
+      "domain": "concejomunicipiolostaques.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Concejo Municipal Los Taques",
+      "city": "4101",
+      "country": "VE",
+      "nameservers": [
+        "dns2.namecheaphosting.com",
+        "dns1.namecheaphosting.com"
+      ]
+    },
+    {
+      "domain": "consejoderechoshumanos.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Vladimir Jesus",
+      "city": "1011",
+      "country": "VE",
+      "nameservers": [
+        "emma.ns.cloudflare.com",
+        "west.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "consejolegislativolara.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Consejo Legislativo Del Estado Lara",
+      "city": "3001",
+      "country": "VE",
+      "nameservers": [
+        "dns2004b.trouble-free.net",
+        "dns2004a.trouble-free.net"
+      ]
+    },
+    {
+      "domain": "construpatria.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "NO APLICA",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns1.construpatria.gob.ve",
+        "dn2.construpatria.gob.ve"
+      ]
+    },
+    {
+      "domain": "consulado.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.mre.gob.ve",
+        "ns2.mre.gob.ve"
+      ]
+    },
+    {
+      "domain": "consuladobarcelona.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Barcelona",
+      "country": "ES",
+      "nameservers": [
+        "ns1.cdmon.net",
+        "ns2.cdmon.net",
+        "ns3.cdmon.net"
+      ]
+    },
+    {
+      "domain": "contraloria-apure.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Apure",
+      "country": "VE",
+      "nameservers": [
+        "ns5.globalhost.com.ve",
+        "ns6.globalhost.com.ve"
+      ]
+    },
+    {
+      "domain": "contraloriadebarquisimeto.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Barquisimeto",
+      "country": "VE",
+      "nameservers": [
+        "dns1.dominioscaracas.com",
+        "dns2.dominioscaracas.com"
+      ]
+    },
+    {
+      "domain": "contraloriadecarirubana.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Contraloria Municipal De Carirubana",
+      "city": "4102",
+      "country": "VE",
+      "nameservers": [
+        "ns2.siteground.net",
+        "ns1.siteground.net"
+      ]
+    },
+    {
+      "domain": "contraloriadecojedes.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "San Carlos",
+      "country": "VE",
+      "nameservers": [
+        "ns5.netvicios.com",
+        "ns6.netvicios.com"
+      ]
+    },
+    {
+      "domain": "contraloriadelmunicipioacevedo.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caucagua",
+      "country": "VE",
+      "nameservers": [
+        "ns3.netquatro.net",
+        "ns4.netquatro.net"
+      ]
+    },
+    {
+      "domain": "contraloriademaracaibo.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Contraloria Municipal De Maracaibo",
+      "city": "4001",
+      "country": "VE",
+      "nameservers": [
+        "ns4.hosting.com.ve",
+        "ns3.hosting.com.ve",
+        "ns6.gconex.com",
+        "ns5.gconex.com"
+      ]
+    },
+    {
+      "domain": "contraloriaestadoamazonas.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Puerto Ayacucho",
+      "country": "VE",
+      "nameservers": [
+        "ns10.venezueladns.com",
+        "ns9.venezueladns.com"
+      ]
+    },
+    {
+      "domain": "contraloriaestadobarinas.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Barinas",
+      "country": "VE",
+      "nameservers": [
+        "ns3.netvicios.com",
+        "ns4.netvicios.com"
+      ]
+    },
+    {
+      "domain": "contraloriaestadomerida.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Merida",
+      "country": "VE",
+      "nameservers": [
+        "ns5.netvicios.com",
+        "ns6.netvicios.com"
+      ]
+    },
+    {
+      "domain": "contraloriaestadozulia.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Jeffry Ramon",
+      "city": "4001",
+      "country": "VE",
+      "nameservers": [
+        "ns2.k2webhost.com",
+        "ns1.k2webhost.com"
+      ]
+    },
+    {
+      "domain": "contraloriagirardot-aragua.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "MARACAY",
+      "country": "VE",
+      "nameservers": [
+        "ns0.contraloriagirardot-aragua.gob.ve",
+        "ns1.contraloriagirardot-aragua.gob.ve"
+      ]
+    },
+    {
+      "domain": "contraloriamonagas.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Maturin",
+      "country": "VE",
+      "nameservers": [
+        "ns1.dynu.com",
+        "ns2.dynu.com",
+        "ns3.dynu.com",
+        "ns4.dynu.com",
+        "ns5.dynu.com"
+      ]
+    },
+    {
+      "domain": "contraloriamunicipaldeheres-bolivar.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Ciudad Bolivar",
+      "country": "VE",
+      "nameservers": [
+        "dns1.alcaldiadeheres.gob.ve",
+        "dns2.alcaldiadeheres.gob.ve"
+      ]
+    },
+    {
+      "domain": "contraloriamunicipaldepiar.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Upata",
+      "country": "VE",
+      "nameservers": [
+        "ns2.mysecurecloudhost.com",
+        "ns1.mysecurecloudhost.com",
+        "ns4.mysecurecloudhost.com",
+        "ns3.mysecurecloudhost.com"
+      ]
+    },
+    {
+      "domain": "contraloriarosariodeperija.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Villa del Rosario",
+      "country": "VE",
+      "nameservers": [
+        "ns11.8ssi.com",
+        "ns12.8ssi.com",
+        "ns1.8ssi.com",
+        "ns2.8ssi.com"
+      ]
+    },
+    {
+      "domain": "corpesca.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Corporacion De Servicios Pesqueros Y Acuicolas De Venezuela",
+      "city": "1015",
+      "country": "VE",
+      "nameservers": [
+        "dns2.cantv.net",
+        "dns1.cantv.net"
+      ]
+    },
+    {
+      "domain": "corpocentro.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Valencia",
+      "country": "VE",
+      "nameservers": [
+        "ns1.mppp.gob.ve",
+        "ns2.mppp.gob.ve"
+      ]
+    },
+    {
+      "domain": "corpoelec.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Corporacion Electrica Nacional S  A   Corpoelec",
+      "city": "caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.corpoelec.gob.ve",
+        "ns2.corpoelec.gob.ve",
+        "ns3.corpoelec.gob.ve"
+      ]
+    },
+    {
+      "domain": "corpoez.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "NO APLICA",
+      "city": "1071",
+      "country": "VE",
+      "nameservers": [
+        "ns1.corpoez.gob.ve",
+        "ns2.corpoez.gob.ve"
+      ]
+    },
+    {
+      "domain": "corposaludaragua.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Maracay",
+      "country": "VE",
+      "nameservers": [
+        "dns1.corposaludaragua.gob.ve",
+        "dns2.corposaludaragua.gob.ve"
+      ]
+    },
+    {
+      "domain": "corposaludtachira.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "San Cristobal",
+      "country": "VE",
+      "nameservers": [
+        "delta.corposaludtachira.gob.ve",
+        "epsilon.corposaludtachira.gob.ve"
+      ]
+    },
+    {
+      "domain": "corposaludyaracuy.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "San Felipe",
+      "country": "VE",
+      "nameservers": [
+        "kay.ns.cloudflare.com",
+        "theo.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "corpotulipa.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Corp  Para La Zona Libre Para El Fomento De La Inversi  N Tur  Stica En La Pen  Nsula De Paraguan",
+      "city": "4150",
+      "country": "VE",
+      "nameservers": [
+        "ns2.corpotulipa.gob.ve",
+        "ns1.corpotulipa.gob.ve"
+      ]
+    },
+    {
+      "domain": "corpovex.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Corporación Venezolana De Comercio Exterior S.a.",
+      "city": "1052",
+      "country": "VE",
+      "nameservers": [
+        "ns1.corpovex.gob.ve",
+        "ns2.corpovex.gob.ve"
+      ]
+    },
+    {
+      "domain": "correodelorinoco.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "luke.ns.cloudflare.com",
+        "addyson.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "corselca.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Sergio Luis",
+      "city": "1050",
+      "country": "VE",
+      "nameservers": [
+        "dns2.corselca.gob.ve",
+        "dns1.corselca.gob.ve"
+      ]
+    },
+    {
+      "domain": "cpsa.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Conglomerado Productivo S A",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns2.cantv.net",
+        "dns1.cantv.net"
+      ]
+    },
+    {
+      "domain": "cronistadecaracas.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Organo Auxiliar Municipal Del Cronista Municipio Libertador",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns3.nube.gob.ve",
+        "ns5.nube.gob.ve"
+      ]
+    },
+    {
+      "domain": "csn.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Danny Rafael",
+      "city": "1000",
+      "country": "VE",
+      "nameservers": [
+        "dns1.csn.gob.ve",
+        "dns2.csn.gob.ve"
+      ]
+    },
+    {
+      "domain": "cuspal.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns2.cuspal.gob.ve",
+        "ns1.cuspal.gob.ve"
+      ]
+    },
+    {
+      "domain": "cvg.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Puerto Ordaz",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "defensapublica.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "desarrollominero.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Dulce Marinette",
+      "city": "1060",
+      "country": "VE",
+      "nameservers": [
+        "ns3.mppdme.gob.ve",
+        "ns4.mppdme.gob.ve"
+      ]
+    },
+    {
+      "domain": "dgnb.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Direcci  N General Nacional De Bomberos",
+      "city": "1050",
+      "country": "VE",
+      "nameservers": [
+        "ns2.fonbe.gob.ve",
+        "ns1.fonbe.gob.ve"
+      ]
+    },
+    {
+      "domain": "e-bolivar.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ejecutivo Del Estado Bolivar",
+      "city": "8001",
+      "country": "VE",
+      "nameservers": [
+        "ns1.e-bolivar.gob.ve",
+        "ns2.e-bolivar.gob.ve"
+      ]
+    },
+    {
+      "domain": "edosucre.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "6101",
+      "country": "VE",
+      "nameservers": [
+        "ns2.daycohost.com",
+        "ns1.daycohost.com"
+      ]
+    },
+    {
+      "domain": "elpuebloparticipa.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fondo Nacional De Misiones",
+      "city": "1060",
+      "country": "VE",
+      "nameservers": [
+        "aarav.ns.cloudflare.com",
+        "jen.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "embajada.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.mre.gob.ve",
+        "ns2.mre.gob.ve"
+      ]
+    },
+    {
+      "domain": "emprenderjuntos.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular De Econom  A Y Finanzas",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns2.mppef.gob.ve",
+        "dns1.mppef.gob.ve"
+      ]
+    },
+    {
+      "domain": "emvepro.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Empresa De Distribucion De Productos E Insumos  Venezuela Productiva  C A",
+      "city": "2115",
+      "country": "VE",
+      "nameservers": [
+        "ns1.emvepro.gob.ve",
+        "ns2.emvepro.gob.ve"
+      ]
+    },
+    {
+      "domain": "envial.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "west.ns.cloudflare.com",
+        "molly.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "epuvenezuela.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.mre.gob.ve",
+        "ns2.mre.gob.ve"
+      ]
+    },
+    {
+      "domain": "espromedbio.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns2.espromedbio.gob.ve",
+        "dns1.espromedbio.gob.ve"
+      ]
+    },
+    {
+      "domain": "falcon.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Coro",
+      "country": "VE",
+      "nameservers": [
+        "coro.falcon.gob.ve"
+      ]
+    },
+    {
+      "domain": "fasmee.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fondo Autoadministrado De Salud Para El Ministerio Del Poder Popular Para La Energia Electrica",
+      "city": "1060",
+      "country": "VE",
+      "nameservers": [
+        "fasdns02.fasmee.gob.ve",
+        "fasdns01.fasmee.gob.ve",
+        "fasdns03.fasmee.gob.ve",
+        "fasdns04.fasmee.gob.ve"
+      ]
+    },
+    {
+      "domain": "femsur.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fundacion Escuela Feminista Del Sur Argelia Laya Femsur",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns2.femsur.gob.ve",
+        "dns1.femsur.gob.ve"
+      ]
+    },
+    {
+      "domain": "fevp.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "NO APLICA",
+      "city": "1090",
+      "country": "VE",
+      "nameservers": [
+        "ns1.mppp.gob.ve",
+        "ns2.mppp.gob.ve"
+      ]
+    },
+    {
+      "domain": "fidetel.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.mppct.gob.ve",
+        "ns2.mppct.gob.ve"
+      ]
+    },
+    {
+      "domain": "fii.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Sartenejas",
+      "country": "VE",
+      "nameservers": [
+        "shakespeare.fii.gob.ve",
+        "bello.fii.gob.ve"
+      ]
+    },
+    {
+      "domain": "fitven.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns2.mintur.gob.ve",
+        "dns1.mintur.gob.ve"
+      ]
+    },
+    {
+      "domain": "flnh.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fundacion Laboratorio Nacional De Hidraulica",
+      "city": "1073",
+      "country": "VE",
+      "nameservers": [
+        "ns351.gconex.com",
+        "ns350.gconex.com"
+      ]
+    },
+    {
+      "domain": "fnp.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns2.digalo.gob.ve",
+        "ns1.digalo.gob.ve"
+      ]
+    },
+    {
+      "domain": "fogade.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Manuel",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns1.fogade.gob.ve",
+        "dns2.fogade.gob.ve"
+      ]
+    },
+    {
+      "domain": "fona.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Luis Daniel",
+      "city": "1050",
+      "country": "VE",
+      "nameservers": [
+        "ns2.fona.gob.ve",
+        "ns1.fona.gob.ve"
+      ]
+    },
+    {
+      "domain": "fonacit.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "FONACIT",
+      "city": "1012",
+      "country": "VE",
+      "nameservers": [
+        "ns1.fonacit.gob.ve",
+        "ns2.fonacit.gob.ve"
+      ]
+    },
+    {
+      "domain": "fonbe.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fondo Nacional De Bomberos Y Bomberas Y Adm De Emerg",
+      "city": "1071",
+      "country": "VE",
+      "nameservers": [
+        "ns2.fonbe.gob.ve",
+        "ns1.fonbe.gob.ve"
+      ]
+    },
+    {
+      "domain": "fondemi.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "externo1.fondemi.gob.ve",
+        "externo.fondemi.gob.ve"
+      ]
+    },
+    {
+      "domain": "fonden.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Karen Lindsay",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "pat.ns.cloudflare.com",
+        "dexter.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "fondoefa.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fondoefa",
+      "city": "1020",
+      "country": "VE",
+      "nameservers": [
+        "ns2.fondoefa.gob.ve",
+        "ns1.fondoefa.gob.ve"
+      ]
+    },
+    {
+      "domain": "fondoin.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fondo Vzlano De Reconversion Ind Y Tecnologica Fondoin",
+      "city": "1050",
+      "country": "VE",
+      "nameservers": [
+        "ns2.fondoin.gob.ve",
+        "ns1.fondoin.gob.ve"
+      ]
+    },
+    {
+      "domain": "fonpyme.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns2.fonpyme.gob.ve",
+        "dns1.fonpyme.gob.ve"
+      ]
+    },
+    {
+      "domain": "fundabit.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.fundabit.gob.ve",
+        "dns2.fundabit.gob.ve"
+      ]
+    },
+    {
+      "domain": "fundacite-falcon.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Jean Paul",
+      "city": "4101",
+      "country": "VE",
+      "nameservers": [
+        "falcon.fundacite-falcon.gob.ve"
+      ]
+    },
+    {
+      "domain": "fundacite-merida.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fundacite Merida",
+      "city": "5101",
+      "country": "VE",
+      "nameservers": [
+        "ns2.fundacite-merida.gob.ve",
+        "ns.fundacite-merida.gob.ve"
+      ]
+    },
+    {
+      "domain": "fundacite.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular Para Ciencia Y Tecnologia",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns1.mppct.gob.ve",
+        "ns2.mppct.gob.ve"
+      ]
+    },
+    {
+      "domain": "fundadeporte.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Naguanagua",
+      "country": "VE",
+      "nameservers": [
+        "ns25.tepuyserver.net",
+        "ns26.tepuyserver.net"
+      ]
+    },
+    {
+      "domain": "fundalanavial.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Catia la Mar",
+      "country": "VE",
+      "nameservers": [
+        "dns1.fundalanavial.gob.ve",
+        "dns2.fundalanavial.gob.ve"
+      ]
+    },
+    {
+      "domain": "fundapatrimonio.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Zulima Yuney",
+      "city": "1090",
+      "country": "VE",
+      "nameservers": [
+        "ns8951.banahosting.com",
+        "ns8950.banahosting.com"
+      ]
+    },
+    {
+      "domain": "fundarte.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fundacion Para La Cultura Y Las Artes",
+      "city": "1014",
+      "country": "VE",
+      "nameservers": [
+        "ns8951.banahosting.com",
+        "ns8950.banahosting.com"
+      ]
+    },
+    {
+      "domain": "fundavene.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fundaci  N Venezolana De Donaciones Y Trasplantes De   Rganos  Tejidos Y C  Lulas  Fundavene",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns2.nube.gob.ve",
+        "ns1.nube.gob.ve"
+      ]
+    },
+    {
+      "domain": "fundayacucho.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fundacion Gran Mariscal De Ayacucho",
+      "city": "1073",
+      "country": "VE",
+      "nameservers": [
+        "ns2.fundayacucho.gob.ve",
+        "ns1.fundayacucho.gob.ve"
+      ]
+    },
+    {
+      "domain": "fundelec.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "fundesta.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "San Cristobal",
+      "country": "VE",
+      "nameservers": [
+        "ns42.domaincontrol.com",
+        "ns41.domaincontrol.com"
+      ]
+    },
+    {
+      "domain": "funves.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.netquatro.net",
+        "ns2.netquatro.net",
+        "ns3.netquatro.net",
+        "ns4.netquatro.net"
+      ]
+    },
+    {
+      "domain": "funvi.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Faviola Jose",
+      "city": "1020",
+      "country": "VE",
+      "nameservers": [
+        "dns2.cantv.net",
+        "dns1.cantv.net"
+      ]
+    },
+    {
+      "domain": "futurafm.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Futura",
+      "city": "4013",
+      "country": "VE",
+      "nameservers": [
+        "b11.dns40.com",
+        "b10.dns40.com"
+      ]
+    },
+    {
+      "domain": "gacetaoficial.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Anabella Celeste",
+      "city": "1011",
+      "country": "VE",
+      "nameservers": [
+        "ns-imprenta-2.gacetaoficial.gob.ve",
+        "ns-imprenta-1.gacetaoficial.gob.ve"
+      ]
+    },
+    {
+      "domain": "gaslara.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "GASLARA",
+      "city": "3001",
+      "country": "VE",
+      "nameservers": [
+        "jason.ns.cloudflare.com",
+        "lara.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "gdc.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "gobernaciondelzulia.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Gobernacion Del Estado Zulia",
+      "city": "4001",
+      "country": "VE",
+      "nameservers": [
+        "dns2.gobernaciondelzulia.gob.ve",
+        "dns1.gobernaciondelzulia.gob.ve"
+      ]
+    },
+    {
+      "domain": "granmisionvueltaalapatria.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Instituto Autonomo Consejo Nacional De Derechos De Ni  Os  Ni  As Y Adolecentes  Idenna",
+      "city": "1053",
+      "country": "VE",
+      "nameservers": [
+        "m2.servidoro.com",
+        "m1.servidoro.com"
+      ]
+    },
+    {
+      "domain": "guarico.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Gobernacion Del Estado Bolivariano De Gu  Rico",
+      "city": "2301",
+      "country": "VE",
+      "nameservers": [
+        "dns2.guarico.gob.ve",
+        "dns1.guarico.gob.ve"
+      ]
+    },
+    {
+      "domain": "guayanaesequiba.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Gobernaci  N Del Estado Guayana Esequiba",
+      "city": "1064",
+      "country": "VE",
+      "nameservers": [
+        "ns1.nube.gob.ve",
+        "ns2.nube.gob.ve"
+      ]
+    },
+    {
+      "domain": "hcudamp.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Barquisimeto",
+      "country": "VE",
+      "nameservers": [
+        "ns1.he.net",
+        "ns2.he.net",
+        "ns3.he.net",
+        "ns4.he.net",
+        "ns5.he.net"
+      ]
+    },
+    {
+      "domain": "hidroandes.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Barinas",
+      "country": "VE",
+      "nameservers": [
+        "ns8.globalhostla.com",
+        "ns7.globalhostla.com"
+      ]
+    },
+    {
+      "domain": "hidrocapital.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "NO APLICA",
+      "city": "1050",
+      "country": "VE",
+      "nameservers": [
+        "ns2.hidrocapital.gob.ve",
+        "ns1.hidrocapital.gob.ve"
+      ]
+    },
+    {
+      "domain": "hidrocaribe.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "C A Hidrologica Del Caribe Hidrocaribe",
+      "city": "6023",
+      "country": "VE",
+      "nameservers": [
+        "dns2.cantv.net",
+        "dns1.cantv.net"
+      ]
+    },
+    {
+      "domain": "hidrolago.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "C A  Hidrologica Del Lago De Maracaibo",
+      "city": "4004",
+      "country": "VE",
+      "nameservers": [
+        "dns2.cantv.net",
+        "dns1.cantv.net"
+      ]
+    },
+    {
+      "domain": "hidrolara.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Barquisimeto",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "hidropaez.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "C A Hidrologica P  Ez",
+      "city": "2301",
+      "country": "VE",
+      "nameservers": [
+        "dns1.hidropaez.gob.ve",
+        "dns2.hidropaez.gob.ve"
+      ]
+    },
+    {
+      "domain": "hidrosuroeste.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "San Cristobal",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "hidroven.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "C A  Hidrologica Venezolana",
+      "city": "1060",
+      "country": "VE",
+      "nameservers": [
+        "ns2.hidroven.gob.ve",
+        "ns1.hidroven.gob.ve"
+      ]
+    },
+    {
+      "domain": "hogaresdelapatria.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fundacion Gran Mision Hogares De La Patria",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns2.hogaresdelapatria.gob.ve",
+        "dns1.hogaresdelapatria.gob.ve"
+      ]
+    },
+    {
+      "domain": "huc.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Jose Gregorio",
+      "city": "1041",
+      "country": "VE",
+      "nameservers": [
+        "dns2.huc.gob.ve",
+        "dns1.huc.gob.ve"
+      ]
+    },
+    {
+      "domain": "iaefalcon.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Santa Ana de Coro",
+      "country": "VE",
+      "nameservers": [
+        "kay.ns.cloudflare.com",
+        "theo.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "iaim.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Instituto Aeropuerto Internacional De Maiquet  A",
+      "city": "1162",
+      "country": "VE",
+      "nameservers": [
+        "ns1.iaim.gob.ve"
+      ]
+    },
+    {
+      "domain": "iamib.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Ciudad Bolivar",
+      "country": "VE",
+      "nameservers": [
+        "ns5.globalhost.com.ve",
+        "ns6.globalhost.com.ve"
+      ]
+    },
+    {
+      "domain": "icopetro.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "luke.ns.cloudflare.com",
+        "mona.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "idea.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Zuly Maritza",
+      "city": "1050",
+      "country": "VE",
+      "nameservers": [
+        "ns4.reacciun.ve",
+        "ns3.reacciun.ve"
+      ]
+    },
+    {
+      "domain": "idenna.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Instituto Autonomo Consejo Nacional De Derechos De Ni  Os  Ni  As Y Adolecentes  Idenna",
+      "city": "1053",
+      "country": "VE",
+      "nameservers": [
+        "m2.servidoro.com",
+        "m1.servidoro.com"
+      ]
+    },
+    {
+      "domain": "igvsb.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns01.igvsb.gob.ve",
+        "ns2.mppp.gob.ve"
+      ]
+    },
+    {
+      "domain": "ima.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Valencia",
+      "country": "VE",
+      "nameservers": [
+        "dns1.alcaldiadevalencia.gob.ve",
+        "dns2.alcaldiadevalencia.gob.ve"
+      ]
+    },
+    {
+      "domain": "inac.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns2.inac.gob.ve",
+        "dns1.inac.gob.ve"
+      ]
+    },
+    {
+      "domain": "inamujer.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Instituto Nacional De La Mujer",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns2.inamujer.gob.ve",
+        "dns1.inamujer.gob.ve"
+      ]
+    },
+    {
+      "domain": "inatur.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.mintur.gob.ve",
+        "dns2.mintur.gob.ve"
+      ]
+    },
+    {
+      "domain": "inces.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Aquiles Alberto",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns2.inces.gob.ve",
+        "dns1.inces.gob.ve",
+        "ns4.reacciun.ve",
+        "ns3.reacciun.ve"
+      ]
+    },
+    {
+      "domain": "incret.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "matrix1.adclichosting.com",
+        "matrix2.adclichosting.com"
+      ]
+    },
+    {
+      "domain": "industrias.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Mpp De Industrias Y Produccion Nacional",
+      "city": "1071",
+      "country": "VE",
+      "nameservers": [
+        "ns2.industrias.gob.ve",
+        "ns1.industrias.gob.ve"
+      ]
+    },
+    {
+      "domain": "ine.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Instituto Nacional de Estadistica",
+      "city": "1060",
+      "country": "VE",
+      "nameservers": [
+        "dns.ine.gob.ve",
+        "ns1.mppp.gob.ve"
+      ]
+    },
+    {
+      "domain": "inea.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.inea.gob.ve",
+        "dns2.inea.gob.ve"
+      ]
+    },
+    {
+      "domain": "infocentro.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fundación Infocentro",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns3.reacciun.ve",
+        "ns4.reacciun.ve"
+      ]
+    },
+    {
+      "domain": "inh.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dina.ns.cloudflare.com",
+        "luke.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "inhrr.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "inia.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ysabel Cristina",
+      "city": "2105",
+      "country": "VE",
+      "nameservers": [
+        "dns2.inia.gob.ve",
+        "dns1.inia.gob.ve"
+      ]
+    },
+    {
+      "domain": "inidi.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Instituto Nacional De Idiomas Indigenas",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns2.byet.org",
+        "ns1.byet.org"
+      ]
+    },
+    {
+      "domain": "inn.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.inn.gob.ve",
+        "dns2.inn.gob.ve"
+      ]
+    },
+    {
+      "domain": "inparques.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns3.tepuyserver.net",
+        "ns4.tepuyserver.net"
+      ]
+    },
+    {
+      "domain": "inpsaseletica.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Inst  Nacional De Prevencion  Salud Y Seguridad Laborales",
+      "city": "1030",
+      "country": "VE",
+      "nameservers": [
+        "dns2.cantv.net",
+        "dns1.cantv.net"
+      ]
+    },
+    {
+      "domain": "insai.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Maracay",
+      "country": "VE",
+      "nameservers": [
+        "ns2.insai.gob.ve",
+        "ns1.insai.gob.ve",
+        "ns4.insai.gob.ve",
+        "ns3.insai.gob.ve"
+      ]
+    },
+    {
+      "domain": "insalud.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Valencia",
+      "country": "VE",
+      "nameservers": [
+        "ns1.insalud.gob.ve",
+        "ns2.insalud.gob.ve",
+        "ns3.insalud.gob.ve",
+        "ns4.insalud.gob.ve"
+      ]
+    },
+    {
+      "domain": "insemat.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Instituto Autonomo De Servicio Municipal De Administración Tributaria",
+      "city": "3050",
+      "country": "VE",
+      "nameservers": [
+        "ns-cloud-a4.googledomains.com",
+        "ns-cloud-a3.googledomains.com",
+        "ns-cloud-a2.googledomains.com",
+        "ns-cloud-a1.googledomains.com"
+      ]
+    },
+    {
+      "domain": "insopesca.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.insopesca.gob.ve",
+        "dns2.insopesca.gob.ve"
+      ]
+    },
+    {
+      "domain": "inti.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Osmary Del Valle",
+      "city": "1050",
+      "country": "VE",
+      "nameservers": [
+        "dns1.inti.gob.ve",
+        "dns2.inti.gob.ve"
+      ]
+    },
+    {
+      "domain": "intt.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.intt.gob.ve",
+        "dns2.intt.gob.ve"
+      ]
+    },
+    {
+      "domain": "inzit.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Lisdery Del Valle",
+      "city": "4036",
+      "country": "VE",
+      "nameservers": [
+        "ns3.nube.gob.ve",
+        "ns5.nube.gob.ve"
+      ]
+    },
+    {
+      "domain": "ipasme.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "ipostel.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.ipostel.gob.ve",
+        "dns2.ipostel.gob.ve"
+      ]
+    },
+    {
+      "domain": "ipsfa.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns.ipsfa.gob.ve",
+        "dns2.ipsfa.gob.ve",
+        "dns2.cantv.net",
+        "dns1.ipsfa.gob.ve"
+      ]
+    },
+    {
+      "domain": "ispeb.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Instituto De Salud Publica Del Edo Bolivar",
+      "city": "8001",
+      "country": "VE",
+      "nameservers": [
+        "sam.ns.cloudflare.com",
+        "daphne.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "ivic.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.ivic.gob.ve"
+      ]
+    },
+    {
+      "domain": "ivpa.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns2.mppp.gob.ve",
+        "ns1.mppp.gob.ve"
+      ]
+    },
+    {
+      "domain": "juventudydeporte.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular Para La Juventud Y El Deporte",
+      "city": "1020",
+      "country": "VE",
+      "nameservers": [
+        "dns2.cantv.net",
+        "dns1.cantv.net"
+      ]
+    },
+    {
+      "domain": "lara.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Barquisimeto",
+      "country": "VE",
+      "nameservers": [
+        "ns1.lara.gob.ve"
+      ]
+    },
+    {
+      "domain": "lecheria.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "NO APLICA",
+      "city": "6016",
+      "country": "VE",
+      "nameservers": [
+        "matrix2.adclichosting.com",
+        "matrix1.adclichosting.com"
+      ]
+    },
+    {
+      "domain": "loteriadecaracas.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Loteria De Caracas",
+      "city": "1020",
+      "country": "VE",
+      "nameservers": [
+        "luke.ns.cloudflare.com",
+        "dina.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "maracaibo.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Maracaibo",
+      "country": "VE",
+      "nameservers": [
+        "ns1.afraid.org",
+        "ns2.afraid.org",
+        "ns3.afraid.org",
+        "ns4.afraid.org"
+      ]
+    },
+    {
+      "domain": "masciencia.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Parque Cientifico Tecnol  Gico De Venezuela M  S Ciencia  S A",
+      "city": "1204",
+      "country": "VE",
+      "nameservers": [
+        "ns2.mppct.gob.ve",
+        "ns1.mppct.gob.ve"
+      ]
+    },
+    {
+      "domain": "mercal.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "NO APLICA",
+      "city": "1090",
+      "country": "VE",
+      "nameservers": [
+        "dns1.mercal.gob.ve",
+        "dns2.mercal.gob.ve"
+      ]
+    },
+    {
+      "domain": "merida.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Merida",
+      "country": "VE",
+      "nameservers": [
+        "s1.teleinformatica.gob.ve",
+        "s2.teleinformatica.gob.ve"
+      ]
+    },
+    {
+      "domain": "metrodecaracas.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "C.a. Metro De Caracas",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "minaamp.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular Para Los Adultos Y Adultas Mayores  Abuelos Y Abuelas De La Patria",
+      "city": "1050",
+      "country": "VE",
+      "nameservers": [
+        "dns2.minaamp.gob.ve",
+        "dns1.minaamp.gob.ve"
+      ]
+    },
+    {
+      "domain": "minagricultura.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.minagricultura.gob.ve",
+        "ns2.minagricultura.gob.ve"
+      ]
+    },
+    {
+      "domain": "minaguas.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Rodulfo Oswaldo",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns1.minaguas.gob.ve",
+        "ns2.minaguas.gob.ve"
+      ]
+    },
+    {
+      "domain": "mincoex.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular Para El Comercio Exterior",
+      "city": "1060",
+      "country": "VE",
+      "nameservers": [
+        "ns2.galawebhost.net",
+        "ns1.galawebhost.net"
+      ]
+    },
+    {
+      "domain": "mincomercionacional.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "mincultura.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular Para La Cultura",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.mincultura.gob.ve",
+        "ns2.mincultura.gob.ve"
+      ]
+    },
+    {
+      "domain": "mincyt.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio del Poder Popular para la Ciencia y Tecnología",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns2.mppct.gob.ve",
+        "ns5.nube.gob.ve",
+        "ns3.nube.gob.ve",
+        "ns1.mppct.gob.ve"
+      ]
+    },
+    {
+      "domain": "mindefensa.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.mindefensa.gob.ve",
+        "dns2.mindefensa.gob.ve"
+      ]
+    },
+    {
+      "domain": "mindeporte.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "minec.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas.",
+      "country": "VE",
+      "nameservers": [
+        "dns1.minec.gob.ve",
+        "dns2.minec.gob.ve"
+      ]
+    },
+    {
+      "domain": "minhidrocarburos.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular De Petroleo",
+      "city": "1050",
+      "country": "VE",
+      "nameservers": [
+        "dns2.cantv.net",
+        "dns1.cantv.net"
+      ]
+    },
+    {
+      "domain": "minhvi.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.afraid.org",
+        "ns1.minhvi.gob.ve",
+        "ns2.afraid.org",
+        "ns2.minhvi.gob.ve"
+      ]
+    },
+    {
+      "domain": "minmujer.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular Para La Mujer Y La Igualdad De Genero",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns2.minmujer.gob.ve",
+        "dns1.minmujer.gob.ve"
+      ]
+    },
+    {
+      "domain": "minpal.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.minpal.gob.ve",
+        "ns2.minpal.gob.ve"
+      ]
+    },
+    {
+      "domain": "minpesca.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Andrea",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns1.minpesca.gob.ve",
+        "dns2.minpesca.gob.ve"
+      ]
+    },
+    {
+      "domain": "minpi.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns2.minpi.gob.ve",
+        "ns1.minpi.gob.ve"
+      ]
+    },
+    {
+      "domain": "mintur.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.mintur.gob.ve",
+        "dns2.mintur.gob.ve"
+      ]
+    },
+    {
+      "domain": "mippci.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular Para La Comunicacion Y La Informacion",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns1.mippci.gob.ve",
+        "ns2.mippci.gob.ve"
+      ]
+    },
+    {
+      "domain": "miranda-carabobo.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "NO APLICA",
+      "city": "2041",
+      "country": "VE",
+      "nameservers": [
+        "theo.ns.cloudflare.com",
+        "kay.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "miranda.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Los Teques",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "misionpiar.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fundacion Mision Piar",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns4.mppdme.gob.ve",
+        "ns3.mppdme.gob.ve"
+      ]
+    },
+    {
+      "domain": "mp.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas,",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "mppct.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular Para Ciencia Y Tecnologia",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns1.mppct.gob.ve",
+        "ns2.mppct.gob.ve"
+      ]
+    },
+    {
+      "domain": "mppe.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Arwin Orlando",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns2.cantv.net",
+        "dns1.cantv.net"
+      ]
+    },
+    {
+      "domain": "mppee.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.mppee.gob.ve",
+        "ns2.mppee.gob.ve"
+      ]
+    },
+    {
+      "domain": "mppef.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular De Econom  A Y Finanzas",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns1.mppef.gob.ve",
+        "dns2.mppef.gob.ve"
+      ]
+    },
+    {
+      "domain": "mppeu.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular Para La Educacion Universitaria  Ciencia Y Tecnologia",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns2.nube.gob.ve",
+        "ns1.nube.gob.ve",
+        "dns1.mppeuct.gob.ve"
+      ]
+    },
+    {
+      "domain": "mppop.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular De Obras Publicas",
+      "city": "1050",
+      "country": "VE",
+      "nameservers": [
+        "dns2.mppop.gob.ve",
+        "dns1.mppop.gob.ve"
+      ]
+    },
+    {
+      "domain": "mppp.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns2.mppp.gob.ve",
+        "ns1.mppp.gob.ve"
+      ]
+    },
+    {
+      "domain": "mpppst.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.mpppst.gob.ve",
+        "dns2.mpppst.gob.ve"
+      ]
+    },
+    {
+      "domain": "mppre.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns3.mppre.gob.ve",
+        "ns2.mppre.gob.ve",
+        "ns1.mppre.gob.ve",
+        "ns4.mppre.gob.ve"
+      ]
+    },
+    {
+      "domain": "mpprijp.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "mpps.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "mppsp.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Arjuna Jose",
+      "city": "1060",
+      "country": "VE",
+      "nameservers": [
+        "dns1.mppsp.gob.ve",
+        "dns2.mppsp.gob.ve",
+        "dns3.mppsp.gob.ve"
+      ]
+    },
+    {
+      "domain": "mppt.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.mppt.gob.ve",
+        "dns2.mppt.gob.ve"
+      ]
+    },
+    {
+      "domain": "nube.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Corporacion Para El Desarrollo Cientifico Y Tecnologico  S A",
+      "city": "1020",
+      "country": "VE",
+      "nameservers": [
+        "ns2.nube.gob.ve",
+        "ns1.nube.gob.ve",
+        "ns6.nube.gob.ve",
+        "ns5.nube.gob.ve",
+        "ns4.nube.gob.ve",
+        "ns3.nube.gob.ve"
+      ]
+    },
+    {
+      "domain": "nuevaepoca.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Gobernacion Del Estado Bolivariano De Miranda",
+      "city": "1201",
+      "country": "VE",
+      "nameservers": [
+        "ns4.daycohost.net",
+        "ns3.daycohost.net",
+        "ns2.daycohost.net",
+        "ns1.daycohost.net"
+      ]
+    },
+    {
+      "domain": "nuevaesparta.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "La Asuncion",
+      "country": "VE",
+      "nameservers": [
+        "ns1.nuevaesparta.gob.ve",
+        "ns2.nuevaesparta.gob.ve"
+      ]
+    },
+    {
+      "domain": "observatorio.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Centro Internacional De Inversi  N Productiva",
+      "city": "1064",
+      "country": "VE",
+      "nameservers": [
+        "ns2.observatorio.gob.ve",
+        "ns1.observatorio.gob.ve"
+      ]
+    },
+    {
+      "domain": "ochina.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Oficina Coordinadora De Hidrografia Y Navegacion  Ochina",
+      "city": "1161",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "oncdoft.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Gregorio Jose",
+      "city": "1060",
+      "country": "VE",
+      "nameservers": [
+        "ns2.oncdoft.gob.ve",
+        "ns1.oncdoft.gob.ve"
+      ]
+    },
+    {
+      "domain": "oncti.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Julio Cesar",
+      "city": "1020",
+      "country": "VE",
+      "nameservers": [
+        "ns1.mppct.gob.ve",
+        "ns2.mppct.gob.ve",
+        "ns3.mppct.gob.ve"
+      ]
+    },
+    {
+      "domain": "onuginebra.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Grand-Saconnex",
+      "country": "CH",
+      "nameservers": [
+        "ns37.kreativmedia.ch",
+        "ns38.kreativmedia.ch"
+      ]
+    },
+    {
+      "domain": "opsu.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Consejo Nacional De Universidades",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns2.nube.gob.ve",
+        "ns1.nube.gob.ve",
+        "dns1.mppeuct.gob.ve"
+      ]
+    },
+    {
+      "domain": "ovs.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns2.ovs.gob.ve",
+        "dns1.ovs.gob.ve"
+      ]
+    },
+    {
+      "domain": "pcivil.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "pdval.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.pdval.gob.ve",
+        "ns2.pdval.gob.ve",
+        "ns3.pdval.gob.ve"
+      ]
+    },
+    {
+      "domain": "petro.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.petro.gob.ve",
+        "ns4.petro.gob.ve",
+        "ns3.petro.gob.ve",
+        "ns2.petro.gob.ve"
+      ]
+    },
+    {
+      "domain": "petrocasa.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Petrocasa S.A.",
+      "city": "2013",
+      "country": "VE",
+      "nameservers": [
+        "ns5.conectarhosting.com",
+        "ns6.conectarhosting.com"
+      ]
+    },
+    {
+      "domain": "planpatria.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.mppp.gob.ve",
+        "ns2.mppp.gob.ve"
+      ]
+    },
+    {
+      "domain": "policiadearagua.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Maracay",
+      "country": "VE",
+      "nameservers": [
+        "dns1.policiadearagua.gob.ve"
+      ]
+    },
+    {
+      "domain": "polimara.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "San Rafael de El Mojan",
+      "country": "VE",
+      "nameservers": [
+        "ns1.hostingmaracaibo.com",
+        "ns2.hostingmaracaibo.com"
+      ]
+    },
+    {
+      "domain": "polimer.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Merida",
+      "country": "VE",
+      "nameservers": [
+        "ns1.polimer.gob.ve",
+        "ns2.polimer.gob.ve"
+      ]
+    },
+    {
+      "domain": "polocientifico.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Jose Rafael",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns4.reacciun.ve",
+        "ns3.reacciun.ve"
+      ]
+    },
+    {
+      "domain": "portuguesa.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Guanare",
+      "country": "VE",
+      "nameservers": [
+        "ns1.hostingmaracaibo.com",
+        "ns2.hostingmaracaibo.com"
+      ]
+    },
+    {
+      "domain": "prensapresidencialvenezuela.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular Del Despacho De La Presidencia Y Seguimiento De La Gestion De Gobierno",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns2.digalo.gob.ve",
+        "ns1.digalo.gob.ve"
+      ]
+    },
+    {
+      "domain": "presidencia.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular Del Despacho De La Presidencia Y Seguimiento De La Gestion De Gobierno",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns1.digalo.gob.ve",
+        "ns2.digalo.gob.ve"
+      ]
+    },
+    {
+      "domain": "procuraduriaestadobarinas.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Procuraduria General Del Estado Barinas",
+      "city": "5201",
+      "country": "VE",
+      "nameservers": [
+        "ns4.netvicios.com",
+        "ns3.netvicios.com"
+      ]
+    },
+    {
+      "domain": "quimbiotec.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Hyrania Haratmit",
+      "city": "1204",
+      "country": "VE",
+      "nameservers": [
+        "ns2.quimbiotec.gob.ve",
+        "ns1.quimbiotec.gob.ve"
+      ]
+    },
+    {
+      "domain": "reddearte.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fundacion Red De Arte",
+      "city": "1030",
+      "country": "VE",
+      "nameservers": [
+        "ns875.cleannameservers.com",
+        "ns876.cleannameservers.com"
+      ]
+    },
+    {
+      "domain": "redtv.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "regresoaclases.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fondo Nacional De Misiones",
+      "city": "1060",
+      "country": "VE",
+      "nameservers": [
+        "jen.ns.cloudflare.com",
+        "aarav.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "respaldocomunal.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Servicio Fondo Nacional Del Poder Popular",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns2.safonapp.gob.ve",
+        "ns1.safonapp.gob.ve"
+      ]
+    },
+    {
+      "domain": "resquimc.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Registro Nacional Unico De Operadores De Sustancias Quimicas Controladas  Resquimc",
+      "city": "1014",
+      "country": "VE",
+      "nameservers": [
+        "dns2.cantv.net",
+        "dns1.cantv.net"
+      ]
+    },
+    {
+      "domain": "rnv.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Radio Nacional De Venezuela, C.a.",
+      "city": "1050",
+      "country": "VE",
+      "nameservers": [
+        "kipp.ns.cloudflare.com",
+        "tori.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "robertserra.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fundacion Mision Jovenes De La Patria Robert Serra",
+      "city": "1012",
+      "country": "VE",
+      "nameservers": [
+        "ns13.tepuyserver.net",
+        "ns14.tepuyserver.net"
+      ]
+    },
+    {
+      "domain": "sabat.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Barcelona",
+      "country": "VE",
+      "nameservers": [
+        "ns1.cdmon.net",
+        "ns2.cdmon.net",
+        "ns3.cdmon.net",
+        "ns4.cdmondns-01.org",
+        "ns5.cdmondns-01.com"
+      ]
+    },
+    {
+      "domain": "sabates.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Servicio Autonomo Bolivariano De Administracion Tributaria Del Estado Sucre  Sabates",
+      "city": "6101",
+      "country": "VE",
+      "nameservers": [
+        "ns3.daycohost.com",
+        "ns4.daycohost.com"
+      ]
+    },
+    {
+      "domain": "safonapp.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Edgar Jose",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns2.safonapp.gob.ve",
+        "ns1.safonapp.gob.ve"
+      ]
+    },
+    {
+      "domain": "sahum.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Maracaibo",
+      "country": "VE",
+      "nameservers": [
+        "wally.ns.cloudflare.com",
+        "west.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "saime.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.saime.gob.ve"
+      ]
+    },
+    {
+      "domain": "samath.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Bolivar",
+      "country": "VE",
+      "nameservers": [
+        "dns1.alcaldiadeheres.gob.ve",
+        "dns2.alcaldiadeheres.gob.ve"
+      ]
+    },
+    {
+      "domain": "sapi.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Servicio Autonomo De La Propiedad Intelectual",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns1.sapi.gob.ve",
+        "dns2.reacciun.ve"
+      ]
+    },
+    {
+      "domain": "saren.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "sarep.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Guanare",
+      "country": "VE",
+      "nameservers": [
+        "ns1.hostingmaracaibo.com",
+        "ns2.hostingmaracaibo.com"
+      ]
+    },
+    {
+      "domain": "sateb.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Servicio Desconcentrado De Administracion Tributaria Barinas",
+      "city": "5201",
+      "country": "VE",
+      "nameservers": [
+        "ns13.tepuyserver.net",
+        "ns14.tepuyserver.net"
+      ]
+    },
+    {
+      "domain": "sedat.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "SEDAT",
+      "city": "1071",
+      "country": "VE",
+      "nameservers": [
+        "june.ns.cloudflare.com",
+        "gerardo.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "sedatebne.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Superintendencia De Administraci  N Tributaria Del Estado Bolivariano De Nueva Esparta",
+      "city": "6301",
+      "country": "VE",
+      "nameservers": [
+        "dns.sedatebne.gob.ve"
+      ]
+    },
+    {
+      "domain": "sedatez.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Servicio Desconcentrado De Administración Tributaria Del Estado Zulia",
+      "city": "4001",
+      "country": "VE",
+      "nameservers": [
+        "ns2.sedatez.gob.ve",
+        "ns1.sedatez.gob.ve"
+      ]
+    },
+    {
+      "domain": "sedemat.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Maracaibo",
+      "country": "VE",
+      "nameservers": [
+        "ns1.afraid.org",
+        "ns2.afraid.org",
+        "ns3.afraid.org",
+        "ns4.afraid.org"
+      ]
+    },
+    {
+      "domain": "sedematlagunillas.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns1.a2hosting.com",
+        "ns2.a2hosting.com",
+        "ns3.a2hosting.com",
+        "ns4.a2hosting.com"
+      ]
+    },
+    {
+      "domain": "sen.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "NO APLICA",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "romina.ns.cloudflare.com",
+        "jonah.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "sencamer.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.sencamer.gob.ve",
+        "dns2.sencamer.gob.ve"
+      ]
+    },
+    {
+      "domain": "seniat.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Servicio Nacional Integrado De Administracion Aduanera Y Tributaria",
+      "city": "1070",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "siarteccarabobo.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Gobernacion Estado Carabobo",
+      "city": "2003",
+      "country": "VE",
+      "nameservers": [
+        "dns2.cantv.net",
+        "dns1.cantv.net"
+      ]
+    },
+    {
+      "domain": "sicm.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular  Para La Salud",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns2.sicm.gob.ve",
+        "ns1.sicm.gob.ve"
+      ]
+    },
+    {
+      "domain": "sigestel.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Comision Nacional De Telecomunicaciones Conatel",
+      "city": "1020",
+      "country": "VE",
+      "nameservers": [
+        "owen.ns.cloudflare.com",
+        "luciane.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "sinco.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns2.sinco.gob.ve",
+        "ns1.sinco.gob.ve"
+      ]
+    },
+    {
+      "domain": "sitssa.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Petare-Guarenas, edificio Terminal de Oriente",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "sna.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Oficina Nacional Antidrogas",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns2.sna.gob.ve",
+        "dns1.sna.gob.ve"
+      ]
+    },
+    {
+      "domain": "snc.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Servicio Nacional De Contrataciones  Snc",
+      "city": "1015",
+      "country": "VE",
+      "nameservers": [
+        "dns1.snc.gob.ve",
+        "dns5.snc.gob.ve",
+        "dns4.snc.gob.ve",
+        "dns3.snc.gob.ve",
+        "dns2.snc.gob.ve"
+      ]
+    },
+    {
+      "domain": "softwarelibre.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cnti.gob.ve",
+        "dns2.cnti.gob.ve",
+        "dns5.cnti.gob.ve",
+        "dns6.cnti.gob.ve",
+        "ns3.reacciun.ve",
+        "ns4.reacciun.ve"
+      ]
+    },
+    {
+      "domain": "sogamic.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Sgr Sogamic  S A",
+      "city": "1080",
+      "country": "VE",
+      "nameservers": [
+        "ns30.tepuyserver.net",
+        "ns29.tepuyserver.net"
+      ]
+    },
+    {
+      "domain": "sogampi.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net",
+        "dns3.cantv.net",
+        "dns4.cantv.net",
+        "dns5.cantv.net"
+      ]
+    },
+    {
+      "domain": "solucioneshidraulicas.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fundacion Laboratorio Nacional De Hidraulica",
+      "city": "1073",
+      "country": "VE",
+      "nameservers": [
+        "ns351.gconex.com",
+        "ns350.gconex.com"
+      ]
+    },
+    {
+      "domain": "sudeaseg.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.sudeaseg.gob.ve",
+        "dns2.sudeaseg.gob.ve"
+      ]
+    },
+    {
+      "domain": "sudeban.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Roxana Belen",
+      "city": "1071",
+      "country": "VE",
+      "nameservers": [
+        "dns4.sudeban.gob.ve",
+        "dns2.sudeban.gob.ve",
+        "dns1.sudeban.gob.ve",
+        "dns3.sudeban.gob.ve"
+      ]
+    },
+    {
+      "domain": "sudebip.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.sudebip.gob.ve",
+        "dns2.sudebip.gob.ve"
+      ]
+    },
+    {
+      "domain": "sudeca.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.sudeca.gob.ve",
+        "dns2.sudeca.gob.ve"
+      ]
+    },
+    {
+      "domain": "sunacoop.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns2.comunas.gob.ve",
+        "dns1.comunas.gob.ve"
+      ]
+    },
+    {
+      "domain": "sunacrip.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.sunacrip.gob.ve",
+        "ns2.sunacrip.gob.ve",
+        "ns3.sunacrip.gob.ve",
+        "ns4.sunacrip.gob.ve"
+      ]
+    },
+    {
+      "domain": "sunad.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Oficina Nacional Antidrogas",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns2.sunad.gob.ve",
+        "dns1.sunad.gob.ve"
+      ]
+    },
+    {
+      "domain": "sunagro.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.sunagro.gob.ve",
+        "dns2.sunagro.gob.ve"
+      ]
+    },
+    {
+      "domain": "sunai.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "sunaval.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Superintendencia Nacional De Valores",
+      "city": "1050",
+      "country": "VE",
+      "nameservers": [
+        "salvador.ns.cloudflare.com",
+        "lola.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "sundde.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "caraca",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "suscerte.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ryloth2.suscerte.gob.ve",
+        "ryloth.suscerte.gob.ve"
+      ]
+    },
+    {
+      "domain": "teatroteresacarreno.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Fundacion Teatro Teresa Carre  O",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns2.teatroteresacarreno.gob.ve",
+        "ns1.teatroteresacarreno.gob.ve"
+      ]
+    },
+    {
+      "domain": "telecom.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Carlos Enrique",
+      "city": "1050",
+      "country": "VE",
+      "nameservers": [
+        "ns2.nube.gob.ve",
+        "ns1.nube.gob.ve"
+      ]
+    },
+    {
+      "domain": "tgc.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Raidaly Del Valle",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns1.mppct.gob.ve",
+        "ns2.mppct.gob.ve",
+        "ns3.mppct.gob.ve"
+      ]
+    },
+    {
+      "domain": "tifm.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Territorio Insular Francisco De Miranda",
+      "city": "1014",
+      "country": "VE",
+      "nameservers": [
+        "dns1.tifm.gob.ve",
+        "dns2.tifm.gob.ve",
+        "dns3.tifm.gob.ve"
+      ]
+    },
+    {
+      "domain": "tsj.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "tubhelca.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Tuberias Helicoidales  C A",
+      "city": "3001",
+      "country": "VE",
+      "nameservers": [
+        "sara.ns.cloudflare.com",
+        "elmo.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "turmero.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Turmero",
+      "country": "VE",
+      "nameservers": [
+        "ns1.turmero.gob.ve"
+      ]
+    },
+    {
+      "domain": "tves.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Victor Manuel",
+      "city": "1070",
+      "country": "VE",
+      "nameservers": [
+        "ivan.ns.cloudflare.com",
+        "anna.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "ucs.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "unif.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.unif.gob.ve",
+        "dns2.unif.gob.ve"
+      ]
+    },
+    {
+      "domain": "ven911.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns2.cantv.net",
+        "dns1.cantv.net"
+      ]
+    },
+    {
+      "domain": "vencert.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ryloth.suscerte.gob.ve",
+        "ryloth2.suscerte.gob.ve"
+      ]
+    },
+    {
+      "domain": "venezuela.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.digalo.gob.ve",
+        "ns2.digalo.gob.ve"
+      ]
+    },
+    {
+      "domain": "venezuelatoda.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Gobernacion Del Estado Bolivariano De Miranda",
+      "city": "1201",
+      "country": "VE",
+      "nameservers": [
+        "ns2.daycohost.net",
+        "ns1.daycohost.net",
+        "ns3.daycohost.net",
+        "ns4.daycohost.net"
+      ]
+    },
+    {
+      "domain": "vensalud.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Sol Leoneidis",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns1.vensalud.gob.ve",
+        "ns2.vensalud.gob.ve"
+      ]
+    },
+    {
+      "domain": "vicepresidencia.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Vicepresidencia De La Republica Bolivariana De Venezuela",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "beta.vicepresidencia.gob.ve"
+      ]
+    },
+    {
+      "domain": "vit.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Punto Fijo",
+      "country": "VE",
+      "nameservers": [
+        "ns1.vit.gob.ve",
+        "ns2.vit.gob.ve"
+      ]
+    },
+    {
+      "domain": "vpse.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns2.industrias.gob.ve",
+        "ns1.industrias.gob.ve"
+      ]
+    },
+    {
+      "domain": "vsctes.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular Para Ciencia Y Tecnologia",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns1.mppct.gob.ve",
+        "ns2.mppct.gob.ve"
+      ]
+    },
+    {
+      "domain": "vtv.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "vycsucre.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "Vialidad Y Construcciones Sucre  S A",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns2.vycsucre.gob.ve",
+        "dns1.vycsucre.gob.ve"
+      ]
+    },
+    {
+      "domain": "xvcenso.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.mppp.gob.ve",
+        "ns2.mppp.gob.ve"
+      ]
+    },
+    {
+      "domain": "yaracuy.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "San Felipe",
+      "country": "VE",
+      "nameservers": [
+        "kay.ns.cloudflare.com",
+        "theo.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "zecarabobo.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Valencia",
+      "country": "VE",
+      "nameservers": [
+        "ns39.tepuyserver.net",
+        "ns40.tepuyserver.net"
+      ]
+    },
+    {
+      "domain": "zulia.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "Maracaibo",
+      "country": "VE",
+      "nameservers": [
+        "amber.ns.cloudflare.com",
+        "brett.ns.cloudflare.com"
+      ]
+    }
+  ]
+}
