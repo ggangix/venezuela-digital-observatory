@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venezuela Digital Observatory - Status</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card: #161b22;
+      --border: #30363d;
+      --text: #c9d1d9;
+      --text-dim: #8b949e;
+      --green: #3fb950;
+      --red: #f85149;
+      --yellow: #d29922;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .stat-label {
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    .online { color: var(--green); }
+    .offline { color: var(--red); }
+    .ssl { color: var(--yellow); }
+
+    .filters {
+      margin-bottom: 1rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    input[type="text"] {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.5rem 1rem;
+      color: var(--text);
+      font-size: 0.9rem;
+      width: 300px;
+    }
+
+    input[type="text"]::placeholder {
+      color: var(--text-dim);
+    }
+
+    .filter-btn {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.5rem 1rem;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      border-color: var(--text-dim);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      color: var(--text-dim);
+      font-weight: 500;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    tr:hover {
+      background: var(--card);
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .status-badge.online {
+      background: rgba(63, 185, 80, 0.2);
+      color: var(--green);
+    }
+
+    .status-badge.offline {
+      background: rgba(248, 81, 73, 0.2);
+      color: var(--red);
+    }
+
+    .ssl-badge {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    .ssl-badge.valid {
+      color: var(--green);
+    }
+
+    a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 4rem;
+      color: var(--text-dim);
+    }
+
+    .meta {
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .last-update {
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+    }
+
+    .last-update time {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--text);
+    }
+
+    .support {
+      margin: 1rem 0;
+    }
+
+    .coffee-btn {
+      display: inline-block;
+      background: #ffdd00;
+      color: #000 !important;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none !important;
+      transition: transform 0.2s;
+    }
+
+    .coffee-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .disclaimer {
+      font-size: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .pagination button {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.5rem 1rem;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .pagination button:hover:not(:disabled) {
+      border-color: var(--text-dim);
+    }
+
+    .pagination button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .pagination .page-info {
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      margin: 0 1rem;
+    }
+
+    .page-size {
+      margin-left: auto;
+    }
+
+    .page-size select {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.4rem 0.6rem;
+      color: var(--text);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+
+      input[type="text"] {
+        width: 100%;
+      }
+
+      th, td {
+        padding: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Venezuela Digital Observatory</h1>
+      <p class="subtitle">Status of Venezuelan government websites (.gob.ve)</p>
+      <p class="last-update" id="lastUpdate"></p>
+    </header>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-value" id="total">-</div>
+        <div class="stat-label">Total</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value online" id="online">-</div>
+        <div class="stat-label">Online</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value offline" id="offline">-</div>
+        <div class="stat-label">Offline</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value ssl" id="ssl">-</div>
+        <div class="stat-label">With SSL</div>
+      </div>
+    </div>
+
+    <div class="filters">
+      <input type="text" id="search" placeholder="Search domain...">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="online">Online</button>
+      <button class="filter-btn" data-filter="offline">Offline</button>
+    </div>
+
+    <div id="content">
+      <p class="loading">Loading data...</p>
+    </div>
+
+    <p class="meta" id="meta"></p>
+
+    <footer>
+      <p>Created by <a href="https://buymeacoffee.com/giuseppe.gangi" target="_blank">Giuseppe Gangi</a></p>
+      <p class="support">
+        <a href="https://buymeacoffee.com/giuseppe.gangi" target="_blank" class="coffee-btn">
+          ☕ Buy me a coffee
+        </a>
+      </p>
+      <p class="disclaimer">Independent civic project. Not affiliated with the Venezuelan government.</p>
+    </footer>
+  </div>
+
+  <script>
+    let allDomains = [];
+    let filteredDomains = [];
+    let currentFilter = 'all';
+    let currentPage = 1;
+    let pageSize = 10;
+
+    async function loadData() {
+      try {
+        const res = await fetch('status.json');
+        const data = await res.json();
+
+        // Update stats
+        document.getElementById('total').textContent = data._meta.totalDomains;
+        document.getElementById('online').textContent = data._meta.online;
+        document.getElementById('offline').textContent = data._meta.offline;
+        document.getElementById('ssl').textContent = data._meta.withSSL;
+
+        // Update last update time
+        const date = new Date(data._meta.generatedAt);
+        const now = new Date();
+        const diffMs = now - date;
+        const diffMins = Math.floor(diffMs / 60000);
+        const diffHours = Math.floor(diffMs / 3600000);
+        const diffDays = Math.floor(diffMs / 86400000);
+
+        let timeAgo;
+        if (diffMins < 60) {
+          timeAgo = `${diffMins} minutes ago`;
+        } else if (diffHours < 24) {
+          timeAgo = `${diffHours} hours ago`;
+        } else {
+          timeAgo = `${diffDays} days ago`;
+        }
+
+        const formattedDate = date.toLocaleString('en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          timeZoneName: 'short'
+        });
+
+        document.getElementById('lastUpdate').innerHTML =
+          `Last updated: <time datetime="${data._meta.generatedAt}">${formattedDate}</time> (${timeAgo})`;
+
+        document.getElementById('meta').textContent =
+          `Check duration: ${data._meta.checkDuration} · Avg response: ${data._meta.avgResponseTime}ms`;
+
+        allDomains = data.domains;
+        renderTable(allDomains);
+      } catch (err) {
+        document.getElementById('content').innerHTML =
+          '<p class="loading">Error loading data. Run the check first.</p>';
+      }
+    }
+
+    function renderTable(domains) {
+      filteredDomains = domains;
+
+      if (domains.length === 0) {
+        document.getElementById('content').innerHTML =
+          '<p class="loading">No results found.</p>';
+        return;
+      }
+
+      const totalPages = Math.ceil(domains.length / pageSize);
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      const start = (currentPage - 1) * pageSize;
+      const end = start + pageSize;
+      const pageDomains = domains.slice(start, end);
+
+      const html = `
+        <table>
+          <thead>
+            <tr>
+              <th>Domain</th>
+              <th>Status</th>
+              <th>HTTP</th>
+              <th>SSL</th>
+              <th>Response</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${pageDomains.map(d => `
+              <tr>
+                <td><a href="http${d.ssl ? 's' : ''}://${d.domain}" target="_blank">${d.domain}</a></td>
+                <td><span class="status-badge ${d.status}">${d.status}</span></td>
+                <td>${d.httpCode || '-'}</td>
+                <td><span class="ssl-badge ${d.ssl ? 'valid' : ''}">${d.ssl === true ? '✓' : d.ssl === false ? '✗' : '-'}</span></td>
+                <td>${d.responseTime ? d.responseTime + 'ms' : '-'}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+        <div class="pagination">
+          <button onclick="goToPage(1)" ${currentPage === 1 ? 'disabled' : ''}>« First</button>
+          <button onclick="goToPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>‹ Prev</button>
+          <span class="page-info">Page ${currentPage} of ${totalPages} (${domains.length} domains)</span>
+          <button onclick="goToPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>Next ›</button>
+          <button onclick="goToPage(${totalPages})" ${currentPage === totalPages ? 'disabled' : ''}>Last »</button>
+          <div class="page-size">
+            <select onchange="changePageSize(this.value)">
+              <option value="10" ${pageSize === 10 ? 'selected' : ''}>10</option>
+              <option value="50" ${pageSize === 25 ? 'selected' : ''}>25</option>
+              <option value="50" ${pageSize === 50 ? 'selected' : ''}>50</option>
+              <option value="100" ${pageSize === 100 ? 'selected' : ''}>100</option>
+              <option value="all">All</option>
+            </select>
+          </div>
+        </div>
+      `;
+      document.getElementById('content').innerHTML = html;
+    }
+
+    function goToPage(page) {
+      currentPage = page;
+      renderTable(filteredDomains);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function changePageSize(size) {
+      if (size === 'all') {
+        pageSize = filteredDomains.length;
+      } else {
+        pageSize = parseInt(size);
+      }
+      currentPage = 1;
+      renderTable(filteredDomains);
+    }
+
+    function filterDomains() {
+      const search = document.getElementById('search').value.toLowerCase();
+      let filtered = allDomains;
+
+      if (currentFilter !== 'all') {
+        filtered = filtered.filter(d => d.status === currentFilter);
+      }
+
+      if (search) {
+        filtered = filtered.filter(d => d.domain.includes(search));
+      }
+
+      currentPage = 1; // Reset to first page on filter
+      renderTable(filtered);
+    }
+
+    // Event listeners
+    document.getElementById('search').addEventListener('input', filterDomains);
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        filterDomains();
+      });
+    });
+
+    loadData();
+  </script>
+</body>
+</html>
