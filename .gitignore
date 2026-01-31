@@ -15,4 +15,6 @@ Thumbs.db
 
 # Raw WHOIS files (not needed in repo, only processed data)
 whois_raw/
-*.txt
+
+# Process folder
+process/

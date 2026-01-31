@@ -2,9 +2,9 @@
   "_meta": {
     "description": "WHOIS data for Venezuelan government domains (.gob.ve)",
     "source": "whois.nic.ve",
-    "generated": "2026-01-30T20:07:44.023Z",
-    "total": 381,
-    "recent_2025_2026": 15,
+    "generated": "2026-01-31T11:58:41.860Z",
+    "total": 433,
+    "recent_2025_2026": 17,
     "privacy_note": "Personal names of registrants have been excluded",
     "license": "CC0 - Public Domain"
   },
@@ -39,6 +39,21 @@
         "ns2.centos-webpanel.com",
         "ns3.centos-webpanel.com",
         "ns4.centos-webpanel.com"
+      ]
+    },
+    {
+      "domain": "alcaldiaderoscio.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2025-10-18",
+      "registered_year": "2025",
+      "expire": "2035-10-18",
+      "changed": "2025-10-18",
+      "org": "Alcaldia Del Municipio Autonomo Roscio",
+      "city": "8001",
+      "country": "VE",
+      "nameservers": [
+        "ns7.globalhostla.com",
+        "ns8.globalhostla.com"
       ]
     },
     {
@@ -158,6 +173,21 @@
       "nameservers": [
         "ns2.galawebhost.net",
         "ns1.galawebhost.net"
+      ]
+    },
+    {
+      "domain": "enpi.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2025-03-17",
+      "registered_year": "2025",
+      "expire": "2035-03-17",
+      "changed": "2025-03-17",
+      "org": "Servicio Autonomo De La Propiedad Intelectual",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns2.enpi.gob.ve",
+        "dns1.enpi.gob.ve"
       ]
     },
     {
@@ -341,6 +371,35 @@
       ]
     },
     {
+      "domain": "pciviltachira.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2024-03-26",
+      "registered_year": "2024",
+      "expire": "2034-03-26",
+      "changed": "2024-03-26",
+      "org": "Instituto Autonomo De Proteccion Civil Del Estado Tachira",
+      "city": "5001",
+      "country": "VE",
+      "nameservers": [
+        "ns2.dns-parking.com",
+        "ns1.dns-parking.com"
+      ]
+    },
+    {
+      "domain": "sbr.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2024-03-18",
+      "registered_year": "2024",
+      "expire": "2034-03-18",
+      "changed": "2024-03-18",
+      "org": "Servicio De Bienes Recuperados",
+      "city": "1060",
+      "country": "VE",
+      "nameservers": [
+        "ns1.sbr.gob.ve"
+      ]
+    },
+    {
       "domain": "cenipa.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2024-02-21",
@@ -435,6 +494,21 @@
       ]
     },
     {
+      "domain": "alcaldiadelmunicipiotinaco.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2023-08-21",
+      "registered_year": "2023",
+      "expire": "2033-08-21",
+      "changed": "2023-08-21",
+      "org": "Alcaldia Del Municipio Tinaco",
+      "city": "2206",
+      "country": "VE",
+      "nameservers": [
+        "ns24.tepuyserver.net",
+        "ns23.tepuyserver.net"
+      ]
+    },
+    {
       "domain": "hidrolago.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2023-07-11",
@@ -477,6 +551,36 @@
       "nameservers": [
         "ns20.tepuyserver.net",
         "ns19.tepuyserver.net"
+      ]
+    },
+    {
+      "domain": "fonaem.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2023-05-23",
+      "registered_year": "2023",
+      "expire": "2033-05-23",
+      "changed": "2023-05-23",
+      "org": "Fondo Nacional Para Los Emprendimientos  S A",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns2.planetahosting.pe",
+        "dns1.planetahosting.pe"
+      ]
+    },
+    {
+      "domain": "misionribas.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2023-04-14",
+      "registered_year": "2023",
+      "expire": "2033-04-14",
+      "changed": "2023-04-14",
+      "org": "Fundación Misión Ribas",
+      "city": "1041",
+      "country": "VE",
+      "nameservers": [
+        "ns4.reacciun.ve",
+        "ns3.reacciun.ve"
       ]
     },
     {
@@ -573,6 +677,21 @@
       "nameservers": [
         "ns3.daycohost.com",
         "ns4.daycohost.com"
+      ]
+    },
+    {
+      "domain": "parguaza.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2022-10-28",
+      "registered_year": "2022",
+      "expire": "2032-10-28",
+      "changed": "2022-10-28",
+      "org": "Empresa Mixta Minera Ecosocialista Parguaza S A",
+      "city": "8007",
+      "country": "VE",
+      "nameservers": [
+        "ns3.mppdme.gob.ve",
+        "ns4.mppdme.gob.ve"
       ]
     },
     {
@@ -741,6 +860,21 @@
       ]
     },
     {
+      "domain": "juegosnacionales.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2022-01-11",
+      "registered_year": "2022",
+      "expire": "2032-01-11",
+      "changed": "2022-01-11",
+      "org": "Instituto Nacional De Deportes",
+      "city": "1020",
+      "country": "VE",
+      "nameservers": [
+        "ns4.reacciun.ve",
+        "ns3.reacciun.ve"
+      ]
+    },
+    {
       "domain": "corselca.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2021-12-01",
@@ -753,6 +887,21 @@
       "nameservers": [
         "dns2.corselca.gob.ve",
         "dns1.corselca.gob.ve"
+      ]
+    },
+    {
+      "domain": "senafim.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2021-11-19",
+      "registered_year": "2021",
+      "expire": "2031-11-19",
+      "changed": "2021-11-19",
+      "org": "Oficina Nacional De Fiscalización E Inspección Minera",
+      "city": "1060",
+      "country": "VE",
+      "nameservers": [
+        "ns2.senafim.gob.ve",
+        "ns1.senafim.gob.ve"
       ]
     },
     {
@@ -981,6 +1130,21 @@
       ]
     },
     {
+      "domain": "fonaguas.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2021-01-07",
+      "registered_year": "2021",
+      "expire": "2031-01-07",
+      "changed": "2025-12-12",
+      "org": "Fondo Nacional Para La Gestion Integral De Las Aguas",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns3004a.trouble-free.net",
+        "dns3004b.trouble-free.net"
+      ]
+    },
+    {
       "domain": "alcaldiabaruta.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2020-11-13",
@@ -1070,6 +1234,21 @@
       "nameservers": [
         "ns7.conectarhosting.com",
         "ns8.conectarhosting.com"
+      ]
+    },
+    {
+      "domain": "jirajara.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2020-04-11",
+      "registered_year": "2020",
+      "expire": "2030-04-11",
+      "changed": "2022-02-22",
+      "org": "Complejo Alfarero Jirajara Ca",
+      "city": "4101",
+      "country": "VE",
+      "nameservers": [
+        "ns2.dattaapure.com",
+        "ns1.dattaapure.com"
       ]
     },
     {
@@ -1438,6 +1617,21 @@
       ]
     },
     {
+      "domain": "ont.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2018-02-22",
+      "registered_year": "2018",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.mppef.gob.ve",
+        "dns2.mppef.gob.ve"
+      ]
+    },
+    {
       "domain": "petro.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2018-01-31",
@@ -1517,6 +1711,21 @@
       ]
     },
     {
+      "domain": "minpet.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2017-12-22",
+      "registered_year": "2017",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
       "domain": "cmcarvajal.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2017-12-13",
@@ -1530,6 +1739,21 @@
         "ns1.cdmon.net",
         "ns2.cdmon.net",
         "ns3.cdmon.net"
+      ]
+    },
+    {
+      "domain": "blockchain.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2017-12-07",
+      "registered_year": "2017",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns3.reacciun.ve",
+        "ns4.reacciun.ve"
       ]
     },
     {
@@ -1564,6 +1788,36 @@
       ]
     },
     {
+      "domain": "corposervica.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2017-10-31",
+      "registered_year": "2017",
+      "expire": "2029-12-31",
+      "changed": "2024-05-29",
+      "org": "Corporacion De Servicios De Vigilancia Y Seguridad  S A",
+      "city": "1080",
+      "country": "VE",
+      "nameservers": [
+        "ns11.wnetserver.com",
+        "ns12.wnetserver.com"
+      ]
+    },
+    {
+      "domain": "agrosur.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2017-10-19",
+      "registered_year": "2017",
+      "expire": "2029-12-31",
+      "changed": "2020-04-02",
+      "org": "Conglomerado Agrosur S.A",
+      "city": "1012",
+      "country": "VE",
+      "nameservers": [
+        "bryce.ns.cloudflare.com",
+        "vita.ns.cloudflare.com"
+      ]
+    },
+    {
       "domain": "unif.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2017-10-11",
@@ -1591,6 +1845,21 @@
       "nameservers": [
         "ns2.mppp.gob.ve",
         "ns1.mppp.gob.ve"
+      ]
+    },
+    {
+      "domain": "billeteramovil.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2017-09-12",
+      "registered_year": "2017",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
       ]
     },
     {
@@ -1729,6 +1998,21 @@
       ]
     },
     {
+      "domain": "softwarepublico.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2016-08-22",
+      "registered_year": "2016",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns3.reacciun.ve",
+        "ns4.reacciun.ve"
+      ]
+    },
+    {
       "domain": "sarep.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2016-08-02",
@@ -1759,6 +2043,21 @@
       ]
     },
     {
+      "domain": "avp.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2016-06-03",
+      "registered_year": "2016",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.8ssi.com",
+        "ns2.8ssi.com"
+      ]
+    },
+    {
       "domain": "fnp.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2016-04-08",
@@ -1786,6 +2085,36 @@
       "nameservers": [
         "kai.ns.cloudflare.com",
         "sandy.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "circuitorrb.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2016-03-10",
+      "registered_year": "2016",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "Ejecutivo Del Estado Bolivar",
+      "city": "8001",
+      "country": "VE",
+      "nameservers": [
+        "dns2.caracashosting25.com",
+        "dns1.caracashosting25.com"
+      ]
+    },
+    {
+      "domain": "minppau.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2016-01-29",
+      "registered_year": "2016",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.minppau.gob.ve",
+        "ns2.minppau.gob.ve"
       ]
     },
     {
@@ -1850,6 +2179,21 @@
       ]
     },
     {
+      "domain": "alcaldiamunicipiolibertador-mer.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2015-09-18",
+      "registered_year": "2015",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "Merida",
+      "country": "VE",
+      "nameservers": [
+        "ns25.tepuyserver.net",
+        "ns26.tepuyserver.net"
+      ]
+    },
+    {
       "domain": "turmero.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2015-09-17",
@@ -1861,6 +2205,21 @@
       "country": "VE",
       "nameservers": [
         "ns1.turmero.gob.ve"
+      ]
+    },
+    {
+      "domain": "utne.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2015-07-23",
+      "registered_year": "2015",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "Porlamar",
+      "country": "VE",
+      "nameservers": [
+        "ns3.reacciun.ve",
+        "ns4.reacciun.ve"
       ]
     },
     {
@@ -1989,6 +2348,21 @@
       ]
     },
     {
+      "domain": "alcaldiadeplaza.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2015-01-21",
+      "registered_year": "2015",
+      "expire": "2029-12-31",
+      "changed": "2021-11-03",
+      "org": "Alcaldia Del Municipio Plaza",
+      "city": "1220",
+      "country": "VE",
+      "nameservers": [
+        "ns2.dns-parking.com",
+        "ns1.dns-parking.com"
+      ]
+    },
+    {
       "domain": "ven911.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2014-11-07",
@@ -2061,6 +2435,21 @@
       "nameservers": [
         "emma.ns.cloudflare.com",
         "west.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "gmsaberytrabajo.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2014-09-03",
+      "registered_year": "2014",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns2.gmsaberytrabajo.gob.ve",
+        "externo1.gmsaberytrabajo.gob.ve"
       ]
     },
     {
@@ -2137,6 +2526,21 @@
       "nameservers": [
         "dns2.hogaresdelapatria.gob.ve",
         "dns1.hogaresdelapatria.gob.ve"
+      ]
+    },
+    {
+      "domain": "contraloriaautonomadeguacara.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2014-06-02",
+      "registered_year": "2014",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "Guacara",
+      "country": "VE",
+      "nameservers": [
+        "ns2.wnetserver.com",
+        "ns1.wnetserver.com"
       ]
     },
     {
@@ -2262,6 +2666,21 @@
       ]
     },
     {
+      "domain": "cesppa.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2013-11-15",
+      "registered_year": "2013",
+      "expire": "2029-12-31",
+      "changed": "2025-07-23",
+      "org": "Centro Estrategico De Seguridad Y Proteccion De La Patria",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns2.cesppa.gob.ve",
+        "ns4.cesppa.gob.ve"
+      ]
+    },
+    {
       "domain": "resquimc.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2013-10-01",
@@ -2274,6 +2693,21 @@
       "nameservers": [
         "dns2.cantv.net",
         "dns1.cantv.net"
+      ]
+    },
+    {
+      "domain": "satdc.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2013-09-23",
+      "registered_year": "2013",
+      "expire": "2029-12-31",
+      "changed": "2019-11-14",
+      "org": "Servicio de Administracion Tributaria del Distrito Capital",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns4.tepuyserver.net",
+        "ns3.tepuyserver.net"
       ]
     },
     {
@@ -2427,6 +2861,21 @@
       ]
     },
     {
+      "domain": "minerven.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2013-02-07",
+      "registered_year": "2013",
+      "expire": "2029-12-31",
+      "changed": "2022-05-16",
+      "org": "Compa  Ia General De Mineria De Venezuela C A",
+      "city": "8056",
+      "country": "VE",
+      "nameservers": [
+        "ns2.dattaapure.com",
+        "ns1.dattaapure.com"
+      ]
+    },
+    {
       "domain": "sateb.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2013-01-07",
@@ -2470,6 +2919,21 @@
       "nameservers": [
         "dns1.sudebip.gob.ve",
         "dns2.sudebip.gob.ve"
+      ]
+    },
+    {
+      "domain": "cscv.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2012-11-05",
+      "registered_year": "2012",
+      "expire": "2029-12-31",
+      "changed": "2020-06-26",
+      "org": "",
+      "city": "Caucagua",
+      "country": "VE",
+      "nameservers": [
+        "ns24.tepuyserver.net",
+        "ns23.tepuyserver.net"
       ]
     },
     {
@@ -3127,6 +3591,20 @@
       ]
     },
     {
+      "domain": "pescalba.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2010-06-01",
+      "registered_year": "2010",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "Empresa Mixta Socialista Pesquera Industrial del ALBA.",
+      "country": "VE",
+      "nameservers": [
+        "dns1.minpesca.gob.ve"
+      ]
+    },
+    {
       "domain": "cvg.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2010-05-27",
@@ -3296,6 +3774,21 @@
       ]
     },
     {
+      "domain": "cicpc.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2010-02-11",
+      "registered_year": "2010",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
       "domain": "mppee.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2010-01-25",
@@ -3404,6 +3897,36 @@
       ]
     },
     {
+      "domain": "cnh.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2009-10-07",
+      "registered_year": "2009",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "Ministerio Del Poder Popular Para La Cultura",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns2.agnve.gob.ve",
+        "ns1.agnve.gob.ve"
+      ]
+    },
+    {
+      "domain": "registrocivilsc.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2009-10-07",
+      "registered_year": "2009",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "San Cristobal",
+      "country": "VE",
+      "nameservers": [
+        "ns2.solucionesvmr.info",
+        "ns1.solucionesvmr.info"
+      ]
+    },
+    {
       "domain": "correodelorinoco.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2009-09-21",
@@ -3432,6 +3955,21 @@
         "ns0.alcaldiagirardot.gob.ve",
         "ns1.alcaldiagirardot.gob.ve",
         "ns2.alcaldiagirardot.gob.ve"
+      ]
+    },
+    {
+      "domain": "fundacioncami.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2009-09-04",
+      "registered_year": "2009",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "Valencia",
+      "country": "VE",
+      "nameservers": [
+        "dns1.caracasdns.com",
+        "dns2.caracasdns.com"
       ]
     },
     {
@@ -3509,6 +4047,35 @@
       ]
     },
     {
+      "domain": "vtelca.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2009-06-16",
+      "registered_year": "2009",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "Coro",
+      "country": "VE",
+      "nameservers": [
+        "dns1.vtelca.gob.ve"
+      ]
+    },
+    {
+      "domain": "alcaldiadecolon.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2009-06-15",
+      "registered_year": "2009",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "Santa Barbara del Zulia",
+      "country": "VE",
+      "nameservers": [
+        "ns3.hosting.com.ve",
+        "ns4.hosting.com.ve"
+      ]
+    },
+    {
       "domain": "minmujer.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2009-06-10",
@@ -3524,6 +4091,21 @@
       ]
     },
     {
+      "domain": "contraloriadevalera.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2009-06-03",
+      "registered_year": "2009",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "Contraloria Municipal De Valera",
+      "city": "3101",
+      "country": "VE",
+      "nameservers": [
+        "ns5.venezueladns.com",
+        "ns6.venezueladns.com"
+      ]
+    },
+    {
       "domain": "gdc.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2009-05-29",
@@ -3536,6 +4118,21 @@
       "nameservers": [
         "dns1.cantv.net",
         "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "alcaldiadesancristobal.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2009-05-06",
+      "registered_year": "2009",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "San Cristobal",
+      "country": "VE",
+      "nameservers": [
+        "ns1.solucionesvmr.info",
+        "ns2.solucionesvmr.info"
       ]
     },
     {
@@ -3566,6 +4163,21 @@
       "nameservers": [
         "delta.corposaludtachira.gob.ve",
         "epsilon.corposaludtachira.gob.ve"
+      ]
+    },
+    {
+      "domain": "alcaldiadezamora.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2009-04-08",
+      "registered_year": "2009",
+      "expire": "2029-12-31",
+      "changed": "2020-03-06",
+      "org": "",
+      "city": "Guatire",
+      "country": "VE",
+      "nameservers": [
+        "dns2.namecheaphosting.com",
+        "dns1.namecheaphosting.com"
       ]
     },
     {
@@ -3992,6 +4604,21 @@
       "nameservers": [
         "ns1.agnve.gob.ve",
         "ns2.agnve.gob.ve"
+      ]
+    },
+    {
+      "domain": "corpivensa.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2007-11-16",
+      "registered_year": "2007",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns4.reacciun.ve",
+        "ns3.reacciun.ve"
       ]
     },
     {
@@ -4690,6 +5317,21 @@
       ]
     },
     {
+      "domain": "bibliotecayacucho.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2006-06-05",
+      "registered_year": "2006",
+      "expire": "2029-12-31",
+      "changed": "2022-07-01",
+      "org": "Fundacion Biblioteca Ayacucho",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns2.dns-parking.com",
+        "ns1.dns-parking.com"
+      ]
+    },
+    {
       "domain": "fundacite-falcon.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2006-05-31",
@@ -4750,6 +5392,21 @@
       ]
     },
     {
+      "domain": "banmujer.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2006-02-03",
+      "registered_year": "2006",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "Banco De Desarrollo De La Mujer, C.a.",
+      "city": "1204",
+      "country": "VE",
+      "nameservers": [
+        "dns2.banmujer.gob.ve",
+        "dns1.banmujer.gob.ve"
+      ]
+    },
+    {
       "domain": "contraloriadebarquisimeto.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2006-01-31",
@@ -4807,6 +5464,21 @@
       "nameservers": [
         "ns2.teatroteresacarreno.gob.ve",
         "ns1.teatroteresacarreno.gob.ve"
+      ]
+    },
+    {
+      "domain": "fundacite-amazonas.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2006-01-10",
+      "registered_year": "2006",
+      "expire": "2029-12-31",
+      "changed": "2024-01-22",
+      "org": "Fundacion Para El Desarrollo De La Ciencia Y La Tecnologia En El Estado Amazonas  Fundacite Amazonas",
+      "city": "7101",
+      "country": "VE",
+      "nameservers": [
+        "ns2.hostpannel.com",
+        "ns1.hostpannel.com"
       ]
     },
     {
@@ -4948,6 +5620,21 @@
       ]
     },
     {
+      "domain": "iactp.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2005-10-03",
+      "registered_year": "2005",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns350.gconex.com",
+        "ns351.gconex.com"
+      ]
+    },
+    {
       "domain": "suscerte.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2005-09-26",
@@ -4963,6 +5650,21 @@
       ]
     },
     {
+      "domain": "funrevi.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2005-09-08",
+      "registered_year": "2005",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "Barquisimeto",
+      "country": "VE",
+      "nameservers": [
+        "ns1.soyhosting.com",
+        "ns2.soyhosting.com"
+      ]
+    },
+    {
       "domain": "metrodecaracas.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2005-08-30",
@@ -4975,6 +5677,21 @@
       "nameservers": [
         "dns1.cantv.net",
         "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "saludzulia.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2005-08-22",
+      "registered_year": "2005",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "Maracaibo",
+      "country": "VE",
+      "nameservers": [
+        "dns1.caracashosting25.com",
+        "dns2.caracashosting25.com"
       ]
     },
     {
@@ -5071,6 +5788,36 @@
       ]
     },
     {
+      "domain": "hidrocentro.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2005-07-18",
+      "registered_year": "2005",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "Guacara",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "aragua.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2005-07-17",
+      "registered_year": "2005",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "Maracay",
+      "country": "VE",
+      "nameservers": [
+        "ns2.aragua.gob.ve",
+        "ns1.aragua.gob.ve"
+      ]
+    },
+    {
       "domain": "cenal.gob.ve",
       "registrar": "NIC-VE",
       "registered_date": "2005-07-12",
@@ -5113,6 +5860,21 @@
       "nameservers": [
         "dns1.mintur.gob.ve",
         "dns2.mintur.gob.ve"
+      ]
+    },
+    {
+      "domain": "carrizal-miranda.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2005-06-30",
+      "registered_year": "2005",
+      "expire": "2029-12-31",
+      "changed": "2020-06-18",
+      "org": "Alcaldia Del Municipio Carrizal",
+      "city": "1203",
+      "country": "VE",
+      "nameservers": [
+        "ns0.kitepilotsolutions.com",
+        "ns.kitepilotsolutions.com"
       ]
     },
     {
@@ -5340,6 +6102,21 @@
       "nameservers": [
         "s1.teleinformatica.gob.ve",
         "s2.teleinformatica.gob.ve"
+      ]
+    },
+    {
+      "domain": "pgr.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2005-06-01",
+      "registered_year": "2005",
+      "expire": "2029-12-31",
+      "changed": "",
+      "org": "",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns2.pgr.gob.ve",
+        "ns1.pgr.gob.ve"
       ]
     },
     {
