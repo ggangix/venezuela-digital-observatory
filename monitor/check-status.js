@@ -5,7 +5,7 @@ const path = require('path');
 
 // Config
 const TIMEOUT_MS = 15000; // 15 seconds (some VE servers are slow)
-const CONCURRENCY = 15; // parallel requests (reduced to avoid overwhelming slow servers)
+const CONCURRENCY = 30;
 const DATA_FILE = path.join(__dirname, '../data/whois_gobve.json');
 const OUTPUT_FILE = path.join(__dirname, 'status.json');
 
