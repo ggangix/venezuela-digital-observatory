@@ -4,7 +4,7 @@ Documenting Venezuela's government digital presence through public, structured d
 
 No exploits. No leaks. No personal data.
 
-As of January 31th, 2026, this dataset includes 433 `.gob.ve` domains.
+As of January 31th, 2026, this dataset includes 2530 `.gob.ve` and `mil.ve` domains.
 
 ---
 

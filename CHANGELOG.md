@@ -4,8 +4,11 @@ All notable changes to this dataset will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.0] - 2026-02-01
+- Added 2097 domains
+- Increase concurrency
 
-## [1.0.1] - 2024-06-10
+## [1.0.1] - 2026-01-31
 ### Added
 - Added 52 new `.gob.ve` domains
 
