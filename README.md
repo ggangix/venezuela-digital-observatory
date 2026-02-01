@@ -40,9 +40,28 @@ Structured WHOIS data for `.gob.ve` domains, including:
 
 ```
 data/
-├── whois_gobve.json    # Full dataset
+├── whois_gobve.json    # Full WHOIS dataset
 └── whois_gobve.csv     # Spreadsheet-friendly
+
+monitor/
+├── index.html          # Live status dashboard
+├── status.json         # Current availability data
+└── check-status.js     # Status checker script
 ```
+
+## Live Status Dashboard
+
+Real-time availability monitoring of all `.gob.ve` domains:
+
+**[View Dashboard](https://ggangix.github.io/venezuela-digital-observatory/)**
+
+The dashboard shows:
+- Online/offline status for each domain
+- HTTP response codes
+- SSL certificate status
+- Response times
+
+Status is updated periodically via GitHub Actions.
 
 ---
 
@@ -63,10 +82,10 @@ This is public information—anyone can query it, but nobody had compiled it unt
 
 ## Future scope
 
-This project starts with domain WHOIS data, but may expand to include:
+This project started with domain WHOIS data and now includes availability monitoring. Future expansions may include:
 - DNS changes over time
-- TLS/SSL certificate monitoring
-- Website availability tracking
+- TLS/SSL certificate history
+- Historical availability trends
 - Other observable signals of government digital presence
 
 ---

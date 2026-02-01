@@ -2,9 +2,8 @@ name: Check Domain Status
 
 on:
   schedule:
-    # Every 12 hours
     - cron: '0 */12 * * *'
-  workflow_dispatch: # Manual trigger
+  workflow_dispatch:
 
 permissions:
   contents: write

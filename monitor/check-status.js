@@ -4,10 +4,18 @@ const fs = require('fs');
 const path = require('path');
 
 // Config
-const TIMEOUT_MS = 10000; // 10 seconds
-const CONCURRENCY = 20; // parallel requests
+const TIMEOUT_MS = 15000; // 15 seconds (some VE servers are slow)
+const CONCURRENCY = 15; // parallel requests (reduced to avoid overwhelming slow servers)
 const DATA_FILE = path.join(__dirname, '../data/whois_gobve.json');
 const OUTPUT_FILE = path.join(__dirname, 'status.json');
+
+// Headers to mimic a real browser
+const HEADERS = {
+  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'Accept-Language': 'es-VE,es;q=0.9,en;q=0.8',
+  'Connection': 'close',
+};
 
 // Colors for console
 const C = {
@@ -18,78 +26,100 @@ const C = {
   dim: '\x1b[2m',
 };
 
-// Check single domain
-function checkDomain(domain) {
-  return new Promise((resolve) => {
-    const url = `https://${domain}`;
-    const startTime = Date.now();
+// HTTP codes that indicate HEAD is not supported
+const HEAD_UNSUPPORTED_CODES = [405, 501, 400];
 
-    const req = https.request(url, {
-      method: 'HEAD',
-      timeout: TIMEOUT_MS,
+// Make a single request (HEAD or GET)
+function makeRequest(protocol, domain, method, timeout) {
+  return new Promise((resolve) => {
+    const startTime = Date.now();
+    const options = {
+      method,
+      timeout,
+      headers: HEADERS,
       rejectUnauthorized: false, // Accept invalid SSL
-    }, (res) => {
+    };
+
+    const req = protocol.request(`${protocol === https ? 'https' : 'http'}://${domain}`, options, (res) => {
       const responseTime = Date.now() - startTime;
+      // For GET, abort immediately after getting headers
+      if (method === 'GET') {
+        req.destroy();
+      }
       resolve({
-        domain,
-        status: 'online',
+        success: true,
         httpCode: res.statusCode,
         responseTime,
-        ssl: true,
-        checkedAt: new Date().toISOString(),
+        ssl: protocol === https,
       });
     });
 
     req.on('error', (err) => {
-      // Try HTTP if HTTPS fails
-      const httpReq = http.request(`http://${domain}`, {
-        method: 'HEAD',
-        timeout: TIMEOUT_MS,
-      }, (res) => {
-        const responseTime = Date.now() - startTime;
-        resolve({
-          domain,
-          status: 'online',
-          httpCode: res.statusCode,
-          responseTime,
-          ssl: false,
-          checkedAt: new Date().toISOString(),
-        });
-      });
-
-      httpReq.on('error', () => {
-        resolve({
-          domain,
-          status: 'offline',
-          httpCode: null,
-          responseTime: null,
-          ssl: null,
-          error: err.code || err.message,
-          checkedAt: new Date().toISOString(),
-        });
-      });
-
-      httpReq.on('timeout', () => {
-        httpReq.destroy();
-        resolve({
-          domain,
-          status: 'offline',
-          httpCode: null,
-          responseTime: null,
-          ssl: null,
-          error: 'TIMEOUT',
-          checkedAt: new Date().toISOString(),
-        });
-      });
-
-      httpReq.end();
+      resolve({ success: false, error: err.code || err.message });
     });
 
     req.on('timeout', () => {
       req.destroy();
+      resolve({ success: false, error: 'TIMEOUT' });
     });
 
     req.end();
+  });
+}
+
+// Check single domain with HEAD -> GET fallback
+function checkDomain(domain) {
+  return new Promise(async (resolve) => {
+    // Try HTTPS HEAD first
+    let result = await makeRequest(https, domain, 'HEAD', TIMEOUT_MS);
+
+    // If HEAD returned unsupported code, retry with GET
+    if (result.success && HEAD_UNSUPPORTED_CODES.includes(result.httpCode)) {
+      result = await makeRequest(https, domain, 'GET', TIMEOUT_MS);
+    }
+
+    // If HTTPS succeeded
+    if (result.success) {
+      return resolve({
+        domain,
+        status: 'online',
+        httpCode: result.httpCode,
+        responseTime: result.responseTime,
+        ssl: true,
+        checkedAt: new Date().toISOString(),
+      });
+    }
+
+    // Try HTTP HEAD
+    result = await makeRequest(http, domain, 'HEAD', TIMEOUT_MS);
+
+    // If HEAD returned unsupported code, retry with GET
+    if (result.success && HEAD_UNSUPPORTED_CODES.includes(result.httpCode)) {
+      result = await makeRequest(http, domain, 'GET', TIMEOUT_MS);
+    }
+
+    // If HTTP succeeded
+    if (result.success) {
+      return resolve({
+        domain,
+        status: 'online',
+        httpCode: result.httpCode,
+        responseTime: result.responseTime,
+        ssl: false,
+        checkedAt: new Date().toISOString(),
+      });
+    }
+
+    // Both failed
+    resolve({
+      domain,
+      status: 'offline',
+      httpCode: null,
+      responseTime: null,
+      ssl: null,
+      error: result.error,
+      checkedAt: new Date().toISOString(),
+    });
   });
 }
 
