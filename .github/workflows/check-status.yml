@@ -23,7 +23,7 @@ jobs:
             -H "Accept: application/json" \
             --retry 3 \
             --retry-delay 5 \
-            "https://api-beta.macedoniadelnorte.com/monitor/status.json" \
+            "https://raw.macedoniadelnorte.com/monitor/status.json" \
             -o monitor/status.json)
 
           echo "HTTP Status: $HTTP_CODE"
