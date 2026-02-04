@@ -16,6 +16,22 @@ type DomainData = {
     httpCode: number | null;
     responseTime: number | null;
     error: string | null;
+    reachability?: {
+      dns?: {
+        ok?: boolean;
+        v4?: string[];
+        v6?: string[];
+        ips?: string[];
+        error?: string | null;
+        timeMs?: number | null;
+      } | null;
+      tcp?: {
+        ok?: boolean;
+        port?: number | null;
+        timeMs?: number | null;
+        error?: string | null;
+      } | null;
+    } | null;
     ssl: {
       enabled?: boolean;
       valid?: boolean;
@@ -95,6 +111,25 @@ export default function DomainDetailPage() {
   }
 
   const { current } = data;
+  const reachability = current.reachability || null;
+  const dnsOk = reachability?.dns?.ok;
+  const dnsIps = Array.isArray(reachability?.dns?.ips) ? reachability.dns.ips : [];
+  const dnsStatus = dnsOk === true
+    ? `${t('reachability.ok')} (${dnsIps.length})`
+    : dnsOk === false
+      ? t('reachability.fail')
+      : t('common.notAvailable');
+  const dnsError = reachability?.dns?.error || null;
+  const tcpOk = reachability?.tcp?.ok;
+  const tcpPort = reachability?.tcp?.port;
+  const tcpTime = reachability?.tcp?.timeMs;
+  const tcpError = reachability?.tcp?.error || null;
+  const tcpStatus = tcpOk === true
+    ? `${t('reachability.ok')} (${t('reachability.port')} ${tcpPort ?? '-'}, ${formatResponseTime(tcpTime)})`
+    : tcpOk === false
+      ? (tcpError === 'DNS_FAIL' ? t('reachability.skipped') : t('reachability.fail'))
+      : t('common.notAvailable');
+  const dnsIpsText = dnsIps.length > 0 ? dnsIps.join(', ') : t('common.notAvailable');
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -153,6 +188,44 @@ export default function DomainDetailPage() {
               </div>
             )}
           </dl>
+        </div>
+
+        {/* Reachability */}
+        <div className="card">
+          <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
+            <Server className="h-5 w-5" />
+            {t('sections.reachability')}
+          </h2>
+          {!reachability ? (
+            <p className="text-muted-foreground">{t('reachability.unavailable')}</p>
+          ) : (
+            <dl className="grid gap-3">
+              <div className="flex justify-between">
+                <dt className="text-muted-foreground">{t('reachability.dns')}</dt>
+                <dd className="font-mono">{dnsStatus}</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt className="text-muted-foreground">{t('reachability.ips')}</dt>
+                <dd className="text-sm font-mono">{dnsIpsText}</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt className="text-muted-foreground">{t('reachability.tcp')}</dt>
+                <dd className="font-mono">{tcpStatus}</dd>
+              </div>
+              {dnsError && (
+                <div className="flex justify-between">
+                  <dt className="text-muted-foreground">{t('reachability.dnsError')}</dt>
+                  <dd className="font-mono text-red-500">{dnsError}</dd>
+                </div>
+              )}
+              {tcpError && tcpError !== 'DNS_FAIL' && (
+                <div className="flex justify-between">
+                  <dt className="text-muted-foreground">{t('reachability.tcpError')}</dt>
+                  <dd className="font-mono text-red-500">{tcpError}</dd>
+                </div>
+              )}
+            </dl>
+          )}
         </div>
 
         {/* SSL Certificate */}
