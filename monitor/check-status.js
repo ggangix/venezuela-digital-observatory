@@ -938,6 +938,8 @@ async function processSubsetWithConcurrency(items, concurrency, options) {
   let cursor = 0;
   let inFlight = 0;
   let done = 0;
+  let recovered = 0;
+  let stillOffline = 0;
   const startTime = Date.now();
   let spinIndex = 0;
   const spinChars = ['|', '/', '-', '\\'];
@@ -959,10 +961,10 @@ async function processSubsetWithConcurrency(items, concurrency, options) {
 
     if (process.stdout.isTTY) {
       process.stdout.write(
-        `\r[${spinner}] Second pass Active ${inFlight} Waiting ${waiting} Total ${total} | Completed ${done} | ETA ${eta} RT ${formatDuration(elapsed)}    `
+        `\r[${spinner}] Second pass Active ${inFlight} Waiting ${waiting} Total ${total} | Started ${cursor} Completed ${done} | ETA ${eta} RT ${formatDuration(elapsed)} ONLINE ${recovered} OFFLINE ${stillOffline}    `
       );
     } else if (force || pct >= lastPct + 5 || done === total) {
-      console.log(`[${spinner}] Second pass Active ${inFlight} Waiting ${waiting} Total ${total} | Completed ${done} | ETA ${eta} RT ${formatDuration(elapsed)}`);
+      console.log(`[${spinner}] Second pass Active ${inFlight} Waiting ${waiting} Total ${total} | Started ${cursor} Completed ${done} | ETA ${eta} RT ${formatDuration(elapsed)} ONLINE ${recovered} OFFLINE ${stillOffline}`);
       lastPct = pct;
     }
   };
@@ -986,6 +988,11 @@ async function processSubsetWithConcurrency(items, concurrency, options) {
           .finally(() => {
             inFlight--;
             done++;
+            if (results[currentIndex]?.result?.status === 'online') {
+              recovered++;
+            } else {
+              stillOffline++;
+            }
             if (LOG_MODE === 'progress') {
               renderProgress();
             }
@@ -1150,6 +1157,7 @@ async function main() {
 
     if (offlineEntries.length > 0) {
       console.log('\n=== Second Pass ===\n');
+      console.log(`Config: timeout ${SECOND_PASS_TIMEOUT_MS}ms, DNS ${SECOND_PASS_DNS_TIMEOUT_MS}ms, TCP ${SECOND_PASS_TCP_TIMEOUT_MS}ms, concurrency ${SECOND_PASS_CONCURRENCY}, retries ${SECOND_PASS_RETRY_ATTEMPTS}`);
       console.log(`Rechecking ${offlineEntries.length} offline domains...`);
       const secondStart = Date.now();
       const secondResults = await processSubsetWithConcurrency(
