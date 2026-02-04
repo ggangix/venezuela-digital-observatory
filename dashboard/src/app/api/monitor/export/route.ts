@@ -47,6 +47,7 @@ export async function GET(request: NextRequest) {
         'headers.server': 1,
         finalUrl: 1,
         checkedAt: 1,
+        reachability: 1,
       })
       .toArray();
 
@@ -64,6 +65,14 @@ export async function GET(request: NextRequest) {
         sslDaysRemaining: d.ssl?.daysUntilExpiry ?? '',
         server: d.headers?.server || '',
         finalUrl: d.finalUrl || '',
+        dnsOk: d.reachability?.dns?.ok === true ? 'true' : d.reachability?.dns?.ok === false ? 'false' : '',
+        dnsIps: Array.isArray(d.reachability?.dns?.ips) ? d.reachability.dns.ips.join(';') : '',
+        dnsError: d.reachability?.dns?.error || '',
+        dnsTimeMs: d.reachability?.dns?.timeMs ?? '',
+        tcpOk: d.reachability?.tcp?.ok === true ? 'true' : d.reachability?.tcp?.ok === false ? 'false' : '',
+        tcpPort: d.reachability?.tcp?.port ?? '',
+        tcpTimeMs: d.reachability?.tcp?.timeMs ?? '',
+        tcpError: d.reachability?.tcp?.error || '',
         checkedAt: d.checkedAt?.toISOString() || '',
       }));
 

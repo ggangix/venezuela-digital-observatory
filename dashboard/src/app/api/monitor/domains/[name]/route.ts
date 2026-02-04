@@ -31,6 +31,7 @@ export async function GET(
         headers: 1,
         redirects: 1,
         finalUrl: 1,
+        reachability: 1,
       })
       .toArray();
 
