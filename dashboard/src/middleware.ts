@@ -11,5 +11,5 @@ export default createMiddleware({
 export const config = {
   // Only run middleware on paths that need i18n
   // Exclude: api, _next, static files, and files with extensions
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|og-image.png|robots.txt|sitemap.xml).*)'],
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|og-image.png|robots.txt|sitemap.xml|data).*)'],
 };
