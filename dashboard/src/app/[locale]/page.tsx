@@ -1,9 +1,27 @@
+import { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
 import { ArrowRight, RefreshCw, Github, Globe, Shield, Code, Eye, Users, Database, Scale } from 'lucide-react';
 import { StatusSummary } from '@/components/StatusSummary';
 import { getMonitorCollection } from '@/lib/mongodb';
 import { formatRelativeTime } from '@/lib/utils';
+
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'meta.pages.home' });
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: {
+      canonical: `https://venezueladigitalobservatory.com/${locale}`,
+    },
+  };
+}
 
 async function getSummary() {
   try {
@@ -25,10 +43,6 @@ async function getSummary() {
   }
 }
 
-type Props = {
-  params: Promise<{ locale: string }>;
-};
-
 export const revalidate = 60; // Revalidate every 60 seconds
 
 export default async function OverviewPage({ params }: Props) {
@@ -36,6 +50,7 @@ export default async function OverviewPage({ params }: Props) {
   setRequestLocale(locale);
 
   const t = await getTranslations('overview');
+  const tHome = await getTranslations('home');
 
   const data = await getSummary();
 
@@ -57,7 +72,7 @@ export default async function OverviewPage({ params }: Props) {
               <div className="mt-3 flex flex-wrap items-center justify-center sm:justify-start gap-2">
                 <span className="inline-flex items-center gap-1 rounded-md bg-slate-800 px-2 py-0.5 text-xs text-slate-300">
                   <Globe className="h-3 w-3" />
-                  {locale === 'es' ? 'Tiempo Real' : 'Real-time'}
+                  {t('realTime')}
                 </span>
                 <span className="inline-flex items-center gap-1 rounded-md bg-slate-800 px-2 py-0.5 text-xs text-slate-300">
                   <Code className="h-3 w-3" />
@@ -65,7 +80,7 @@ export default async function OverviewPage({ params }: Props) {
                 </span>
                 <span className="inline-flex items-center gap-1 rounded-md bg-slate-800 px-2 py-0.5 text-xs text-slate-300">
                   <Shield className="h-3 w-3" />
-                  {locale === 'es' ? 'Datos Públicos' : 'Public Data'}
+                  {t('publicData')}
                 </span>
               </div>
             </div>
@@ -117,9 +132,7 @@ export default async function OverviewPage({ params }: Props) {
         ) : (
           <div className="card text-center py-12">
             <p className="text-slate-500 dark:text-slate-400">
-              {locale === 'es'
-                ? 'No se pueden cargar los datos. Por favor, intenta más tarde.'
-                : 'Unable to load data. Please try again later.'}
+              {t('loadError')}
             </p>
           </div>
         )}
@@ -131,21 +144,17 @@ export default async function OverviewPage({ params }: Props) {
           {/* Section Header */}
           <div className="mb-8 text-center">
             <h2 className="mb-3 text-2xl font-bold sm:text-3xl">
-              {locale === 'es' ? '¿Por qué este proyecto?' : 'Why this project?'}
+              {tHome('whyTitle')}
             </h2>
             <p className="mx-auto max-w-2xl text-slate-500 dark:text-slate-400">
-              {locale === 'es'
-                ? 'Transparencia digital para una ciudadanía informada'
-                : 'Digital transparency for an informed citizenry'}
+              {tHome('whySubtitle')}
             </p>
           </div>
 
           {/* Mission Statement */}
           <div className="card mb-8 border-l-4 border-l-[#00247D] bg-gradient-to-r from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
             <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300">
-              {locale === 'es'
-                ? 'En tiempos donde el acceso a la información pública es cada vez más difícil, creemos que monitorear la infraestructura digital del gobierno es un acto de transparencia ciudadana. Los sitios web gubernamentales son la puerta de entrada a servicios públicos, trámites y datos oficiales. Cuando estos sitios fallan o están inaccesibles, los ciudadanos pierden acceso a derechos fundamentales.'
-                : 'In times where access to public information is increasingly difficult, we believe that monitoring the government\'s digital infrastructure is an act of civic transparency. Government websites are the gateway to public services, procedures, and official data. When these sites fail or become inaccessible, citizens lose access to fundamental rights.'}
+              {tHome('mission')}
             </p>
           </div>
 
@@ -157,12 +166,10 @@ export default async function OverviewPage({ params }: Props) {
               </div>
               <div>
                 <h3 className="mb-1 font-semibold">
-                  {locale === 'es' ? 'Monitoreo continuo' : 'Continuous monitoring'}
+                  {tHome('features.monitoring.title')}
                 </h3>
                 <p className="text-sm text-slate-500 dark:text-slate-400">
-                  {locale === 'es'
-                    ? 'Verificamos cada dominio periódicamente, registrando disponibilidad, tiempos de respuesta y estado de certificados SSL.'
-                    : 'We check each domain periodically, recording availability, response times, and SSL certificate status.'}
+                  {tHome('features.monitoring.description')}
                 </p>
               </div>
             </div>
@@ -173,12 +180,10 @@ export default async function OverviewPage({ params }: Props) {
               </div>
               <div>
                 <h3 className="mb-1 font-semibold">
-                  {locale === 'es' ? 'Datos abiertos' : 'Open data'}
+                  {tHome('features.openData.title')}
                 </h3>
                 <p className="text-sm text-slate-500 dark:text-slate-400">
-                  {locale === 'es'
-                    ? 'Toda la información recopilada es de dominio público (CC0). Puedes descargar, analizar y reutilizar los datos libremente.'
-                    : 'All collected information is public domain (CC0). You can download, analyze, and reuse the data freely.'}
+                  {tHome('features.openData.description')}
                 </p>
               </div>
             </div>
@@ -189,12 +194,10 @@ export default async function OverviewPage({ params }: Props) {
               </div>
               <div>
                 <h3 className="mb-1 font-semibold">
-                  {locale === 'es' ? 'Para todos' : 'For everyone'}
+                  {tHome('features.forEveryone.title')}
                 </h3>
                 <p className="text-sm text-slate-500 dark:text-slate-400">
-                  {locale === 'es'
-                    ? 'Periodistas, investigadores, organizaciones de sociedad civil y ciudadanos pueden usar estos datos para análisis e informes.'
-                    : 'Journalists, researchers, civil society organizations, and citizens can use this data for analysis and reporting.'}
+                  {tHome('features.forEveryone.description')}
                 </p>
               </div>
             </div>
@@ -205,12 +208,10 @@ export default async function OverviewPage({ params }: Props) {
               </div>
               <div>
                 <h3 className="mb-1 font-semibold">
-                  {locale === 'es' ? 'Independiente' : 'Independent'}
+                  {tHome('features.independent.title')}
                 </h3>
                 <p className="text-sm text-slate-500 dark:text-slate-400">
-                  {locale === 'es'
-                    ? 'Este proyecto no está afiliado a ningún partido político ni entidad gubernamental. Es una iniciativa ciudadana independiente.'
-                    : 'This project is not affiliated with any political party or government entity. It is an independent civic initiative.'}
+                  {tHome('features.independent.description')}
                 </p>
               </div>
             </div>
@@ -219,32 +220,32 @@ export default async function OverviewPage({ params }: Props) {
           {/* Technical Details */}
           <div className="card bg-slate-50 dark:bg-slate-900">
             <h3 className="mb-3 font-semibold">
-              {locale === 'es' ? '¿Qué monitoreamos?' : 'What do we monitor?'}
+              {tHome('whatWeMonitor')}
             </h3>
             <ul className="grid gap-2 text-sm text-slate-600 dark:text-slate-400 sm:grid-cols-2">
               <li className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
-                {locale === 'es' ? 'Disponibilidad (online/offline)' : 'Availability (online/offline)'}
+                {tHome('monitorItems.availability')}
               </li>
               <li className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
-                {locale === 'es' ? 'Códigos de respuesta HTTP' : 'HTTP response codes'}
+                {tHome('monitorItems.httpCodes')}
               </li>
               <li className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
-                {locale === 'es' ? 'Tiempos de respuesta' : 'Response times'}
+                {tHome('monitorItems.responseTimes')}
               </li>
               <li className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
-                {locale === 'es' ? 'Certificados SSL y su validez' : 'SSL certificates and validity'}
+                {tHome('monitorItems.sslCerts')}
               </li>
               <li className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
-                {locale === 'es' ? 'Cadenas de redirección' : 'Redirect chains'}
+                {tHome('monitorItems.redirects')}
               </li>
               <li className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
-                {locale === 'es' ? 'Cabeceras de servidor' : 'Server headers'}
+                {tHome('monitorItems.serverHeaders')}
               </li>
             </ul>
           </div>

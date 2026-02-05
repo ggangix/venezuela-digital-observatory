@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
-import { ArrowLeft, ExternalLink, Shield, Server, Clock, AlertCircle } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Shield, Server, Clock, AlertCircle, Globe } from 'lucide-react';
 import { StatusBadge } from '@/components/StatusBadge';
 import { SSLBadge } from '@/components/SSLBadge';
 import { formatResponseTime, formatDateTime, formatDate, cn } from '@/lib/utils';
@@ -42,6 +42,13 @@ type DomainData = {
     httpCode: number | null;
     responseTime: number | null;
   }[];
+  whois: {
+    registrar: string | null;
+    registeredDate: string | null;
+    expireDate: string | null;
+    org: string | null;
+    nameservers: string[] | null;
+  } | null;
 };
 
 export default function DomainDetailPage() {
@@ -116,15 +123,61 @@ export default function DomainDetailPage() {
             className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary"
           >
             <ExternalLink className="h-4 w-4" />
-            {locale === 'es' ? 'Visitar' : 'Visit'}
+            {t('visit')}
           </a>
         </div>
         <p className="mt-2 text-sm text-muted-foreground">
-          {locale === 'es' ? 'Última verificación' : 'Last checked'}: {formatDateTime(current.checkedAt, locale)}
+          {t('lastChecked')}: {formatDateTime(current.checkedAt, locale)}
         </p>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
+        {/* WHOIS Information */}
+        {data.whois && (
+          <div className="card">
+            <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
+              <Globe className="h-5 w-5" />
+              {t('sections.whois')}
+            </h2>
+            <dl className="grid gap-3">
+              {data.whois.org && (
+                <div>
+                  <dt className="text-muted-foreground">{t('whois.organization')}</dt>
+                  <dd className="text-sm font-medium">{data.whois.org}</dd>
+                </div>
+              )}
+              {data.whois.registrar && (
+                <div className="flex justify-between">
+                  <dt className="text-muted-foreground">{t('whois.registrar')}</dt>
+                  <dd className="text-sm">{data.whois.registrar}</dd>
+                </div>
+              )}
+              {data.whois.registeredDate && (
+                <div className="flex justify-between">
+                  <dt className="text-muted-foreground">{t('whois.registered')}</dt>
+                  <dd className="text-sm">{formatDate(data.whois.registeredDate, locale)}</dd>
+                </div>
+              )}
+              {data.whois.expireDate && (
+                <div className="flex justify-between">
+                  <dt className="text-muted-foreground">{t('whois.expires')}</dt>
+                  <dd className="text-sm">{formatDate(data.whois.expireDate, locale)}</dd>
+                </div>
+              )}
+              {data.whois.nameservers && data.whois.nameservers.length > 0 && (
+                <div>
+                  <dt className="mb-1 text-muted-foreground">{t('whois.nameservers')}</dt>
+                  <dd className="space-y-1">
+                    {data.whois.nameservers.map((ns, i) => (
+                      <div key={i} className="font-mono text-sm text-muted-foreground">{ns}</div>
+                    ))}
+                  </dd>
+                </div>
+              )}
+            </dl>
+          </div>
+        )}
+
         {/* Current Status */}
         <div className="card">
           <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
@@ -137,7 +190,7 @@ export default function DomainDetailPage() {
               <dd className="font-mono">{current.httpCode || '-'}</dd>
             </div>
             <div className="flex justify-between">
-              <dt className="text-muted-foreground">{t('ssl.daysRemaining')}</dt>
+              <dt className="text-muted-foreground">{t('responseTime')}</dt>
               <dd className="font-mono">{formatResponseTime(current.responseTime)}</dd>
             </div>
             {current.error && (
@@ -227,6 +280,12 @@ export default function DomainDetailPage() {
                   <dd className="text-sm">{current.headers.contentType}</dd>
                 </div>
               )}
+              {current.headers.cacheControl && (
+                <div className="flex justify-between">
+                  <dt className="text-muted-foreground">{t('headers.cacheControl')}</dt>
+                  <dd className="text-sm">{current.headers.cacheControl}</dd>
+                </div>
+              )}
             </dl>
           ) : (
             <p className="text-muted-foreground">No headers captured</p>
@@ -247,6 +306,7 @@ export default function DomainDetailPage() {
             </ol>
           </div>
         )}
+
       </div>
 
       {/* History */}
@@ -256,10 +316,10 @@ export default function DomainDetailPage() {
           <table className="table">
             <thead>
               <tr>
-                <th>{locale === 'es' ? 'Fecha' : 'Date'}</th>
-                <th>{locale === 'es' ? 'Estado' : 'Status'}</th>
+                <th>{t('historyTable.date')}</th>
+                <th>{t('historyTable.status')}</th>
                 <th>HTTP</th>
-                <th>{locale === 'es' ? 'Tiempo' : 'Response Time'}</th>
+                <th>{t('historyTable.time')}</th>
               </tr>
             </thead>
             <tbody>

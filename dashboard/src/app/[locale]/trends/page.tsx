@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { TrendingUp, Clock, Shield, Server, PieChart, Activity } from 'lucide-react';
+import { TrendingUp, Clock, Shield, Server, PieChart, Activity, Globe, CalendarPlus } from 'lucide-react';
 import {
   AreaChart,
   Area,
@@ -35,10 +35,12 @@ type TrendData = {
   insights: {
     expiringSSL: { domain: string; daysUntilExpiry: number }[];
     slowestDomains: { domain: string; responseTime: number }[];
+    recentlyRegistered: { domain: string; registeredDate: string; org: string }[];
   };
   distributions: {
     httpCodes: { code: string; count: number }[];
     servers: { server: string; count: number }[];
+    nameservers: { provider: string; count: number; example: string }[];
   };
   period: {
     start: string;
@@ -48,32 +50,16 @@ type TrendData = {
 };
 
 const HTTP_CODE_COLORS: Record<string, string> = {
-  '2xx': '#22c55e', // green
-  '3xx': '#3b82f6', // blue
-  '4xx': '#f59e0b', // amber
-  '5xx': '#ef4444', // red
-  'error': '#6b7280', // gray
-};
-
-const HTTP_CODE_LABELS: Record<string, Record<string, string>> = {
-  en: {
-    '2xx': 'Success (2xx)',
-    '3xx': 'Redirect (3xx)',
-    '4xx': 'Client Error (4xx)',
-    '5xx': 'Server Error (5xx)',
-    'error': 'Connection Error',
-  },
-  es: {
-    '2xx': 'Éxito (2xx)',
-    '3xx': 'Redirección (3xx)',
-    '4xx': 'Error Cliente (4xx)',
-    '5xx': 'Error Servidor (5xx)',
-    'error': 'Error de Conexión',
-  },
+  '2xx': '#22c55e',
+  '3xx': '#3b82f6',
+  '4xx': '#f59e0b',
+  '5xx': '#ef4444',
+  'error': '#6b7280',
 };
 
 export default function TrendsPage() {
   const t = useTranslations('trends');
+  const tCommon = useTranslations('common');
   const locale = useLocale();
 
   const [data, setData] = useState<TrendData | null>(null);
@@ -106,7 +92,7 @@ export default function TrendsPage() {
 
   // Format HTTP code data for pie chart
   const httpCodeData = data?.distributions?.httpCodes?.map((item) => ({
-    name: HTTP_CODE_LABELS[locale]?.[item.code] || item.code,
+    name: t(`httpCodes.${item.code}`),
     value: item.count,
     code: item.code,
   })) || [];
@@ -117,6 +103,28 @@ export default function TrendsPage() {
     fullName: item.server,
     count: item.count,
   })) || [];
+
+  // Format nameserver data for bar chart
+  const nameserverData = data?.distributions?.nameservers?.map((item) => ({
+    name: item.provider.length > 15 ? item.provider.substring(0, 15) + '...' : item.provider,
+    fullName: item.example,
+    count: item.count,
+  })) || [];
+
+  // Calculate days since domain was registered
+  const formatTimeAgo = (registeredDate: string) => {
+    const registered = new Date(registeredDate);
+    const now = new Date();
+    const diffTime = now.getTime() - registered.getTime();
+    const daysAgo = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    if (daysAgo < 30) {
+      return `${daysAgo} ${t('time.days')}`;
+    } else if (daysAgo < 365) {
+      return `${Math.floor(daysAgo / 30)} ${t('time.months')}`;
+    }
+    return `${Math.floor(daysAgo / 365)} ${t('time.years')}`;
+  };
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -140,7 +148,7 @@ export default function TrendsPage() {
 
       {loading ? (
         <div className="py-12 text-center">
-          <p className="text-muted-foreground">{locale === 'es' ? 'Cargando...' : 'Loading...'}</p>
+          <p className="text-muted-foreground">{tCommon('loading')}</p>
         </div>
       ) : data ? (
         <div className="grid gap-6">
@@ -181,12 +189,12 @@ export default function TrendsPage() {
                       }}
                       formatter={(value: number, name: string) => [
                         value,
-                        name === 'online' ? (locale === 'es' ? 'En línea' : 'Online') : (locale === 'es' ? 'Fuera de línea' : 'Offline'),
+                        name === 'online' ? t('legend.online') : t('legend.offline'),
                       ]}
                     />
                     <Legend
                       formatter={(value) =>
-                        value === 'online' ? (locale === 'es' ? 'En línea' : 'Online') : (locale === 'es' ? 'Fuera de línea' : 'Offline')
+                        value === 'online' ? t('legend.online') : t('legend.offline')
                       }
                     />
                     <Area
@@ -207,9 +215,7 @@ export default function TrendsPage() {
                 </ResponsiveContainer>
               </div>
             ) : (
-              <p className="text-muted-foreground py-8 text-center">
-                {locale === 'es' ? 'No hay datos disponibles' : 'No data available'}
-              </p>
+              <p className="text-muted-foreground py-8 text-center">{t('noData')}</p>
             )}
           </div>
 
@@ -243,7 +249,7 @@ export default function TrendsPage() {
                         borderRadius: '8px',
                         border: '1px solid #e2e8f0',
                       }}
-                      formatter={(value: number) => [`${value}s`, locale === 'es' ? 'Tiempo promedio' : 'Avg response']}
+                      formatter={(value: number) => [`${value}s`, t('legend.avgResponse')]}
                     />
                     <Line
                       type="monotone"
@@ -257,9 +263,7 @@ export default function TrendsPage() {
                 </ResponsiveContainer>
               </div>
             ) : (
-              <p className="text-muted-foreground py-8 text-center">
-                {locale === 'es' ? 'No hay datos disponibles' : 'No data available'}
-              </p>
+              <p className="text-muted-foreground py-8 text-center">{t('noData')}</p>
             )}
           </div>
 
@@ -269,7 +273,7 @@ export default function TrendsPage() {
             <div className="card">
               <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
                 <PieChart className="h-5 w-5 text-purple-600" />
-                {locale === 'es' ? 'Distribución de Códigos HTTP' : 'HTTP Code Distribution'}
+                {t('distributions.httpCodes')}
               </h2>
               {httpCodeData.length > 0 ? (
                 <div className="h-[280px]">
@@ -303,9 +307,7 @@ export default function TrendsPage() {
                   </ResponsiveContainer>
                 </div>
               ) : (
-                <p className="text-muted-foreground py-8 text-center">
-                  {locale === 'es' ? 'No hay datos disponibles' : 'No data available'}
-                </p>
+                <p className="text-muted-foreground py-8 text-center">{t('noData')}</p>
               )}
             </div>
 
@@ -313,7 +315,7 @@ export default function TrendsPage() {
             <div className="card">
               <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
                 <Server className="h-5 w-5 text-orange-600" />
-                {locale === 'es' ? 'Servidores Más Usados' : 'Top Servers'}
+                {t('distributions.servers')}
               </h2>
               {serverData.length > 0 ? (
                 <div className="h-[280px]">
@@ -330,7 +332,7 @@ export default function TrendsPage() {
                         width={100}
                       />
                       <Tooltip
-                        formatter={(value: number) => [value, locale === 'es' ? 'Dominios' : 'Domains']}
+                        formatter={(value: number) => [value, t('legend.domains')]}
                         labelFormatter={(label, payload) => payload?.[0]?.payload?.fullName || label}
                         contentStyle={{
                           backgroundColor: 'rgba(255, 255, 255, 0.95)',
@@ -343,11 +345,48 @@ export default function TrendsPage() {
                   </ResponsiveContainer>
                 </div>
               ) : (
-                <p className="text-muted-foreground py-8 text-center">
-                  {locale === 'es' ? 'No hay datos disponibles' : 'No data available'}
-                </p>
+                <p className="text-muted-foreground py-8 text-center">{t('noData')}</p>
               )}
             </div>
+          </div>
+
+          {/* Nameserver Distribution - Bar Chart */}
+          <div className="card">
+            <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
+              <Globe className="h-5 w-5 text-cyan-600" />
+              {t('distributions.nameservers')}
+            </h2>
+            <p className="mb-4 text-sm text-muted-foreground">{t('distributions.nameserversDesc')}</p>
+            {nameserverData.length > 0 ? (
+              <div className="h-[350px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={nameserverData} layout="vertical" margin={{ top: 0, right: 10, left: 0, bottom: 0 }}>
+                    <CartesianGrid strokeDasharray="3 3" className="stroke-slate-200 dark:stroke-slate-700" />
+                    <XAxis type="number" tick={{ fontSize: 11 }} tickLine={false} axisLine={false} />
+                    <YAxis
+                      type="category"
+                      dataKey="name"
+                      tick={{ fontSize: 10 }}
+                      tickLine={false}
+                      axisLine={false}
+                      width={110}
+                    />
+                    <Tooltip
+                      formatter={(value: number) => [value, t('legend.domains')]}
+                      labelFormatter={(label, payload) => payload?.[0]?.payload?.fullName || label}
+                      contentStyle={{
+                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                        borderRadius: '8px',
+                        border: '1px solid #e2e8f0',
+                      }}
+                    />
+                    <Bar dataKey="count" fill="#06b6d4" radius={[0, 4, 4, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            ) : (
+              <p className="text-muted-foreground py-8 text-center">{t('noData')}</p>
+            )}
           </div>
 
           {/* Insights Row */}
@@ -380,9 +419,7 @@ export default function TrendsPage() {
                   ))}
                 </ol>
               ) : (
-                <p className="text-muted-foreground py-4 text-center">
-                  {locale === 'es' ? 'No hay datos' : 'No data'}
-                </p>
+                <p className="text-muted-foreground py-4 text-center">{t('noDataShort')}</p>
               )}
             </div>
 
@@ -409,26 +446,68 @@ export default function TrendsPage() {
                             : 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400'
                         }`}
                       >
-                        {d.daysUntilExpiry} {locale === 'es' ? 'días' : 'days'}
+                        {d.daysUntilExpiry} {t('table.days')}
                       </span>
                     </li>
                   ))}
                 </ol>
               ) : (
-                <p className="text-muted-foreground py-4 text-center">
-                  {locale === 'es' ? 'No hay certificados por expirar' : 'No certificates expiring soon'}
-                </p>
+                <p className="text-muted-foreground py-4 text-center">{t('noCertificates')}</p>
               )}
             </div>
           </div>
         </div>
       ) : (
         <div className="card py-12 text-center">
-          <p className="text-muted-foreground">
-            {locale === 'es' ? 'Error al cargar los datos' : 'Failed to load trends data'}
-          </p>
+          <p className="text-muted-foreground">{t('errorLoading')}</p>
         </div>
       )}
+
+                {/* Recently Registered Domains (WHOIS) */}
+          <div className="card">
+            <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
+              <CalendarPlus className="h-5 w-5 text-emerald-600" />
+              {t('insights.recentlyRegistered')}
+            </h2>
+            <p className="mb-4 text-sm text-muted-foreground">{t('insights.recentlyRegisteredDesc')}</p>
+            {data && data.insights.recentlyRegistered && data.insights.recentlyRegistered.length > 0 ? (
+              <div className="overflow-x-auto">
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th>{t('table.domain')}</th>
+                      <th>{t('table.organization')}</th>
+                      <th>{t('table.registered')}</th>
+                      <th>{t('table.ago')}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.insights.recentlyRegistered.map((d) => (
+                      <tr key={d.domain}>
+                        <td>
+                          <a
+                            href={`/${locale}/domain/${encodeURIComponent(d.domain)}`}
+                            className="font-mono text-sm hover:text-primary hover:underline"
+                          >
+                            {d.domain}
+                          </a>
+                        </td>
+                        <td className="text-sm text-muted-foreground">{d.org || '-'}</td>
+                        <td className="text-sm">{formatDate(d.registeredDate, locale)}</td>
+                        <td>
+                          <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">
+                            {formatTimeAgo(d.registeredDate)}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <p className="text-muted-foreground py-4 text-center">{t('noRecentDomains')}</p>
+            )}
+          </div>
     </div>
   );
 }

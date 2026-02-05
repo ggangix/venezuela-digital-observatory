@@ -45,6 +45,7 @@ export async function getMonitorCollection() {
     checks: db.collection('ve_monitor_checks'),
     domains: db.collection('ve_monitor_domains'),
     requests: db.collection('ve_monitor_requests'),
+    whois: db.collection('ve_monitor_whois'),
   };
 }
 

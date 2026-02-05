@@ -2,7 +2,25 @@
   "meta": {
     "title": "Observatorio Digital de Venezuela",
     "description": "Monitoreo en tiempo real de sitios web del gobierno venezolano (.gob.ve y .mil.ve). Rastrea disponibilidad, certificados SSL y estado de servidores.",
-    "keywords": "Venezuela, gobierno, monitoreo, transparencia, datos abiertos, observatorio digital"
+    "keywords": "Venezuela, gobierno, monitoreo, transparencia, datos abiertos, observatorio digital",
+    "pages": {
+      "home": {
+        "title": "Observatorio Digital de Venezuela - Monitoreo de Sitios Gubernamentales",
+        "description": "Monitoreo en tiempo real de más de 2,500 sitios web del gobierno venezolano. Rastrea disponibilidad, certificados SSL, tiempos de respuesta y estado de servidores para dominios .gob.ve y .mil.ve."
+      },
+      "domains": {
+        "title": "Todos los Dominios - Observatorio Digital de Venezuela",
+        "description": "Explora y busca todos los dominios gubernamentales venezolanos monitoreados. Filtra por estado, validez de certificado SSL y códigos de respuesta HTTP."
+      },
+      "trends": {
+        "title": "Tendencias y Análisis - Observatorio Digital de Venezuela",
+        "description": "Datos históricos de disponibilidad, tendencias de tiempo de respuesta y seguimiento de expiración de certificados SSL para sitios web del gobierno venezolano."
+      },
+      "domain": {
+        "title": "{domain} - Observatorio Digital de Venezuela",
+        "description": "Detalles de monitoreo para {domain}: estado de disponibilidad, información de certificado SSL, tiempos de respuesta, cabeceras del servidor e historial de verificaciones."
+      }
+    }
   },
   "nav": {
     "overview": "Inicio",
@@ -14,7 +32,42 @@
     "title": "Observatorio Digital de Venezuela",
     "subtitle": "Monitoreo en tiempo real de sitios web del gobierno venezolano",
     "lastUpdate": "Última actualización",
-    "viewAll": "Ver todos los dominios"
+    "viewAll": "Ver todos los dominios",
+    "realTime": "Tiempo Real",
+    "publicData": "Datos Públicos",
+    "loadError": "No se pueden cargar los datos. Por favor, intenta más tarde."
+  },
+  "home": {
+    "whyTitle": "¿Por qué este proyecto?",
+    "whySubtitle": "Transparencia digital para una ciudadanía informada",
+    "mission": "En tiempos donde el acceso a la información pública es cada vez más difícil, creemos que monitorear la infraestructura digital del gobierno es un acto de transparencia ciudadana. Los sitios web gubernamentales son la puerta de entrada a servicios públicos, trámites y datos oficiales. Cuando estos sitios fallan o están inaccesibles, los ciudadanos pierden acceso a derechos fundamentales.",
+    "features": {
+      "monitoring": {
+        "title": "Monitoreo continuo",
+        "description": "Verificamos cada dominio periódicamente, registrando disponibilidad, tiempos de respuesta y estado de certificados SSL."
+      },
+      "openData": {
+        "title": "Datos abiertos",
+        "description": "Toda la información recopilada es de dominio público (CC0). Puedes descargar, analizar y reutilizar los datos libremente."
+      },
+      "forEveryone": {
+        "title": "Para todos",
+        "description": "Periodistas, investigadores, organizaciones de sociedad civil y ciudadanos pueden usar estos datos para análisis e informes."
+      },
+      "independent": {
+        "title": "Independiente",
+        "description": "Este proyecto no está afiliado a ningún partido político ni entidad gubernamental. Es una iniciativa ciudadana independiente."
+      }
+    },
+    "whatWeMonitor": "¿Qué monitoreamos?",
+    "monitorItems": {
+      "availability": "Disponibilidad (online/offline)",
+      "httpCodes": "Códigos de respuesta HTTP",
+      "responseTimes": "Tiempos de respuesta",
+      "sslCerts": "Certificados SSL y su validez",
+      "redirects": "Cadenas de redirección",
+      "serverHeaders": "Cabeceras de servidor"
+    }
   },
   "stats": {
     "totalDomains": "Total Dominios",
@@ -54,7 +107,8 @@
       "lastCheck": "Último Chequeo"
     },
     "noResults": "No se encontraron dominios con los criterios seleccionados",
-    "loading": "Cargando dominios..."
+    "loading": "Cargando dominios...",
+    "resultsCount": "dominios"
   },
   "domain": {
     "title": "Detalles del Dominio",
@@ -92,7 +146,15 @@
       "organization": "Organización",
       "nameservers": "Servidores DNS"
     },
-    "notFound": "Dominio no encontrado"
+    "notFound": "Dominio no encontrado",
+    "visit": "Visitar",
+    "lastChecked": "Última verificación",
+    "responseTime": "Tiempo de Respuesta",
+    "historyTable": {
+      "date": "Fecha",
+      "status": "Estado",
+      "time": "Tiempo"
+    }
   },
   "trends": {
     "title": "Tendencias y Análisis",
@@ -102,16 +164,57 @@
       "responseTime": "Tiempo de Respuesta Promedio",
       "sslExpiring": "Certificados SSL por Expirar"
     },
+    "distributions": {
+      "httpCodes": "Distribución de Códigos HTTP",
+      "servers": "Servidores Más Usados",
+      "nameservers": "Distribución de Nameservers (DNS)",
+      "nameserversDesc": "Proveedores DNS más utilizados por los dominios gubernamentales"
+    },
     "insights": {
       "title": "Datos Clave",
       "statusChanges": "Cambios de Estado",
       "slowestDomains": "Dominios Más Lentos",
-      "expiringSSL": "SSL por Expirar"
+      "expiringSSL": "SSL por Expirar",
+      "recentlyRegistered": "Últimos Dominios Registrados",
+      "recentlyRegisteredDesc": "Nuevos dominios gubernamentales registrados en los últimos 2 años"
     },
     "period": {
       "7days": "Últimos 7 días",
       "30days": "Últimos 30 días",
       "90days": "Últimos 90 días"
+    },
+    "httpCodes": {
+      "2xx": "Éxito (2xx)",
+      "3xx": "Redirección (3xx)",
+      "4xx": "Error Cliente (4xx)",
+      "5xx": "Error Servidor (5xx)",
+      "error": "Error de Conexión"
+    },
+    "table": {
+      "domain": "Dominio",
+      "organization": "Organización",
+      "registered": "Registrado",
+      "ago": "Hace",
+      "days": "días",
+      "date": "Fecha",
+      "status": "Estado",
+      "responseTime": "Tiempo"
+    },
+    "noData": "No hay datos disponibles",
+    "noDataShort": "No hay datos",
+    "noCertificates": "No hay certificados por expirar",
+    "noRecentDomains": "No hay dominios registrados recientemente",
+    "errorLoading": "Error al cargar los datos",
+    "legend": {
+      "online": "En línea",
+      "offline": "Fuera de línea",
+      "avgResponse": "Tiempo promedio",
+      "domains": "Dominios"
+    },
+    "time": {
+      "days": "d",
+      "months": "meses",
+      "years": "años"
     }
   },
   "export": {
@@ -166,5 +269,15 @@
     "en": "Inglés",
     "es": "Español",
     "switch": "Cambiar idioma"
+  },
+  "jsonLd": {
+    "siteName": "Observatorio Digital de Venezuela",
+    "siteDescription": "Monitoreo en tiempo real de sitios web del gobierno venezolano",
+    "datasetName": "Dominios del Gobierno de Venezuela",
+    "datasetDescription": "Datos de disponibilidad y estado de más de 2,500 dominios .gob.ve y .mil.ve",
+    "langCode": "es-VE"
+  },
+  "time": {
+    "justNow": "ahora"
   }
 }

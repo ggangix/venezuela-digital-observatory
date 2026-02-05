@@ -2,7 +2,25 @@
   "meta": {
     "title": "Venezuela Digital Observatory",
     "description": "Real-time monitoring of Venezuelan government websites (.gob.ve and .mil.ve). Track availability, SSL certificates, and server status.",
-    "keywords": "Venezuela, government, monitoring, transparency, open data, digital observatory"
+    "keywords": "Venezuela, government, monitoring, transparency, open data, digital observatory",
+    "pages": {
+      "home": {
+        "title": "Venezuela Digital Observatory - Government Website Monitoring",
+        "description": "Real-time monitoring of 2,500+ Venezuelan government websites. Track availability, SSL certificates, response times, and server status for .gob.ve and .mil.ve domains."
+      },
+      "domains": {
+        "title": "All Domains - Venezuela Digital Observatory",
+        "description": "Browse and search all monitored Venezuelan government domains. Filter by status, SSL certificate validity, and HTTP response codes."
+      },
+      "trends": {
+        "title": "Trends & Analytics - Venezuela Digital Observatory",
+        "description": "Historical availability data, response time trends, and SSL certificate expiration tracking for Venezuelan government websites."
+      },
+      "domain": {
+        "title": "{domain} - Venezuela Digital Observatory",
+        "description": "Monitoring details for {domain}: availability status, SSL certificate info, response times, server headers, and check history."
+      }
+    }
   },
   "nav": {
     "overview": "Overview",
@@ -14,7 +32,42 @@
     "title": "Venezuela Digital Observatory",
     "subtitle": "Real-time monitoring of Venezuelan government websites",
     "lastUpdate": "Last update",
-    "viewAll": "View all domains"
+    "viewAll": "View all domains",
+    "realTime": "Real-time",
+    "publicData": "Public Data",
+    "loadError": "Unable to load data. Please try again later."
+  },
+  "home": {
+    "whyTitle": "Why this project?",
+    "whySubtitle": "Digital transparency for an informed citizenry",
+    "mission": "In times where access to public information is increasingly difficult, we believe that monitoring the government's digital infrastructure is an act of civic transparency. Government websites are the gateway to public services, procedures, and official data. When these sites fail or become inaccessible, citizens lose access to fundamental rights.",
+    "features": {
+      "monitoring": {
+        "title": "Continuous monitoring",
+        "description": "We check each domain periodically, recording availability, response times, and SSL certificate status."
+      },
+      "openData": {
+        "title": "Open data",
+        "description": "All collected information is public domain (CC0). You can download, analyze, and reuse the data freely."
+      },
+      "forEveryone": {
+        "title": "For everyone",
+        "description": "Journalists, researchers, civil society organizations, and citizens can use this data for analysis and reporting."
+      },
+      "independent": {
+        "title": "Independent",
+        "description": "This project is not affiliated with any political party or government entity. It is an independent civic initiative."
+      }
+    },
+    "whatWeMonitor": "What do we monitor?",
+    "monitorItems": {
+      "availability": "Availability (online/offline)",
+      "httpCodes": "HTTP response codes",
+      "responseTimes": "Response times",
+      "sslCerts": "SSL certificates and validity",
+      "redirects": "Redirect chains",
+      "serverHeaders": "Server headers"
+    }
   },
   "stats": {
     "totalDomains": "Total Domains",
@@ -54,7 +107,8 @@
       "lastCheck": "Last Check"
     },
     "noResults": "No domains found matching your criteria",
-    "loading": "Loading domains..."
+    "loading": "Loading domains...",
+    "resultsCount": "domains"
   },
   "domain": {
     "title": "Domain Details",
@@ -92,7 +146,15 @@
       "organization": "Organization",
       "nameservers": "Nameservers"
     },
-    "notFound": "Domain not found"
+    "notFound": "Domain not found",
+    "visit": "Visit",
+    "lastChecked": "Last checked",
+    "responseTime": "Response Time",
+    "historyTable": {
+      "date": "Date",
+      "status": "Status",
+      "time": "Response Time"
+    }
   },
   "trends": {
     "title": "Trends & Analytics",
@@ -102,16 +164,57 @@
       "responseTime": "Average Response Time",
       "sslExpiring": "SSL Certificates Expiring"
     },
+    "distributions": {
+      "httpCodes": "HTTP Code Distribution",
+      "servers": "Top Servers",
+      "nameservers": "Nameserver Distribution (DNS)",
+      "nameserversDesc": "Most used DNS providers by government domains"
+    },
     "insights": {
       "title": "Key Insights",
       "statusChanges": "Status Changes",
       "slowestDomains": "Slowest Domains",
-      "expiringSSL": "SSL Expiring Soon"
+      "expiringSSL": "SSL Expiring Soon",
+      "recentlyRegistered": "Recently Registered Domains",
+      "recentlyRegisteredDesc": "New government domains registered in the last 2 years"
     },
     "period": {
       "7days": "Last 7 days",
       "30days": "Last 30 days",
       "90days": "Last 90 days"
+    },
+    "httpCodes": {
+      "2xx": "Success (2xx)",
+      "3xx": "Redirect (3xx)",
+      "4xx": "Client Error (4xx)",
+      "5xx": "Server Error (5xx)",
+      "error": "Connection Error"
+    },
+    "table": {
+      "domain": "Domain",
+      "organization": "Organization",
+      "registered": "Registered",
+      "ago": "Ago",
+      "days": "days",
+      "date": "Date",
+      "status": "Status",
+      "responseTime": "Response Time"
+    },
+    "noData": "No data available",
+    "noDataShort": "No data",
+    "noCertificates": "No certificates expiring soon",
+    "noRecentDomains": "No recently registered domains",
+    "errorLoading": "Failed to load trends data",
+    "legend": {
+      "online": "Online",
+      "offline": "Offline",
+      "avgResponse": "Avg response",
+      "domains": "Domains"
+    },
+    "time": {
+      "days": "d",
+      "months": "mo",
+      "years": "yr"
     }
   },
   "export": {
@@ -166,5 +269,15 @@
     "en": "English",
     "es": "Spanish",
     "switch": "Switch language"
+  },
+  "jsonLd": {
+    "siteName": "Venezuela Digital Observatory",
+    "siteDescription": "Real-time monitoring of Venezuelan government websites",
+    "datasetName": "Venezuelan Government Domains",
+    "datasetDescription": "Availability and status data for 2,500+ .gob.ve and .mil.ve domains",
+    "langCode": "en"
+  },
+  "time": {
+    "justNow": "just now"
   }
 }

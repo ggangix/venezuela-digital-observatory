@@ -7,6 +7,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Analytics } from '@/components/Analytics';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { JsonLd } from '@/components/JsonLd';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -90,6 +91,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             </div>
           </NextIntlClientProvider>
           <Analytics />
+          <JsonLd locale={locale} />
         </ThemeProvider>
       </body>
     </html>

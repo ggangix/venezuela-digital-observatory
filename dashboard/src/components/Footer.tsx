@@ -73,7 +73,7 @@ export function Footer() {
         {/* Buy Me a Coffee */}
         <div className="mb-6 flex justify-center">
           <a
-            href="https://buymeacoffee.com/giuseppegangi"
+            href="https://buymeacoffee.com/giuseppe.gangi"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-[#FFDD00] px-4 py-2 text-sm font-medium text-black transition-colors hover:bg-[#FFDD00]/90"

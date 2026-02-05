@@ -12,7 +12,7 @@ export async function GET(
     const domainName = decodeURIComponent(name);
     const historyLimit = parseInt(request.nextUrl.searchParams.get('history') || '10');
 
-    const { domains } = await getMonitorCollection();
+    const { domains, whois } = await getMonitorCollection();
 
     // Get latest status and history for this domain
     const history = await domains
@@ -41,6 +41,21 @@ export async function GET(
       );
     }
 
+    // Get WHOIS data for this domain
+    const whoisData = await whois.findOne(
+      { domain: domainName },
+      {
+        projection: {
+          _id: 0,
+          registrar: 1,
+          registeredDate: 1,
+          expireDate: 1,
+          org: 1,
+          nameservers: 1,
+        },
+      }
+    );
+
     // Latest status is the first item
     const latest = history[0];
 
@@ -48,6 +63,7 @@ export async function GET(
       domain: domainName,
       current: latest,
       history: history,
+      whois: whoisData || null,
     });
   } catch (error) {
     console.error('Error fetching domain details:', error);

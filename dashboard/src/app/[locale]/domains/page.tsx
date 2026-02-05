@@ -141,7 +141,7 @@ export default function DomainsPage() {
       {/* Results count */}
       {data && (
         <p className="mb-4 text-sm text-muted-foreground">
-          {data.total.toLocaleString()} {locale === 'es' ? 'dominios' : 'domains'}
+          {data.total.toLocaleString()} {t('resultsCount')}
         </p>
       )}
 

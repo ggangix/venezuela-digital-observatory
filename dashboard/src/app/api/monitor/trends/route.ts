@@ -145,15 +145,71 @@ export async function GET(request: NextRequest) {
       validSSL: check.summary?.validSSL || 0,
     }));
 
+    // Get WHOIS data: expiring domains and nameserver distribution
+    const { whois } = await getMonitorCollection();
+
+    // Recently registered domains (last 2 years)
+    const twoYearsAgo = new Date();
+    twoYearsAgo.setFullYear(twoYearsAgo.getFullYear() - 2);
+
+    const recentlyRegistered = await whois
+      .find({
+        registeredDate: { $gte: twoYearsAgo },
+      })
+      .sort({ registeredDate: -1 })
+      .limit(20)
+      .project({
+        _id: 0,
+        domain: 1,
+        registeredDate: 1,
+        org: 1,
+      })
+      .toArray();
+
+    // Nameserver distribution (aggregate all nameservers)
+    const nameserverAggregation = await whois
+      .aggregate([
+        { $unwind: '$nameservers' },
+        {
+          $group: {
+            _id: {
+              $toLower: {
+                $arrayElemAt: [
+                  { $split: ['$nameservers', '.'] },
+                  { $subtract: [{ $size: { $split: ['$nameservers', '.'] } }, 2] }
+                ]
+              }
+            },
+            count: { $sum: 1 },
+            fullExample: { $first: '$nameservers' },
+          },
+        },
+        { $sort: { count: -1 } },
+        { $limit: 15 },
+      ])
+      .toArray();
+
+    const nameserverDistribution = nameserverAggregation.map((item) => ({
+      provider: item._id as string,
+      count: item.count,
+      example: item.fullExample as string,
+    }));
+
     return NextResponse.json({
       timeline,
       insights: {
         expiringSSL,
         slowestDomains,
+        recentlyRegistered: recentlyRegistered.map((d) => ({
+          domain: d.domain,
+          registeredDate: d.registeredDate,
+          org: d.org,
+        })),
       },
       distributions: {
         httpCodes: httpCodeDistribution,
         servers: serverDistribution,
+        nameservers: nameserverDistribution,
       },
       period: {
         start: startDate,
