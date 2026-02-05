@@ -100,21 +100,57 @@ This project started with domain WHOIS data and now includes availability monito
    cd venezuela-digital-observatory
    ```
 
-2. **Import data to MongoDB:**
+2. **Start MongoDB** (if not already running):
+   ```bash
+   # Using Docker
+   docker run -d -p 27017:27017 --name mongodb mongo:7
+
+   # Or use your existing MongoDB instance
+   ```
+
+3. **Import seed data:**
+   ```bash
+   # Import the included seed data (recommended for quick start)
+   ./scripts/import-seed.sh "mongodb://localhost:27017/ve_monitor"
+   ```
+
+   > **Note:** The `seed/` directory contains pre-exported JSON files with domain monitoring data and WHOIS information. This is the fastest way to get started.
+
+   Alternatively, if you want to run a fresh monitor check:
    ```bash
    cd monitor
    npm install
    MONGO_URI=mongodb://localhost:27017/ve_monitor node import-to-mongo.js status.json
    ```
 
-3. **Start the dashboard:**
+4. **Start the dashboard:**
    ```bash
-   cd ../dashboard
+   cd dashboard
    npm install
    npm run dev
    ```
 
-4. **Open** http://localhost:3000
+5. **Open** http://localhost:3000
+
+### Seed Data
+
+The repository includes seed data in the `seed/` directory for quick setup:
+
+| File | Description |
+|------|-------------|
+| `ve_monitor_checks.json` | Check run metadata (timestamps, duration, stats) |
+| `ve_monitor_domains.json` | Domain monitoring results (status, SSL, headers, response times) |
+| `ve_monitor_whois.json` | WHOIS data (registrar, registration dates, nameservers) |
+
+**Import seed data:**
+```bash
+./scripts/import-seed.sh "mongodb://localhost:27017/ve_monitor"
+```
+
+**Export fresh data** (after running the monitor):
+```bash
+./scripts/export-seed.sh "mongodb://localhost:27017/ve_monitor"
+```
 
 ### Environment Variables
 

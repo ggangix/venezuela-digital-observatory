@@ -1,0 +1,86 @@
+[{
+	"_id": {
+		"$oid": "6980db7a4465170e3407d39c"
+	},
+	"checkedAt": {
+		"$date": "2026-02-02T16:19:02.205Z"
+	},
+	"checkDuration": 5847.1,
+	"summary": {
+		"totalDomains": 2530,
+		"online": 74,
+		"offline": 2456,
+		"withSSL": 62,
+		"validSSL": 21,
+		"avgResponseTime": 3579
+	}
+},
+{
+	"_id": {
+		"$oid": "6981798a29aafa0531c10772"
+	},
+	"checkedAt": {
+		"$date": "2026-02-03T04:28:58.804Z"
+	},
+	"checkDuration": 40452.1,
+	"summary": {
+		"totalDomains": 2530,
+		"online": 366,
+		"offline": 2164,
+		"withSSL": 151,
+		"validSSL": 48,
+		"avgResponseTime": 9644
+	}
+},
+{
+	"_id": {
+		"$oid": "6982c8425559aed6df0eec6d"
+	},
+	"checkedAt": {
+		"$date": "2026-02-04T04:17:06.718Z"
+	},
+	"checkDuration": 40456.5,
+	"summary": {
+		"totalDomains": 2530,
+		"online": 368,
+		"offline": 2162,
+		"withSSL": 153,
+		"validSSL": 49,
+		"avgResponseTime": 9635
+	}
+},
+{
+	"_id": {
+		"$oid": "698394321b3227c03b55d466"
+	},
+	"checkedAt": {
+		"$date": "2026-02-04T18:47:14.182Z"
+	},
+	"checkDuration": 40247.8,
+	"summary": {
+		"totalDomains": 2530,
+		"online": 367,
+		"offline": 2163,
+		"withSSL": 147,
+		"validSSL": 46,
+		"avgResponseTime": 9807
+	}
+},
+{
+	"_id": {
+		"$oid": "6984be3b8b7e3c4a652831be"
+	},
+	"checkedAt": {
+		"$date": "2026-02-05T15:58:51.089Z"
+	},
+	"checkDuration": 40296.4,
+	"summary": {
+		"totalDomains": 2530,
+		"online": 365,
+		"offline": 2165,
+		"withSSL": 144,
+		"validSSL": 44,
+		"avgResponseTime": 9902
+	}
+}]
+
