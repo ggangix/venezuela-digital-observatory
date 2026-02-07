@@ -64,8 +64,11 @@ jobs:
           script: |
             cd ${{ secrets.VPS_PROJECT_PATH }}
 
-            # Pull latest changes
-            git -C venezuela-digital-observatory pull origin master
+            # Pull latest changes (using HTTPS for public repo)
+            cd venezuela-digital-observatory
+            git remote set-url origin https://github.com/ggangix/venezuela-digital-observatory.git
+            git pull origin master
+            cd ..
 
             # Rebuild and restart only the dashboard service
             cd docker
@@ -92,8 +95,11 @@ jobs:
           script: |
             cd ${{ secrets.VPS_PROJECT_PATH }}
 
-            # Pull latest changes
-            git -C venezuela-digital-observatory pull origin master
+            # Pull latest changes (using HTTPS for public repo)
+            cd venezuela-digital-observatory
+            git remote set-url origin https://github.com/ggangix/venezuela-digital-observatory.git
+            git pull origin master
+            cd ..
 
             # Rebuild and restart only the monitor service
             cd docker
