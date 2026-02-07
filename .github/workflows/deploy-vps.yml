@@ -1,0 +1,114 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'dashboard/**'
+      - 'monitor/**'
+  workflow_dispatch:
+    inputs:
+      service:
+        description: 'Service to deploy'
+        required: true
+        default: 'both'
+        type: choice
+        options:
+          - dashboard
+          - monitor
+          - both
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      dashboard: ${{ steps.filter.outputs.dashboard }}
+      monitor: ${{ steps.filter.outputs.monitor }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dorny/paths-filter@v3
+        id: filter
+        if: github.event_name == 'push'
+        with:
+          filters: |
+            dashboard:
+              - 'dashboard/**'
+            monitor:
+              - 'monitor/**'
+
+      # For manual dispatch, set based on input
+      - name: Set manual dispatch outputs
+        id: manual
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          if [ "${{ github.event.inputs.service }}" == "dashboard" ] || [ "${{ github.event.inputs.service }}" == "both" ]; then
+            echo "dashboard=true" >> $GITHUB_OUTPUT
+          fi
+          if [ "${{ github.event.inputs.service }}" == "monitor" ] || [ "${{ github.event.inputs.service }}" == "both" ]; then
+            echo "monitor=true" >> $GITHUB_OUTPUT
+          fi
+
+  deploy-dashboard:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.dashboard == 'true' || github.event.inputs.service == 'dashboard' || github.event.inputs.service == 'both'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy ve-dashboard
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            cd ${{ secrets.VPS_PROJECT_PATH }}
+
+            # Pull latest changes
+            git -C venezuela-digital-observatory pull origin master
+
+            # Rebuild and restart only the dashboard service
+            cd docker
+            docker-compose build ve-dashboard
+            docker-compose up -d ve-dashboard
+
+            # Cleanup old images
+            docker image prune -f
+
+            echo "✅ ve-dashboard deployed successfully"
+
+  deploy-monitor:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.monitor == 'true' || github.event.inputs.service == 'monitor' || github.event.inputs.service == 'both'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy ve-monitor
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            cd ${{ secrets.VPS_PROJECT_PATH }}
+
+            # Pull latest changes
+            git -C venezuela-digital-observatory pull origin master
+
+            # Rebuild and restart only the monitor service
+            cd docker
+            docker-compose build ve-monitor
+            docker-compose up -d ve-monitor
+
+            echo "✅ ve-monitor deployed successfully"
+
+  notify:
+    needs: [deploy-dashboard, deploy-monitor]
+    if: always() && (needs.deploy-dashboard.result == 'success' || needs.deploy-monitor.result == 'success')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Summary
+        run: |
+          echo "## Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- Dashboard: ${{ needs.deploy-dashboard.result || 'skipped' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Monitor: ${{ needs.deploy-monitor.result || 'skipped' }}" >> $GITHUB_STEP_SUMMARY
