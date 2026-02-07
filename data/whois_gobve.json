@@ -37177,6 +37177,21 @@
         "dns1.bantel.net.ve",
         "dns2.bantel.net.ve"
       ]
+    },
+    {
+      "domain": "patria.org.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2009-01-16",
+      "registered_year": "2009",
+      "expire": "2027-01-16",
+      "changed": "2020-04-28",
+      "org": "Fundación Patria",
+      "city": "Caracas",
+      "country": "VE",
+      "nameservers": [
+        "ns1.patria.org.ve",
+        "ns2.patria.org.ve"
+      ]
     }
   ]
 }
