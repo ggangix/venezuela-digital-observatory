@@ -1,0 +1,73 @@
+[
+    {
+        "domain": "cne.gob.ve",
+        "mx": {
+            "has_mx": true,
+            "records": [
+                "mta01.cne.gob.ve",
+                "relay01.cne.gob.ve"
+            ]
+        },
+        "spf": {
+            "has_spf": true,
+            "record": "v=spf1 a mx mx:cne.gov.ve ip4:201.130.83.70 ip4:201.130.83.80 ~all"
+        },
+        "dmarc": {
+            "has_dmarc": true,
+            "record": "v=DMARC1;p=quarantine;sp=none;adkim=r;aspf=r;pct=20;fo=0;rf=afrf;ri=86400;rua=mailto:admin@cne.gob.ve"
+        },
+        "timestamp": 1770225727.4502337
+    },
+    {
+        "domain": "saime.gob.ve",
+        "mx": {
+            "has_mx": true,
+            "records": [
+                "relay1.saime.gob.ve"
+            ]
+        },
+        "spf": {
+            "has_spf": true,
+            "record": "v=spf1 ip4:200.11.208.56/32 ~all"
+        },
+        "dmarc": {
+            "has_dmarc": false,
+            "record": null
+        },
+        "timestamp": 1770225728.1593382
+    },
+    {
+        "domain": "google.com",
+        "mx": {
+            "has_mx": true,
+            "records": [
+                "smtp.google.com"
+            ]
+        },
+        "spf": {
+            "has_spf": true,
+            "record": "v=spf1 include:_spf.google.com ~all"
+        },
+        "dmarc": {
+            "has_dmarc": true,
+            "record": "v=DMARC1; p=reject; rua=mailto:mailauth-reports@google.com"
+        },
+        "timestamp": 1770225728.3553288
+    },
+    {
+        "domain": "dominio-falso-123.gob.ve",
+        "mx": {
+            "has_mx": false,
+            "records": []
+        },
+        "spf": {
+            "has_spf": false,
+            "record": null
+        },
+        "dmarc": {
+            "has_dmarc": false,
+            "record": null
+        },
+        "timestamp": 1770225730.001654
+    }
+]
