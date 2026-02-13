@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
-import { ArrowLeft, ExternalLink, Shield, Server, Clock, AlertCircle, Globe } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Shield, Server, Clock, AlertCircle, Globe, ChevronDown } from 'lucide-react';
 import { StatusBadge } from '@/components/StatusBadge';
 import { SSLBadge } from '@/components/SSLBadge';
 import { formatResponseTime, formatDateTime, formatDate, cn } from '@/lib/utils';
@@ -76,11 +76,12 @@ export default function DomainDetailPage() {
   const [data, setData] = useState<DomainData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [visibleHistory, setVisibleHistory] = useState(10);
 
   useEffect(() => {
     async function fetchDomain() {
       try {
-        const res = await fetch(`/api/monitor/domains/${encodeURIComponent(domainName)}?history=20`);
+        const res = await fetch(`/api/monitor/domains/${encodeURIComponent(domainName)}?history=50`);
         if (res.ok) {
           setData(await res.json());
         } else {
@@ -396,7 +397,7 @@ export default function DomainDetailPage() {
               </tr>
             </thead>
             <tbody>
-              {data.history.map((h, i) => (
+              {data.history.slice(0, visibleHistory).map((h, i) => (
                 <tr key={i}>
                   <td className="text-sm">{formatDateTime(h.checkedAt, locale)}</td>
                   <td><StatusBadge status={h.status} /></td>
@@ -407,6 +408,15 @@ export default function DomainDetailPage() {
             </tbody>
           </table>
         </div>
+        {data.history.length > visibleHistory && (
+          <button
+            onClick={() => setVisibleHistory((prev) => prev + 10)}
+            className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-slate-50 hover:text-foreground dark:border-slate-700 dark:hover:bg-slate-800"
+          >
+            <ChevronDown className="h-4 w-4" />
+            {t('historyTable.showMore')} ({data.history.length - visibleHistory})
+          </button>
+        )}
       </div>
     </div>
   );

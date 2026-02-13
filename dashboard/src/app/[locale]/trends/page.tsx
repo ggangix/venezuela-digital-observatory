@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { TrendingUp, Clock, Shield, ShieldCheck, ShieldX, ShieldAlert, Server, PieChart, Activity, Globe, CalendarPlus } from 'lucide-react';
+import { TrendingUp, Clock, Shield, ShieldCheck, ShieldX, ShieldAlert, Server, PieChart, Activity, Globe, CalendarPlus, ChevronDown } from 'lucide-react';
 import {
   AreaChart,
   Area,
@@ -68,10 +68,14 @@ export default function TrendsPage() {
   const [data, setData] = useState<TrendData | null>(null);
   const [loading, setLoading] = useState(true);
   const [days, setDays] = useState(30);
+  const [visibleExpiredSSL, setVisibleExpiredSSL] = useState(10);
+  const [visibleRenewedSSL, setVisibleRenewedSSL] = useState(10);
 
   useEffect(() => {
     async function fetchTrends() {
       setLoading(true);
+      setVisibleExpiredSSL(10);
+      setVisibleRenewedSSL(10);
       try {
         const res = await fetch(`/api/monitor/trends?days=${days}`);
         if (res.ok) {
@@ -472,21 +476,32 @@ export default function TrendsPage() {
                 {t('insights.expiredSSL')}
               </h2>
               {data.insights.expiredSSL && data.insights.expiredSSL.length > 0 ? (
-                <ol className="space-y-2">
-                  {data.insights.expiredSSL.map((d) => (
-                    <li key={d.domain} className="flex items-center justify-between gap-2 rounded-lg bg-slate-50 px-3 py-2 dark:bg-slate-800">
-                      <a
-                        href={`/${locale}/domain/${encodeURIComponent(d.domain)}`}
-                        className="font-mono text-sm hover:text-primary hover:underline"
-                      >
-                        {d.domain}
-                      </a>
-                      <span className="rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-700 dark:bg-red-900/30 dark:text-red-400">
-                        {Math.abs(d.daysUntilExpiry)} {t('table.days')}
-                      </span>
-                    </li>
-                  ))}
-                </ol>
+                <>
+                  <ol className="space-y-2">
+                    {data.insights.expiredSSL.slice(0, visibleExpiredSSL).map((d) => (
+                      <li key={d.domain} className="flex items-center justify-between gap-2 rounded-lg bg-slate-50 px-3 py-2 dark:bg-slate-800">
+                        <a
+                          href={`/${locale}/domain/${encodeURIComponent(d.domain)}`}
+                          className="font-mono text-sm hover:text-primary hover:underline"
+                        >
+                          {d.domain}
+                        </a>
+                        <span className="rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-700 dark:bg-red-900/30 dark:text-red-400">
+                          {Math.abs(d.daysUntilExpiry)} {t('table.days')}
+                        </span>
+                      </li>
+                    ))}
+                  </ol>
+                  {data.insights.expiredSSL.length > visibleExpiredSSL && (
+                    <button
+                      onClick={() => setVisibleExpiredSSL((prev) => prev + 10)}
+                      className="mt-3 flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-slate-50 hover:text-foreground dark:border-slate-700 dark:hover:bg-slate-800"
+                    >
+                      <ChevronDown className="h-4 w-4" />
+                      {t('showMore')} ({data.insights.expiredSSL.length - visibleExpiredSSL})
+                    </button>
+                  )}
+                </>
               ) : (
                 <p className="text-muted-foreground py-4 text-center">{t('noExpiredCertificates')}</p>
               )}
@@ -499,21 +514,32 @@ export default function TrendsPage() {
                 {t('insights.renewedSSL')}
               </h2>
               {data.insights.renewedSSL && data.insights.renewedSSL.length > 0 ? (
-                <ol className="space-y-2">
-                  {data.insights.renewedSSL.map((d) => (
-                    <li key={d.domain} className="flex items-center justify-between gap-2 rounded-lg bg-slate-50 px-3 py-2 dark:bg-slate-800">
-                      <a
-                        href={`/${locale}/domain/${encodeURIComponent(d.domain)}`}
-                        className="font-mono text-sm hover:text-primary hover:underline"
-                      >
-                        {d.domain}
-                      </a>
-                      <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700 dark:bg-green-900/30 dark:text-green-400">
-                        {d.daysUntilExpiry} {t('table.days')}
-                      </span>
-                    </li>
-                  ))}
-                </ol>
+                <>
+                  <ol className="space-y-2">
+                    {data.insights.renewedSSL.slice(0, visibleRenewedSSL).map((d) => (
+                      <li key={d.domain} className="flex items-center justify-between gap-2 rounded-lg bg-slate-50 px-3 py-2 dark:bg-slate-800">
+                        <a
+                          href={`/${locale}/domain/${encodeURIComponent(d.domain)}`}
+                          className="font-mono text-sm hover:text-primary hover:underline"
+                        >
+                          {d.domain}
+                        </a>
+                        <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                          {d.daysUntilExpiry} {t('table.days')}
+                        </span>
+                      </li>
+                    ))}
+                  </ol>
+                  {data.insights.renewedSSL.length > visibleRenewedSSL && (
+                    <button
+                      onClick={() => setVisibleRenewedSSL((prev) => prev + 10)}
+                      className="mt-3 flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-slate-50 hover:text-foreground dark:border-slate-700 dark:hover:bg-slate-800"
+                    >
+                      <ChevronDown className="h-4 w-4" />
+                      {t('showMore')} ({data.insights.renewedSSL.length - visibleRenewedSSL})
+                    </button>
+                  )}
+                </>
               ) : (
                 <p className="text-muted-foreground py-4 text-center">{t('noRenewedCertificates')}</p>
               )}
@@ -545,21 +571,15 @@ export default function TrendsPage() {
               </ol>
             </div>
           )}
-        </div>
-      ) : (
-        <div className="card py-12 text-center">
-          <p className="text-muted-foreground">{t('errorLoading')}</p>
-        </div>
-      )}
 
-                {/* Recently Registered Domains (WHOIS) */}
+          {/* Recently Registered Domains (WHOIS) */}
           <div className="card">
             <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
               <CalendarPlus className="h-5 w-5 text-emerald-600" />
               {t('insights.recentlyRegistered')}
             </h2>
             <p className="mb-4 text-sm text-muted-foreground">{t('insights.recentlyRegisteredDesc')}</p>
-            {data && data.insights.recentlyRegistered && data.insights.recentlyRegistered.length > 0 ? (
+            {data.insights.recentlyRegistered && data.insights.recentlyRegistered.length > 0 ? (
               <div className="overflow-x-auto">
                 <table className="table">
                   <thead>
@@ -597,6 +617,12 @@ export default function TrendsPage() {
               <p className="text-muted-foreground py-4 text-center">{t('noRecentDomains')}</p>
             )}
           </div>
+        </div>
+      ) : (
+        <div className="card py-12 text-center">
+          <p className="text-muted-foreground">{t('errorLoading')}</p>
+        </div>
+      )}
     </div>
   );
 }

@@ -214,7 +214,8 @@
     "historyTable": {
       "date": "Fecha",
       "status": "Estado",
-      "time": "Tiempo"
+      "time": "Tiempo",
+      "showMore": "Ver más"
     },
     "common": {
       "loading": "Cargando...",
@@ -281,6 +282,7 @@
     },
     "noData": "No hay datos disponibles",
     "noDataShort": "No hay datos",
+    "showMore": "Ver más",
     "noCertificates": "No hay certificados por expirar",
     "noExpiredCertificates": "No hay certificados recién expirados",
     "noRenewedCertificates": "No hay certificados recién renovados",

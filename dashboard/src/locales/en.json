@@ -214,7 +214,8 @@
     "historyTable": {
       "date": "Date",
       "status": "Status",
-      "time": "Response Time"
+      "time": "Response Time",
+      "showMore": "Show more"
     },
     "common": {
       "loading": "Loading...",
@@ -281,6 +282,7 @@
     },
     "noData": "No data available",
     "noDataShort": "No data",
+    "showMore": "Show more",
     "noCertificates": "No certificates expiring soon",
     "noExpiredCertificates": "No recently expired certificates",
     "noRenewedCertificates": "No recently renewed certificates",
