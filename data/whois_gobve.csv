@@ -1,4 +1,6 @@
 domain,registered_date,registered_year,expire,changed,registrar,org,city,country,nameservers
+transparenciasoberana.gob.ve,2026-03-13,2026,2036-03-13,2026-03-13,NIC-VE,Vicepresidencia De La Republica Bolivariana De Venezuela,1010,VE,"dns1.cantv.net, dns2.cantv.net"
+porlamar.gob.ve,2025-11-07,2025,2035-11-07,2025-11-07,NIC-VE,Alcaldia Municipio Mari  O,6301,VE,"ns1.contabo.net, ns3.contabo.net"
 cidata.gob.ve,2025-11-04,2025,2035-11-04,2025-11-04,NIC-VE,Centro De Investigaciones De Astronomia Francisco J Duarte,5101,VE,"ns.nocdirect.com, ns2.nocdirect.com"
 alcaldiadeguarenas.gob.ve,2025-11-03,2025,2035-11-03,2025-11-03,NIC-VE,Alcaldia Del Municipio Plaza,1220,VE,"ns1.centos-webpanel.com, ns2.centos-webpanel.com, ns3.centos-webpanel.com, ns4.centos-webpanel.com"
 alcaldiaderoscio.gob.ve,2025-10-18,2025,2035-10-18,2025-10-18,NIC-VE,Alcaldia Del Municipio Autonomo Roscio,8001,VE,"ns7.globalhostla.com, ns8.globalhostla.com"
@@ -21,6 +23,7 @@ minaamp.gob.ve,2024-10-14,2024,2034-10-14,2024-10-14,NIC-VE,Ministerio Del Poder
 procuraduriaestadobarinas.gob.ve,2024-10-01,2024,2034-10-01,2024-10-01,NIC-VE,Procuraduria General Del Estado Barinas,5201,VE,"ns4.netvicios.com, ns3.netvicios.com"
 cpsa.gob.ve,2024-09-30,2024,2034-09-30,2024-09-30,NIC-VE,Conglomerado Productivo S A,1010,VE,"dns2.cantv.net, dns1.cantv.net"
 contraloriadecarirubana.gob.ve,2024-09-03,2024,2034-09-03,2024-09-03,NIC-VE,Contraloria Municipal De Carirubana,4102,VE,"ns2.siteground.net, ns1.siteground.net"
+iapolmbl.gob.ve,2024-07-09,2024,2034-07-09,2024-07-09,NIC-VE,Instituto Autonomo De Policia Del Municipio Bolivariano Libertador,1020,VE,"dns2.cantv.net, dns1.cantv.net"
 consejolegislativolara.gob.ve,2024-06-07,2024,2034-06-07,2024-06-07,NIC-VE,Consejo Legislativo Del Estado Lara,3001,VE,"dns2004b.trouble-free.net, dns2004a.trouble-free.net"
 alcaldiasancristobal.gob.ve,2024-05-29,2024,2034-05-29,2024-05-29,NIC-VE,Alcaldia Del Municipio San Cristobal,5001,VE,"ns2.uanesi.net, ns1.uanesi.net"
 pciviltachira.gob.ve,2024-03-26,2024,2034-03-26,2024-03-26,NIC-VE,Instituto Autonomo De Proteccion Civil Del Estado Tachira,5001,VE,"ns2.dns-parking.com, ns1.dns-parking.com"
@@ -2529,4 +2532,3 @@ ejercito.mil.ve,1997-12-31,1997,2029-12-31,,NIC-VE,,Caracas,VE,"dns1.ejercito.mi
 fav.mil.ve,1997-12-31,1997,2029-12-31,,NIC-VE,,Caracas,VE,"dns1.telcel.net.ve, dns2.telcel.net.ve"
 guardia.mil.ve,1997-12-31,1997,2029-12-31,,NIC-VE,,Caracas,VE,"dns1.guardia.mil.ve, dns2.guardia.mil.ve"
 mindefensa.mil.ve,1997-12-31,1997,2029-12-31,,NIC-VE,,Caracas,VE,"dns1.bantel.net.ve, dns2.bantel.net.ve"
-patria.org.ve,2009-01-16,2009,2027-01-16,2020-04-28,NIC-VE,Fundación Patria,Caracas,VE,"ns1.patria.org.ve, ns2.patria.org.ve"

@@ -2,13 +2,43 @@
   "_meta": {
     "description": "WHOIS data for Venezuelan government domains (.gob.ve)",
     "source": "whois.nic.ve",
-    "generated": "2026-02-01T21:31:58.985Z",
-    "total": 2530,
-    "recent_2025_2026": 17,
+    "generated": "2026-03-23T09:27:20.658Z",
+    "total": 2533,
+    "recent_2025_2026": 19,
     "privacy_note": "Personal names of registrants have been excluded",
     "license": "CC0 - Public Domain"
   },
   "domains": [
+    {
+      "domain": "transparenciasoberana.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2026-03-13",
+      "registered_year": "2026",
+      "expire": "2036-03-13",
+      "changed": "2026-03-13",
+      "org": "Vicepresidencia De La Republica Bolivariana De Venezuela",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
+      ]
+    },
+    {
+      "domain": "porlamar.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2025-11-07",
+      "registered_year": "2025",
+      "expire": "2035-11-07",
+      "changed": "2025-11-07",
+      "org": "Alcaldia Municipio Mari  O",
+      "city": "6301",
+      "country": "VE",
+      "nameservers": [
+        "ns1.contabo.net",
+        "ns3.contabo.net"
+      ]
+    },
     {
       "domain": "cidata.gob.ve",
       "registrar": "NIC-VE",
@@ -338,6 +368,21 @@
       "nameservers": [
         "ns2.siteground.net",
         "ns1.siteground.net"
+      ]
+    },
+    {
+      "domain": "iapolmbl.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2024-07-09",
+      "registered_year": "2024",
+      "expire": "2034-07-09",
+      "changed": "2024-07-09",
+      "org": "Instituto Autonomo De Policia Del Municipio Bolivariano Libertador",
+      "city": "1020",
+      "country": "VE",
+      "nameservers": [
+        "dns2.cantv.net",
+        "dns1.cantv.net"
       ]
     },
     {
@@ -37176,21 +37221,6 @@
       "nameservers": [
         "dns1.bantel.net.ve",
         "dns2.bantel.net.ve"
-      ]
-    },
-    {
-      "domain": "patria.org.ve",
-      "registrar": "NIC-VE",
-      "registered_date": "2009-01-16",
-      "registered_year": "2009",
-      "expire": "2027-01-16",
-      "changed": "2020-04-28",
-      "org": "Fundación Patria",
-      "city": "Caracas",
-      "country": "VE",
-      "nameservers": [
-        "ns1.patria.org.ve",
-        "ns2.patria.org.ve"
       ]
     }
   ]
