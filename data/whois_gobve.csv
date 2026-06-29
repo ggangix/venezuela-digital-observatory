@@ -1,5 +1,7 @@
 domain,registered_date,registered_year,expire,changed,registrar,org,city,country,nameservers
+soychacao.gob.ve,2026-06-23,2026,2036-06-23,2026-06-23,NIC-VE,Alcaldia Del Municipio Chacao,1060,VE,"ns1chacao.inverysman.net, ns2chacao.inverysman.net"
 reingenieria.gob.ve,2026-06-03,2026,2036-06-03,2026-06-03,NIC-VE,Ministerio Del Poder Popular Para La Educacion,1010,VE,"ns4.nube.gob.ve, ns6.nube.gob.ve"
+ciip.gob.ve,2026-05-27,2026,2036-05-27,2026-05-27,NIC-VE,Vicepresidencia Sectorial De Economia,1010,VE,"ns1.vercel-dns.com, ns2.vercel-dns.com"
 renacevenezuela.gob.ve,2026-05-03,2026,2036-05-03,2026-05-03,NIC-VE,Vicepresidencia Sectorial De Economia,1010,VE,"ns1.vercel-dns.com, ns2.vercel-dns.com"
 construye.gob.ve,2026-04-30,2026,2036-04-30,2026-04-30,NIC-VE,Vicepresidencia Sectorial De Economia,1010,VE,"ns1.vercel-dns.com, ns2.vercel-dns.com"
 simplifica.gob.ve,2026-04-25,2026,2036-04-25,2026-04-25,NIC-VE,Vicepresidencia Sectorial De Economia,1010,VE,"ns1.vercel-dns.com, ns2.vercel-dns.com"
@@ -51,6 +53,7 @@ fonaem.gob.ve,2023-05-23,2023,2033-05-23,2023-05-23,NIC-VE,Fondo Nacional Para L
 misionribas.gob.ve,2023-04-14,2023,2033-04-14,2023-04-14,NIC-VE,Fundación Misión Ribas,1041,VE,"ns4.reacciun.ve, ns3.reacciun.ve"
 nube.gob.ve,2023-03-30,2023,2033-03-30,2025-03-05,NIC-VE,Corporacion Para El Desarrollo Cientifico Y Tecnologico  S A,1020,VE,"ns2.nube.gob.ve, ns1.nube.gob.ve, ns6.nube.gob.ve, ns5.nube.gob.ve, ns4.nube.gob.ve, ns3.nube.gob.ve"
 femsur.gob.ve,2023-03-23,2023,2033-03-23,2023-03-23,NIC-VE,Fundacion Escuela Feminista Del Sur Argelia Laya Femsur,1010,VE,"dns2.femsur.gob.ve, dns1.femsur.gob.ve"
+misionjosegregoriohernandez.gob.ve,2023-03-23,2023,2033-03-23,2024-10-14,NIC-VE,Fundacion Mision Jose Gregorio Hernandez,1030,VE,ns.misionjosegregoriohernandez.gob.ve
 fasmee.gob.ve,2023-01-05,2023,2033-01-05,2023-01-05,NIC-VE,Fondo Autoadministrado De Salud Para El Ministerio Del Poder Popular Para La Energia Electrica,1060,VE,"fasdns02.fasmee.gob.ve, fasdns01.fasmee.gob.ve, fasdns03.fasmee.gob.ve, fasdns04.fasmee.gob.ve"
 sigestel.gob.ve,2023-01-04,2023,2033-01-04,2023-01-04,NIC-VE,Comision Nacional De Telecomunicaciones Conatel,1020,VE,"owen.ns.cloudflare.com, luciane.ns.cloudflare.com"
 comisionpresidencialucv.gob.ve,2022-12-16,2022,2032-12-16,2022-12-16,NIC-VE,Fundaci  N Misi  N Venezuela Bella,1010,VE,"ns2.siteground.net, ns1.siteground.net"

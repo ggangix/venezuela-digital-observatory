@@ -2,13 +2,28 @@
   "_meta": {
     "description": "WHOIS data for Venezuelan government domains (.gob.ve)",
     "source": "whois.nic.ve",
-    "generated": "2026-06-09T14:35:32.704Z",
-    "total": 2542,
-    "recent_2025_2026": 28,
+    "generated": "2026-06-29T20:40:25.039Z",
+    "total": 2545,
+    "recent_2025_2026": 30,
     "privacy_note": "Personal names of registrants have been excluded",
     "license": "CC0 - Public Domain"
   },
   "domains": [
+    {
+      "domain": "soychacao.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2026-06-23",
+      "registered_year": "2026",
+      "expire": "2036-06-23",
+      "changed": "2026-06-23",
+      "org": "Alcaldia Del Municipio Chacao",
+      "city": "1060",
+      "country": "VE",
+      "nameservers": [
+        "ns1chacao.inverysman.net",
+        "ns2chacao.inverysman.net"
+      ]
+    },
     {
       "domain": "reingenieria.gob.ve",
       "registrar": "NIC-VE",
@@ -22,6 +37,21 @@
       "nameservers": [
         "ns4.nube.gob.ve",
         "ns6.nube.gob.ve"
+      ]
+    },
+    {
+      "domain": "ciip.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2026-05-27",
+      "registered_year": "2026",
+      "expire": "2036-05-27",
+      "changed": "2026-05-27",
+      "org": "Vicepresidencia Sectorial De Economia",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns1.vercel-dns.com",
+        "ns2.vercel-dns.com"
       ]
     },
     {
@@ -795,6 +825,20 @@
       "nameservers": [
         "dns2.femsur.gob.ve",
         "dns1.femsur.gob.ve"
+      ]
+    },
+    {
+      "domain": "misionjosegregoriohernandez.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2023-03-23",
+      "registered_year": "2023",
+      "expire": "2033-03-23",
+      "changed": "2024-10-14",
+      "org": "Fundacion Mision Jose Gregorio Hernandez",
+      "city": "1030",
+      "country": "VE",
+      "nameservers": [
+        "ns.misionjosegregoriohernandez.gob.ve"
       ]
     },
     {
