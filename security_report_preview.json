@@ -1,0 +1,66 @@
+[
+    {
+        "domain": "cne.gob.ve",
+        "mx": {
+            "has_mx": false,
+            "records": []
+        },
+        "spf": {
+            "has_spf": false,
+            "record": null
+        },
+        "dmarc": {
+            "has_dmarc": false,
+            "record": null
+        },
+        "timestamp": 1770223008.824823
+    },
+    {
+        "domain": "saime.gob.ve",
+        "mx": {
+            "has_mx": false,
+            "records": []
+        },
+        "spf": {
+            "has_spf": false,
+            "record": null
+        },
+        "dmarc": {
+            "has_dmarc": false,
+            "record": null
+        },
+        "timestamp": 1770223023.8509052
+    },
+    {
+        "domain": "google.com",
+        "mx": {
+            "has_mx": false,
+            "records": []
+        },
+        "spf": {
+            "has_spf": false,
+            "record": null
+        },
+        "dmarc": {
+            "has_dmarc": false,
+            "record": null
+        },
+        "timestamp": 1770223038.8765976
+    },
+    {
+        "domain": "dominio-falso-123.gob.ve",
+        "mx": {
+            "has_mx": false,
+            "records": []
+        },
+        "spf": {
+            "has_spf": false,
+            "record": null
+        },
+        "dmarc": {
+            "has_dmarc": false,
+            "record": null
+        },
+        "timestamp": 1770223053.918763
+    }
+]

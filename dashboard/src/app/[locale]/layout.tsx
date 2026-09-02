@@ -81,7 +81,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={`${inter.className} min-h-screen bg-white antialiased dark:bg-slate-950`}>
+      <body className={`${inter.className} min-h-screen bg-white antialiased dark:bg-slate-950`} suppressHydrationWarning>
         <ThemeProvider>
           <NextIntlClientProvider messages={messages}>
             <div className="relative flex min-h-screen flex-col">
