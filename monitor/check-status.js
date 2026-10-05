@@ -4,6 +4,10 @@ const dns = require('dns').promises;
 const net = require('net');
 const fs = require('fs');
 const path = require('path');
+const { categorize, countCategories } = require('./classify');
+const { annotateHosting } = require('./hosting');
+const { HistoryTracker, assessValidity, recentActiveCounts, ensureIndexes } = require('./history');
+const { archiveActiveSites } = require('./archive');
 
 const TIMEOUT_MS = parseInt(process.env.TIMEOUT_MS || '30000', 10);
 const CONCURRENCY = Math.max(1, parseInt(process.env.CONCURRENCY || '50', 10));
@@ -35,6 +39,7 @@ const DATA_FILE = process.env.DATA_FILE || path.join(__dirname, '../data/whois_g
 const OUTPUT_FILE = process.env.OUTPUT_FILE || path.join(__dirname, 'status.json');
 const MONGO_URI = process.env.MONGO_URI;
 const MONGO_ENABLED = !!MONGO_URI;
+const HOSTING_LOOKUP = (process.env.HOSTING_LOOKUP || 'true').toLowerCase() === 'true';
 const FORCE_IPV4 = (process.env.FORCE_IPV4 || 'false').toLowerCase() === 'true';
 const SKIP_DNS_RETRIES = (process.env.SKIP_DNS_RETRIES || 'false').toLowerCase() === 'true';
 const REACHABILITY_ENABLED = (process.env.REACHABILITY_ENABLED || 'true').toLowerCase() === 'true';
@@ -269,6 +274,11 @@ function extractHeaders(res) {
     cacheControl: h['cache-control'] || null,
     contentLength: h['content-length'] ? parseInt(h['content-length']) : null,
     lastModified: h['last-modified'] || null,
+    hsts: h['strict-transport-security'] || null,
+    csp: h['content-security-policy'] ? true : null,
+    xFrameOptions: h['x-frame-options'] || null,
+    xContentTypeOptions: h['x-content-type-options'] || null,
+    referrerPolicy: h['referrer-policy'] || null,
   };
 }
 
@@ -1046,15 +1056,27 @@ async function saveToMongoDB(results, summary, checkDuration, maxRetries = 3) {
       await domainsCollection.createIndex({ checkId: 1 });
       await domainsCollection.createIndex({ checkedAt: -1 });
       await checksCollection.createIndex({ checkedAt: -1 });
+      await ensureIndexes(db);
+
+      // Discard the check if the monitor itself lost connectivity (e.g. VPN down):
+      // the check is recorded as invalid, without domain records or events.
+      const verdict = assessValidity(summary.active, await recentActiveCounts(checksCollection));
 
       // Insert check record
       const checkRecord = {
         checkedAt: new Date(),
         checkDuration,
-        summary
+        summary,
+        valid: verdict.valid,
+        ...(verdict.valid ? {} : { invalidReason: verdict.reason }),
       };
       const checkResult = await checksCollection.insertOne(checkRecord);
       const checkId = checkResult.insertedId;
+
+      if (!verdict.valid) {
+        console.log(`${C.red}Check discarded:${C.reset} ${verdict.reason} (no domain records saved)`);
+        return { checkId, valid: false };
+      }
 
       // Prepare domain records with checkId
       const domainRecords = results.map(r => ({
@@ -1069,7 +1091,9 @@ async function saveToMongoDB(results, summary, checkDuration, maxRetries = 3) {
         headers: r.headers,
         redirects: r.redirects,
         finalUrl: r.finalUrl,
-        reachability: r.reachability || null
+        reachability: r.reachability || null,
+        category: r.category,
+        hosting: r.hosting || null,
       }));
 
       // Bulk insert domain records
@@ -1077,13 +1101,32 @@ async function saveToMongoDB(results, summary, checkDuration, maxRetries = 3) {
 
       console.log(`${C.green}Saved to MongoDB:${C.reset} 1 check + ${results.length} domain records`);
 
+      // Errors past this point must not trigger the retry loop (the check is already saved)
+      try {
+        // Update per-domain state and change events
+        const tracker = new HistoryTracker(db);
+        await tracker.load();
+        tracker.applyCheck(checkId, checkRecord.checkedAt, domainRecords, { baseline: tracker.isEmpty });
+        const written = await tracker.flush();
+        console.log(`${C.green}History:${C.reset} ${written.states} domain states, ${written.events} new events`);
+      } catch (err) {
+        console.error(`${C.red}History update failed:${C.reset} ${err.message}`);
+      }
+
+      try {
+        // Send active sites to the Internet Archive (rate limited, see archive.js)
+        await archiveActiveSites(db);
+      } catch (err) {
+        console.error(`${C.red}Archive step failed:${C.reset} ${err.message}`);
+      }
+
       // Get total count
       const totalChecks = await checksCollection.countDocuments();
       const totalDomainRecords = await domainsCollection.countDocuments();
       console.log(`${C.dim}Total in DB: ${totalChecks} checks, ${totalDomainRecords} domain records${C.reset}`);
 
       // Success - exit the retry loop
-      return;
+      return { checkId, valid: true };
 
     } catch (err) {
       lastError = err;
@@ -1197,6 +1240,17 @@ async function main() {
   const elapsedSec = (Date.now() - startTime) / 1000;
   const elapsed = elapsedSec.toFixed(1);
 
+  // Hosting network (ASN) for every domain that resolves
+  if (HOSTING_LOOKUP) {
+    const hostingStart = Date.now();
+    const annotated = await annotateHosting(results);
+    console.log(`Hosting lookup: ${annotated} domains in ${formatDuration(Date.now() - hostingStart)}`);
+  }
+
+  // Category: active / failing / no_dns (see classify.js)
+  results.forEach((r) => { r.category = categorize(r); });
+  const categoryCounts = countCategories(results);
+
   // Stats
   const online = results.filter(r => r.status === 'online');
   const offline = results.filter(r => r.status === 'offline');
@@ -1214,6 +1268,7 @@ async function main() {
     withSSL: withSSL.length,
     validSSL: validSSL.length,
     avgResponseTime: avgResponse,
+    ...categoryCounts,
   };
 
   // Save to MongoDB

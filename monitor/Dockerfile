@@ -10,7 +10,7 @@ COPY package.json ./
 RUN npm install --production
 
 # Copy monitor files
-COPY check-status.js ./
+COPY check-status.js classify.js hosting.js history.js archive.js rebuild-history.js ./
 COPY entrypoint.sh ./
 
 # Copy import scripts
