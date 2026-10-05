@@ -2,13 +2,163 @@
   "_meta": {
     "description": "WHOIS data for Venezuelan government domains (.gob.ve)",
     "source": "whois.nic.ve",
-    "generated": "2026-06-29T20:40:25.039Z",
-    "total": 2545,
-    "recent_2025_2026": 30,
+    "generated": "2026-10-05T13:44:29.734Z",
+    "total": 2557,
+    "recent_2025_2026": 42,
     "privacy_note": "Personal names of registrants have been excluded",
     "license": "CC0 - Public Domain"
   },
   "domains": [
+    {
+      "domain": "cmelhatillo.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2026-09-30",
+      "registered_year": "2026",
+      "expire": "2036-09-30",
+      "changed": "2026-09-30",
+      "org": "Contraloria Municipal Del Municipio El Hatillo",
+      "city": "1083",
+      "country": "VE",
+      "nameservers": [
+        "ns1.siteground.net",
+        "ns2.siteground.net"
+      ]
+    },
+    {
+      "domain": "alcaldiajacura.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2026-09-18",
+      "registered_year": "2026",
+      "expire": "2036-09-18",
+      "changed": "2026-09-18",
+      "org": "Alcaldia Municipio Jacura Edo Falcon",
+      "city": "4110",
+      "country": "VE",
+      "nameservers": [
+        "ada.ns.cloudflare.com",
+        "toby.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "secodena.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2026-09-10",
+      "registered_year": "2026",
+      "expire": "2036-09-10",
+      "changed": "2026-09-16",
+      "org": "Consejo De Defensa De La Nacion",
+      "city": "1090",
+      "country": "VE",
+      "nameservers": [
+        "ns1.digalo.gob.ve",
+        "ns2.digalo.gob.ve"
+      ]
+    },
+    {
+      "domain": "imapsas.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2026-09-09",
+      "registered_year": "2026",
+      "expire": "2036-09-09",
+      "changed": "2026-09-09",
+      "org": "Instituto Municipal Autonomo De Proteccion Y Saneamiento Ambiental Sucre",
+      "city": "1071",
+      "country": "VE",
+      "nameservers": [
+        "ns1.prem.dns40.com",
+        "ns2.prem.dns40.com"
+      ]
+    },
+    {
+      "domain": "fundambiente.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2026-08-18",
+      "registered_year": "2026",
+      "expire": "2036-08-18",
+      "changed": "2026-08-18",
+      "org": "Fundaci  N De Educaci  N Ambiental",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "ns1.vercel-dns.com",
+        "ns2.vercel-dns.com"
+      ]
+    },
+    {
+      "domain": "carrizal.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2026-07-21",
+      "registered_year": "2026",
+      "expire": "2036-07-21",
+      "changed": "2026-07-21",
+      "org": "Alcaldia Del Municipio Carrizal",
+      "city": "1203",
+      "country": "VE",
+      "nameservers": [
+        "leonard.ns.cloudflare.com",
+        "wren.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "concejomunicipallibertador.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2026-07-15",
+      "registered_year": "2026",
+      "expire": "2036-07-15",
+      "changed": "2026-07-15",
+      "org": "Concejo Municipal Libertador Del Estado Merida",
+      "city": "5101",
+      "country": "VE",
+      "nameservers": [
+        "galilea.ns.cloudflare.com",
+        "norman.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "planmaestrolaguaira.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2026-07-15",
+      "registered_year": "2026",
+      "expire": "2036-07-15",
+      "changed": "2026-07-15",
+      "org": "Centro Internacional De Inversi  N Productiva",
+      "city": "1064",
+      "country": "VE",
+      "nameservers": [
+        "ns1.vercel-dns.com",
+        "ns2.vercel-dns.com"
+      ]
+    },
+    {
+      "domain": "alcaldiaobisporl.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2026-07-06",
+      "registered_year": "2026",
+      "expire": "2036-07-06",
+      "changed": "2026-07-06",
+      "org": "Alcaldia Municipal Obispo Ramos De Lora",
+      "city": "5101",
+      "country": "VE",
+      "nameservers": [
+        "ns1.wznoc.com",
+        "ns2.wznoc.com"
+      ]
+    },
+    {
+      "domain": "habitable.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2026-07-06",
+      "registered_year": "2026",
+      "expire": "2036-07-06",
+      "changed": "2026-07-06",
+      "org": "Ministerio Del Poder Popular Del Despacho De La Presidencia Y Seguimiento De La Gestion De Gobierno",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "arvind.ns.cloudflare.com",
+        "gigi.ns.cloudflare.com"
+      ]
+    },
     {
       "domain": "soychacao.gob.ve",
       "registrar": "NIC-VE",
@@ -22,6 +172,21 @@
       "nameservers": [
         "ns1chacao.inverysman.net",
         "ns2chacao.inverysman.net"
+      ]
+    },
+    {
+      "domain": "procedatos.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2026-06-23",
+      "registered_year": "2026",
+      "expire": "2036-06-23",
+      "changed": "2026-06-23",
+      "org": "Procesamiento Electronico De Datos  S A   Procedatos",
+      "city": "4001",
+      "country": "VE",
+      "nameservers": [
+        "ns1.procedatos.gob.ve",
+        "ns2.procedatos.gob.ve"
       ]
     },
     {
@@ -142,6 +307,21 @@
       "nameservers": [
         "dns1.vsops.gob.ve",
         "dns2.vsops.gob.ve"
+      ]
+    },
+    {
+      "domain": "vicesaludecociencia.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2026-04-06",
+      "registered_year": "2026",
+      "expire": "2036-04-06",
+      "changed": "2026-05-22",
+      "org": "Vicepresidencia Sectorial De Ciencia  Tecnologia  Educacion Y Salud",
+      "city": "1020",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
       ]
     },
     {
