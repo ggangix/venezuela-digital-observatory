@@ -6,6 +6,7 @@ on:
     paths:
       - 'dashboard/**'
       - 'monitor/**'
+      - 'data/**'
   workflow_dispatch:
     inputs:
       service:
@@ -36,6 +37,7 @@ jobs:
               - 'dashboard/**'
             monitor:
               - 'monitor/**'
+              - 'data/**'
 
       # For manual dispatch, set based on input
       - name: Set manual dispatch outputs
@@ -61,13 +63,18 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT || 22 }}
+          script_stop: true
           script: |
+            set -e
             cd ${{ secrets.VPS_PROJECT_PATH }}
 
-            # Pull latest changes (using HTTPS for public repo)
+            # Sync with origin/master (using HTTPS for public repo).
+            # reset --hard so manual edits on the server can't block the deploy.
             cd venezuela-digital-observatory
             git remote set-url origin https://github.com/ggangix/venezuela-digital-observatory.git
-            git pull origin master
+            git fetch origin master
+            git reset --hard origin/master
+            git log -1 --format='Deployed commit: %h %s'
             cd ..
 
             # Rebuild and restart only the dashboard service
@@ -92,13 +99,18 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT || 22 }}
+          script_stop: true
           script: |
+            set -e
             cd ${{ secrets.VPS_PROJECT_PATH }}
 
-            # Pull latest changes (using HTTPS for public repo)
+            # Sync with origin/master (using HTTPS for public repo).
+            # reset --hard so manual edits on the server can't block the deploy.
             cd venezuela-digital-observatory
             git remote set-url origin https://github.com/ggangix/venezuela-digital-observatory.git
-            git pull origin master
+            git fetch origin master
+            git reset --hard origin/master
+            git log -1 --format='Deployed commit: %h %s'
             cd ..
 
             # Rebuild and restart only the monitor service
