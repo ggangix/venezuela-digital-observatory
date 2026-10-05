@@ -17,6 +17,11 @@ while true; do
   echo "Starting status check at $(date)"
   echo "=========================================="
 
+  # Sync WHOIS data (data/whois_gobve.json) into MongoDB before each check
+  if [ -n "$MONGO_URI" ]; then
+    node import-whois-to-mongo.js || echo "WHOIS import failed, continuing with status check"
+  fi
+
   node check-status.js
 
   echo ""

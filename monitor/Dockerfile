@@ -13,8 +13,9 @@ RUN npm install --production
 COPY check-status.js ./
 COPY entrypoint.sh ./
 
-# Copy import
+# Copy import scripts
 COPY import-to-mongo.js ./
+COPY import-whois-to-mongo.js ./
 
 RUN chmod +x entrypoint.sh
 
