@@ -533,7 +533,7 @@
     "qualityText": "Si en una verificación el número de sitios activos cae a menos de la mitad de lo habitual, el problema es nuestra conexión y no los sitios: esa verificación se descarta y no aparece en gráficas ni en el historial.",
     "changesTitle": "Cambios",
     "archiveTitle": "Preservación",
-    "archiveText": "Enviamos los sitios activos al Internet Archive como máximo una vez por semana cada uno, para que exista una copia si el sitio desaparece.",
+    "archiveText": "Cada día enviamos al Internet Archive una copia de todos los sitios activos, empezando por los que nunca se archivaron y los que acaban de cambiar, para que quede constancia si un sitio desaparece. Los sitios caídos no se envían.",
     "estimatesTitle": "Clasificación estimada",
     "estimatesText": "El nivel de gobierno, el estado y el sector se deducen del nombre del dominio, porque el registro WHOIS no identifica al organismo en la mayoría de los casos. Son aproximaciones."
   }

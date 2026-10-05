@@ -7,7 +7,6 @@ const path = require('path');
 const { categorize, countCategories } = require('./classify');
 const { annotateHosting } = require('./hosting');
 const { HistoryTracker, assessValidity, recentActiveCounts, ensureIndexes } = require('./history');
-const { archiveActiveSites } = require('./archive');
 
 const TIMEOUT_MS = parseInt(process.env.TIMEOUT_MS || '30000', 10);
 const CONCURRENCY = Math.max(1, parseInt(process.env.CONCURRENCY || '50', 10));
@@ -1113,12 +1112,6 @@ async function saveToMongoDB(results, summary, checkDuration, maxRetries = 3) {
         console.error(`${C.red}History update failed:${C.reset} ${err.message}`);
       }
 
-      try {
-        // Send active sites to the Internet Archive (rate limited, see archive.js)
-        await archiveActiveSites(db);
-      } catch (err) {
-        console.error(`${C.red}Archive step failed:${C.reset} ${err.message}`);
-      }
 
       // Get total count
       const totalChecks = await checksCollection.countDocuments();

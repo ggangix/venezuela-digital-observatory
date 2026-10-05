@@ -41,6 +41,17 @@ while true; do
 
   node check-status.js
 
+  # Send active sites to the Internet Archive in the background (see archive.js),
+  # so archiving never delays the next check. Skip if the previous run is still going.
+  if [ -n "$MONGO_URI" ]; then
+    if [ -z "$ARCHIVE_PID" ] || ! kill -0 "$ARCHIVE_PID" 2>/dev/null; then
+      node archive.js &
+      ARCHIVE_PID=$!
+    else
+      echo "Internet Archive: previous run still in progress, skipping"
+    fi
+  fi
+
   echo ""
   echo "Next check in $(($INTERVAL / 3600)) hours..."
   echo ""

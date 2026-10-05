@@ -533,7 +533,7 @@
     "qualityText": "If the number of active sites in a check drops below half of the usual, the problem is our connection, not the sites: that check is discarded and does not appear in charts or history.",
     "changesTitle": "Changes",
     "archiveTitle": "Preservation",
-    "archiveText": "We submit active sites to the Internet Archive at most once a week each, so a copy exists if the site disappears.",
+    "archiveText": "Every day we send a copy of every active site to the Internet Archive, starting with those never archived and those that just changed, so a record remains if a site disappears. Sites that are down are not sent.",
     "estimatesTitle": "Estimated classification",
     "estimatesText": "Level of government, state and sector are inferred from the domain name, because WHOIS does not identify the agency in most cases. They are approximations."
   }
