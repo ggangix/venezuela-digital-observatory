@@ -160,6 +160,8 @@ class HistoryTracker {
           to: category,
           detectedAt: at,
           previousSince: s.since,
+          // The previous state was already there when monitoring started: its real start is unknown
+          previousSinceIsStart: new Date(s.since).getTime() === new Date(s.firstSeenAt).getTime(),
           intermittent: recent.length >= INTERMITTENT_MIN_CHANGES - 1,
         });
         recent.push(s.pending.since);
