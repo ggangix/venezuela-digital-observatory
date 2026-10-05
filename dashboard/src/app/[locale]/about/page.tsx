@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
-import { ArrowLeft, Eye, Database, Users, Scale, Github, Coffee } from 'lucide-react';
+import { ArrowLeft, Eye, Database, Users, Scale, Github, Coffee, Clock, Tags, MapPin, ShieldCheck, Activity, Archive, Layers } from 'lucide-react';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -26,6 +26,18 @@ export default async function AboutPage({ params }: Props) {
 
   const t = await getTranslations('about');
   const tFooter = await getTranslations('footer');
+  const tm = await getTranslations('methodology');
+  const tc = await getTranslations('categories');
+  const tChanges = await getTranslations('changes');
+
+  const methodology = [
+    { icon: Clock, title: tm('frequency'), text: tm('frequencyText') },
+    { icon: MapPin, title: tm('vantage'), text: tm('vantageText') },
+    { icon: ShieldCheck, title: tm('quality'), text: tm('qualityText') },
+    { icon: Activity, title: tm('changesTitle'), text: tChanges('how') },
+    { icon: Archive, title: tm('archiveTitle'), text: tm('archiveText') },
+    { icon: Layers, title: tm('estimatesTitle'), text: tm('estimatesText') },
+  ];
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -147,6 +159,36 @@ export default async function AboutPage({ params }: Props) {
             </li>
           </ul>
         </div>
+
+        {/* Methodology */}
+        <section id="methodology" className="mb-8">
+          <h2 className="mb-4 text-xl font-semibold">{tm('title')}</h2>
+          <div className="card mb-4">
+            <h3 className="mb-3 flex items-center gap-2 font-semibold">
+              <Tags className="h-5 w-5 text-blue-600" />
+              {tm('categoriesTitle')}
+            </h3>
+            <dl className="grid gap-3 text-sm sm:grid-cols-2">
+              {(['active', 'failing', 'no_dns', 'intermittent'] as const).map((c) => (
+                <div key={c}>
+                  <dt className="font-medium">{tc(`${c}.label`)}</dt>
+                  <dd className="text-slate-600 dark:text-slate-400">{tc(`${c}.description`)}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {methodology.map((m) => (
+              <div key={m.title} className="card">
+                <h3 className="mb-2 flex items-center gap-2 font-semibold">
+                  <m.icon className="h-5 w-5 text-blue-600" />
+                  {m.title}
+                </h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400">{m.text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* Open Source & Support */}
         <div className="card bg-slate-50 dark:bg-slate-900">

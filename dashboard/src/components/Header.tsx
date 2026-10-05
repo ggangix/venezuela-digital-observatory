@@ -11,6 +11,7 @@ import { ThemeToggle } from './ThemeToggle';
 const navItems = [
   { key: 'overview', href: '' },
   { key: 'domains', href: '/domains' },
+  { key: 'changes', href: '/changes' },
   { key: 'trends', href: '/trends' },
   { key: 'about', href: '/about' },
 ];

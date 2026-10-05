@@ -148,3 +148,21 @@ export function toCSV(data: Record<string, unknown>[], headers?: string[]): stri
 
   return [csvHeaders, ...csvRows].join('\n');
 }
+
+/**
+ * Format a time span in words ("3 days", "5 meses")
+ */
+export function formatSpan(ms: number, locale: string = 'en'): string {
+  const days = ms / 86400000;
+  const fmt = (value: number, unit: 'hour' | 'day' | 'month' | 'year') =>
+    new Intl.NumberFormat(locale === 'es' ? 'es' : 'en', {
+      style: 'unit',
+      unit,
+      unitDisplay: 'long',
+      maximumFractionDigits: 0,
+    }).format(value);
+  if (days < 1) return fmt(Math.max(1, Math.round(ms / 3600000)), 'hour');
+  if (days < 60) return fmt(Math.round(days), 'day');
+  if (days < 730) return fmt(Math.round(days / 30), 'month');
+  return fmt(Math.round(days / 365), 'year');
+}
