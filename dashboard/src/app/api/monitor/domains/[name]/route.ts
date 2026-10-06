@@ -75,7 +75,7 @@ export async function GET(
       ),
       state.findOne(
         { domain: domainName },
-        { projection: { _id: 0, pending: 0, pendingHosting: 0, recentChanges: 0 } }
+        { projection: { _id: 0, pendingHosting: 0, recentChanges: 0 } }
       ),
       events.find({ domain: domainName }).sort({ at: -1 }).limit(50).project({ _id: 0, checkId: 0 }).toArray(),
       uptimeSince(30),

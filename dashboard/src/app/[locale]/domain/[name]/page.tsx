@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
-import { ArrowLeft, ExternalLink, Shield, Server, Clock, AlertCircle, Globe, ChevronDown, Activity, Archive, Tag } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Shield, Server, Clock, AlertCircle, Globe, ChevronDown, Activity, Archive, Tag, Eye } from 'lucide-react';
 import { SSLBadge } from '@/components/SSLBadge';
 import { CategoryBadge } from '@/components/CategoryBadge';
 import { StatusStrip } from '@/components/StatusStrip';
@@ -27,6 +27,7 @@ type DomainData = {
     lastActiveAt: string | null;
     intermittent?: boolean;
     lastArchivedAt?: string | null;
+    pending?: { category: Category; since: string; count: number } | null;
   } | null;
   events: MonitorEvent[];
   uptime: { last30Days: Uptime; last90Days: Uptime; totalChecks: number };
@@ -94,6 +95,8 @@ export default function DomainDetailPage() {
   const tx = useTranslations('domainExtra');
   const tl = useTranslations('levels');
   const ts = useTranslations('sectors');
+  const tObs = useTranslations('observing');
+  const tc = useTranslations('categories');
   const locale = useLocale();
   const domainName = decodeURIComponent(params.name);
 
@@ -205,6 +208,29 @@ export default function DomainDetailPage() {
           {t('lastChecked')}: {formatDateTime(current.checkedAt, locale)}
         </p>
       </div>
+
+      {/* Unconfirmed change in progress */}
+      {data.state?.pending && data.state.pending.category !== data.state.category && (() => {
+        const p = data.state.pending;
+        const date = formatDateTime(p.since, locale);
+        const title =
+          p.category === 'active'
+            ? tObs('domainUp', { date })
+            : data.state.category === 'active'
+              ? p.category === 'no_dns'
+                ? tObs('domainDownDns', { date })
+                : tObs('domainDown', { date })
+              : tObs('domainTransition', { to: tc(`${p.category}.one`), date });
+        return (
+          <div className="mb-6 flex gap-3 rounded-lg border border-amber-300 bg-amber-50 p-4 dark:border-amber-800 dark:bg-amber-950/30">
+            <Eye className="mt-0.5 h-5 w-5 shrink-0 text-amber-600" />
+            <div>
+              <p className="font-medium text-amber-900 dark:text-amber-200">{title}</p>
+              <p className="text-sm text-amber-800/80 dark:text-amber-300/80">{tObs('domainHelp', { count: p.count })}</p>
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Availability: uptime + one bar per recent check */}
       <div className="card mb-6">

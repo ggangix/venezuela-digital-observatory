@@ -14,6 +14,7 @@ import {
   Rss,
   Activity,
   RefreshCw,
+  Eye,
 } from 'lucide-react';
 import {
   LineChart,
@@ -55,6 +56,7 @@ type TrendData = {
 type EventsData = {
   events: MonitorEvent[];
   intermittentLast30Days: number;
+  observing: unknown[];
 };
 
 export default function OverviewPage() {
@@ -64,6 +66,7 @@ export default function OverviewPage() {
   const tEvents = useTranslations('events');
   const tAnalysis = useTranslations('analysis');
   const tCat = useTranslations('categories');
+  const tObs = useTranslations('observing');
   const locale = useLocale();
 
   const [summary, setSummary] = useState<SummaryData | null>(null);
@@ -196,6 +199,15 @@ export default function OverviewPage() {
                 </a>
               </div>
               <p className="mb-2 text-xs text-muted-foreground">{tEvents('subtitle')}</p>
+              {events && events.observing?.length > 0 && (
+                <Link
+                  href={`/${locale}/changes#observing`}
+                  className="mb-2 inline-flex items-center gap-1.5 rounded-md bg-amber-50 px-2 py-1 text-xs font-medium text-amber-800 hover:bg-amber-100 dark:bg-amber-900/20 dark:text-amber-300"
+                >
+                  <Eye className="h-3.5 w-3.5" />
+                  {tObs('homeLine', { count: events.observing.length })}
+                </Link>
+              )}
               <EventList events={events?.events || []} />
               <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-slate-100 pt-3 dark:border-slate-800">
                 {events && events.intermittentLast30Days > 0 ? (
