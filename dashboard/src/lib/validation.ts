@@ -6,12 +6,13 @@ export const domainsQuerySchema = z.object({
   category: z.enum(['active', 'failing', 'no_dns', 'intermittent', 'all']).default('all'),
   level: z.enum(['national', 'state', 'municipal', 'military', 'all']).default('all'),
   state: z.string().max(40).optional(),
+  year: z.coerce.number().int().min(1990).max(2100).optional(),
   ssl: z.enum(['valid', 'invalid', 'none', 'all']).default('all'),
   httpCode: z.enum(['2xx', '3xx', '4xx', '5xx', 'error', 'all']).default('all'),
   search: z.string().max(100).optional(),
   page: z.coerce.number().int().positive().default(1),
   limit: z.coerce.number().int().min(1).max(100).default(50),
-  sort: z.enum(['domain', 'responseTime', 'checkedAt', 'httpCode', 'status', 'since']).default('status'),
+  sort: z.enum(['domain', 'responseTime', 'checkedAt', 'httpCode', 'status', 'since', 'registered']).default('status'),
   order: z.enum(['asc', 'desc']).default('asc'),
 });
 

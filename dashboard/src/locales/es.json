@@ -483,12 +483,23 @@
   "domainsExtra": {
     "category": "Estado",
     "level": "Nivel",
-    "allCategories": "Todos los estados",
+    "allCategories": "Disponibilidad: todas",
     "allLevels": "Todos los niveles",
     "since": "Desde",
-    "allStates": "Todos los estados del país",
+    "allStates": "Estado del país: todos",
     "state": "Estado del país",
-    "sinceStart": "desde el inicio"
+    "sinceStart": "desde el inicio",
+    "registeredYear": "Año de registro",
+    "allYears": "Cualquier año de registro",
+    "registeredIn": "Registrados en {year}",
+    "registered": "Registrado",
+    "sortBy": "Ordenar",
+    "sort": {
+      "status": "Ordenar por estado",
+      "registered-desc": "Registro más reciente",
+      "registered-asc": "Registro más antiguo",
+      "domain": "Nombre (A-Z)"
+    }
   },
   "analysis": {
     "activeOverTime": "Sitios activos en el tiempo",
@@ -520,7 +531,8 @@
       "none": "Sin datos"
     },
     "infraOverTime": "Sitios con infraestructura en el tiempo",
-    "noDnsHidden": "Los {count} dominios sin DNS no se muestran."
+    "noDnsHidden": "Los {count} dominios sin DNS no se muestran.",
+    "registrationsClick": "Haz clic en un año para ver sus dominios."
   },
   "methodology": {
     "title": "Cómo medimos",

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import {
   Shield,
@@ -141,6 +142,7 @@ export default function TrendsPage() {
   const tl = useTranslations('levels');
   const tCommon = useTranslations('common');
   const locale = useLocale();
+  const router = useRouter();
 
   const [data, setData] = useState<TrendData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -310,7 +312,8 @@ export default function TrendsPage() {
                 {ta('registrations')}
               </h2>
               <p className="mb-4 text-sm text-muted-foreground">
-                {ta('registrationsDesc', { total: formatNumberWithSeparator(registrationsTotal, locale) })}
+                {ta('registrationsDesc', { total: formatNumberWithSeparator(registrationsTotal, locale) })}{' '}
+                <span className="font-medium text-foreground">{ta('registrationsClick')}</span>
               </p>
               <div className="h-[240px]">
                 <ResponsiveContainer width="100%" height="100%">
@@ -319,7 +322,15 @@ export default function TrendsPage() {
                     <XAxis dataKey="year" tick={{ fontSize: 11 }} tickLine={false} axisLine={false} minTickGap={20} />
                     <YAxis tick={{ fontSize: 11 }} tickLine={false} axisLine={false} allowDecimals={false} />
                     <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(value: number) => [value, t('legend.domains')]} />
-                    <Bar dataKey="count" fill="#10b981" radius={[3, 3, 0, 0]} />
+                    <Bar
+                      dataKey="count"
+                      fill="#10b981"
+                      radius={[3, 3, 0, 0]}
+                      cursor="pointer"
+                      onClick={(entry: { year?: number }) => {
+                        if (entry?.year) router.push(`/${locale}/domains?year=${entry.year}`);
+                      }}
+                    />
                   </BarChart>
                 </ResponsiveContainer>
               </div>

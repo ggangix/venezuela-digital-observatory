@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
     const searchParams = Object.fromEntries(request.nextUrl.searchParams);
     const query = domainsQuerySchema.parse(searchParams);
 
-    const { checks, domains, state } = await getMonitorCollection();
+    const { checks, domains, state, whois } = await getMonitorCollection();
 
     const latestCheck = await getLatestValidCheck(checks);
 
@@ -71,7 +71,7 @@ export async function GET(request: NextRequest) {
 
     // One check holds ~2,600 small records: join with per-domain state and
     // name-based classification in memory, then filter, sort and paginate.
-    const [records, states] = await Promise.all([
+    const [records, states, whoisRows] = await Promise.all([
       domains
         .find(filter)
         .project<DomainRecord>({
@@ -95,8 +95,10 @@ export async function GET(request: NextRequest) {
         .find({})
         .project({ _id: 0, domain: 1, since: 1, firstSeenAt: 1, intermittent: 1, lastActiveAt: 1, firstActiveAt: 1 })
         .toArray(),
+      whois.find({}).project({ _id: 0, domain: 1, registeredDate: 1, org: 1 }).toArray(),
     ]);
     const stateByDomain = new Map(states.map((s) => [s.domain, s]));
+    const whoisByDomain = new Map(whoisRows.map((w) => [w.domain, w]));
 
     let rows = records.map((r) => {
       const s = stateByDomain.get(r.domain);
@@ -110,6 +112,8 @@ export async function GET(request: NextRequest) {
         intermittent: s?.intermittent === true,
         lastActiveAt: s?.lastActiveAt ?? null,
         everActive: !!s?.firstActiveAt,
+        registeredDate: (whoisByDomain.get(r.domain)?.registeredDate as Date | null) ?? null,
+        org: (whoisByDomain.get(r.domain)?.org as string | null) ?? null,
         ...classification,
       };
     });
@@ -118,6 +122,7 @@ export async function GET(request: NextRequest) {
     else if (query.category !== 'all') rows = rows.filter((r) => r.category === query.category);
     if (query.level !== 'all') rows = rows.filter((r) => r.level === query.level);
     if (query.state) rows = rows.filter((r) => r.state === query.state);
+    if (query.year) rows = rows.filter((r) => r.registeredDate && new Date(r.registeredDate).getUTCFullYear() === query.year);
 
     const dir = query.order === 'asc' ? 1 : -1;
     const value = (r: (typeof rows)[number]): number | string => {
@@ -128,6 +133,8 @@ export async function GET(request: NextRequest) {
           return r.domain;
         case 'since':
           return r.since ? new Date(r.since).getTime() : 0;
+        case 'registered':
+          return r.registeredDate ? new Date(r.registeredDate).getTime() : 0;
         case 'checkedAt':
           return new Date(r.checkedAt).getTime();
         default:
