@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Search, Filter, ChevronLeft, ChevronRight } from 'lucide-react';
 import { CategoryBadge } from '@/components/CategoryBadge';
 import { SSLBadge } from '@/components/SSLBadge';
-import { formatResponseTime, formatRelativeTime } from '@/lib/utils';
+import { formatResponseTime, formatRelativeTime, formatDate } from '@/lib/utils';
 import { VE_STATES } from '@/lib/classify';
 import type { Category } from '@/lib/checks';
 
@@ -14,6 +14,15 @@ type CategoryFilter = 'all' | Category | 'intermittent';
 type LevelFilter = 'all' | 'national' | 'state' | 'municipal' | 'military';
 const CATEGORY_FILTERS: CategoryFilter[] = ['all', 'active', 'failing', 'no_dns', 'intermittent'];
 const LEVEL_FILTERS: LevelFilter[] = ['all', 'national', 'state', 'municipal', 'military'];
+type SortOption = 'status' | 'registered-desc' | 'registered-asc' | 'domain';
+const SORT_OPTIONS: Record<SortOption, { sort: string; order: string }> = {
+  status: { sort: 'status', order: 'asc' },
+  'registered-desc': { sort: 'registered', order: 'desc' },
+  'registered-asc': { sort: 'registered', order: 'asc' },
+  domain: { sort: 'domain', order: 'asc' },
+};
+const FIRST_YEAR = 1997;
+const YEARS = Array.from({ length: new Date().getFullYear() - FIRST_YEAR + 1 }, (_, i) => new Date().getFullYear() - i);
 
 type Domain = {
   domain: string;
@@ -21,6 +30,7 @@ type Domain = {
   intermittent: boolean;
   since: string | null;
   sinceStart: boolean;
+  registeredDate: string | null;
   status: 'online' | 'offline';
   httpCode: number | null;
   responseTime: number | null;
@@ -56,6 +66,8 @@ export default function DomainsPage() {
   const [category, setCategory] = useState<CategoryFilter>('all');
   const [level, setLevel] = useState<LevelFilter>('all');
   const [stateId, setStateId] = useState('');
+  const [year, setYear] = useState('');
+  const [sortOption, setSortOption] = useState<SortOption>('status');
   const [ready, setReady] = useState(false);
   const [ssl, setSsl] = useState<'all' | 'valid' | 'invalid' | 'none'>('all');
   const [httpCode, setHttpCode] = useState<'all' | '2xx' | '3xx' | '4xx' | '5xx' | 'error'>('all');
@@ -70,6 +82,11 @@ export default function DomainsPage() {
     if (c && CATEGORY_FILTERS.includes(c)) setCategory(c);
     if (l && LEVEL_FILTERS.includes(l)) setLevel(l);
     if (st && VE_STATES.some((s) => s.id === st)) setStateId(st);
+    const y = params.get('year');
+    if (y && YEARS.includes(Number(y))) {
+      setYear(y);
+      setSortOption('registered-desc');
+    }
     setReady(true);
   }, []);
 
@@ -83,6 +100,8 @@ export default function DomainsPage() {
         category,
         level,
         ...(stateId && { state: stateId }),
+        ...(year && { year }),
+        ...SORT_OPTIONS[sortOption],
         ssl,
         httpCode,
         ...(search && { search }),
@@ -97,7 +116,7 @@ export default function DomainsPage() {
       console.error('Failed to fetch domains:', error);
     }
     setLoading(false);
-  }, [ready, page, category, level, stateId, ssl, httpCode, search]);
+  }, [ready, page, category, level, stateId, year, sortOption, ssl, httpCode, search]);
 
   useEffect(() => {
     fetchDomains();
@@ -106,7 +125,7 @@ export default function DomainsPage() {
   // Reset page when filters change
   useEffect(() => {
     setPage(1);
-  }, [category, level, stateId, ssl, httpCode, search]);
+  }, [category, level, stateId, year, sortOption, ssl, httpCode, search]);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -177,6 +196,35 @@ export default function DomainsPage() {
           ))}
         </select>
 
+        {/* Registration year Filter */}
+        <select
+          value={year}
+          onChange={(e) => setYear(e.target.value)}
+          className="input w-auto"
+          aria-label={tx('registeredYear')}
+        >
+          <option value="">{tx('allYears')}</option>
+          {YEARS.map((y) => (
+            <option key={y} value={y}>
+              {tx('registeredIn', { year: y })}
+            </option>
+          ))}
+        </select>
+
+        {/* Sort */}
+        <select
+          value={sortOption}
+          onChange={(e) => setSortOption(e.target.value as SortOption)}
+          className="input w-auto"
+          aria-label={tx('sortBy')}
+        >
+          {(Object.keys(SORT_OPTIONS) as SortOption[]).map((o) => (
+            <option key={o} value={o}>
+              {tx(`sort.${o}`)}
+            </option>
+          ))}
+        </select>
+
         {/* SSL Filter */}
         <select
           value={ssl}
@@ -229,6 +277,7 @@ export default function DomainsPage() {
                   <th>{t('columns.responseTime')}</th>
                   <th>{t('columns.ssl')}</th>
                   <th className="hidden lg:table-cell">{tx('since')}</th>
+                  <th className="hidden sm:table-cell">{tx('registered')}</th>
                   <th className="hidden md:table-cell">{t('columns.lastCheck')}</th>
                 </tr>
               </thead>
@@ -257,6 +306,9 @@ export default function DomainsPage() {
                     </td>
                     <td className="hidden text-sm text-muted-foreground lg:table-cell">
                       {domain.sinceStart ? tx('sinceStart') : domain.since ? formatRelativeTime(domain.since, locale) : '-'}
+                    </td>
+                    <td className="hidden text-sm text-muted-foreground sm:table-cell">
+                      {domain.registeredDate ? formatDate(domain.registeredDate, locale) : '-'}
                     </td>
                     <td className="hidden text-sm text-muted-foreground md:table-cell">
                       {formatRelativeTime(domain.checkedAt, locale)}

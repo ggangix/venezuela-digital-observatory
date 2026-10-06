@@ -483,12 +483,23 @@
   "domainsExtra": {
     "category": "Status",
     "level": "Level",
-    "allCategories": "All statuses",
+    "allCategories": "Availability: all",
     "allLevels": "All levels",
     "since": "Since",
-    "allStates": "All Venezuelan states",
+    "allStates": "State: all",
     "state": "State",
-    "sinceStart": "since start"
+    "sinceStart": "since start",
+    "registeredYear": "Registration year",
+    "allYears": "Any registration year",
+    "registeredIn": "Registered in {year}",
+    "registered": "Registered",
+    "sortBy": "Sort",
+    "sort": {
+      "status": "Sort by status",
+      "registered-desc": "Newest registration",
+      "registered-asc": "Oldest registration",
+      "domain": "Name (A-Z)"
+    }
   },
   "analysis": {
     "activeOverTime": "Active sites over time",
@@ -520,7 +531,8 @@
       "none": "No data"
     },
     "infraOverTime": "Sites with infrastructure over time",
-    "noDnsHidden": "The {count} domains without DNS are not shown."
+    "noDnsHidden": "The {count} domains without DNS are not shown.",
+    "registrationsClick": "Click a year to see its domains."
   },
   "methodology": {
     "title": "How we measure",
