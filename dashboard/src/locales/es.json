@@ -499,7 +499,9 @@
       "registered-desc": "Registro más reciente",
       "registered-asc": "Registro más antiguo",
       "domain": "Nombre (A-Z)"
-    }
+    },
+    "filters": "Filtros",
+    "clearFilters": "Limpiar filtros"
   },
   "analysis": {
     "activeOverTime": "Sitios activos en el tiempo",

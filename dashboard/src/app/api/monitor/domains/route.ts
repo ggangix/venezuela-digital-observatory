@@ -118,11 +118,21 @@ export async function GET(request: NextRequest) {
       };
     });
 
-    if (query.category === 'intermittent') rows = rows.filter((r) => r.intermittent);
-    else if (query.category !== 'all') rows = rows.filter((r) => r.category === query.category);
     if (query.level !== 'all') rows = rows.filter((r) => r.level === query.level);
     if (query.state) rows = rows.filter((r) => r.state === query.state);
     if (query.year) rows = rows.filter((r) => r.registeredDate && new Date(r.registeredDate).getUTCFullYear() === query.year);
+
+    // Counts per availability tab, given every other filter
+    const categoryCounts = {
+      all: rows.length,
+      active: rows.filter((r) => r.category === 'active').length,
+      failing: rows.filter((r) => r.category === 'failing').length,
+      no_dns: rows.filter((r) => r.category === 'no_dns').length,
+      intermittent: rows.filter((r) => r.intermittent).length,
+    };
+
+    if (query.category === 'intermittent') rows = rows.filter((r) => r.intermittent);
+    else if (query.category !== 'all') rows = rows.filter((r) => r.category === query.category);
 
     const dir = query.order === 'asc' ? 1 : -1;
     const value = (r: (typeof rows)[number]): number | string => {
@@ -158,6 +168,7 @@ export async function GET(request: NextRequest) {
       page: query.page,
       limit: query.limit,
       totalPages: Math.ceil(total / query.limit),
+      categoryCounts,
     });
   } catch (error) {
     console.error('Error fetching domains:', error);
