@@ -27,7 +27,9 @@ const AUTHENTICATED = !!(IA_ACCESS_KEY && IA_SECRET_KEY);
 const ARCHIVE_ENABLED = (process.env.ARCHIVE_ENABLED || 'true').toLowerCase() === 'true';
 const ARCHIVE_INTERVAL_HOURS = Math.max(1, parseInt(process.env.ARCHIVE_INTERVAL_HOURS || '24', 10));
 const ARCHIVE_MAX_PER_RUN = Math.max(0, parseInt(process.env.ARCHIVE_MAX_PER_RUN || (AUTHENTICATED ? '1000' : '20'), 10));
-const ARCHIVE_DELAY_MS = Math.max(0, parseInt(process.env.ARCHIVE_DELAY_MS || (AUTHENTICATED ? '5000' : '20000'), 10));
+const ARCHIVE_DELAY_MS = Math.max(0, parseInt(process.env.ARCHIVE_DELAY_MS || (AUTHENTICATED ? '15000' : '20000'), 10));
+const RATE_LIMIT_WAIT_MS = 60000;
+const MAX_CONSECUTIVE_RATE_LIMITS = 5;
 const ARCHIVE_SKIP_IF_WITHIN = process.env.ARCHIVE_SKIP_IF_WITHIN || '20h';
 const RECENT_CHANGE_HOURS = 48;
 const SLOT_WAIT_MAX_MS = 5 * 60000;
@@ -139,11 +141,27 @@ async function archiveActiveSites(db) {
 
   let ok = 0;
   let failed = 0;
+  let consecutiveRateLimits = 0;
   for (let i = 0; i < candidates.length; i++) {
     const { domain, url } = candidates[i];
     if (AUTHENTICATED) await waitForSlot();
 
     const result = await submit(url || `https://${domain}`);
+
+    // 429 = too many captures in progress: wait and retry the same site.
+    // Only give up for this run if the archive keeps refusing.
+    if (result.status === 429) {
+      consecutiveRateLimits++;
+      if (consecutiveRateLimits >= MAX_CONSECUTIVE_RATE_LIMITS) {
+        console.log(`  rate limited by archive.org ${consecutiveRateLimits} times in a row, stopping until next run`);
+        break;
+      }
+      await sleep(RATE_LIMIT_WAIT_MS);
+      i--;
+      continue;
+    }
+    consecutiveRateLimits = 0;
+
     if (result.ok) ok++;
     else failed++;
     await state.updateOne({ domain }, {
@@ -154,12 +172,6 @@ async function archiveActiveSites(db) {
       },
     });
     if (!result.ok) console.log(`  err ${domain} (${result.status}${result.message ? `: ${result.message}` : ''})`);
-
-    // Back off for the rest of this run if the archive is rate limiting us
-    if (result.status === 429) {
-      console.log('  rate limited by archive.org, stopping until next run');
-      break;
-    }
     if (i < candidates.length - 1) await sleep(ARCHIVE_DELAY_MS);
   }
 
