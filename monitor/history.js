@@ -6,7 +6,8 @@
  *                      first/last time seen active, hosting, SSL, archive bookkeeping
  *   ve_monitor_events  one document per confirmed change (status, hosting, SSL, new domain)
  *
- * A status change is only confirmed after CONFIRM_CHECKS consecutive checks agree,
+ * A status change is only confirmed after CONFIRM_CHECKS consecutive checks agree
+ * and at least CONFIRM_MIN_HOURS have passed since the first one,
  * so a single flaky check does not produce "went down / came back" noise.
  * The event is dated at the first check that observed the new state.
  * Domains that keep changing (INTERMITTENT_MIN_CHANGES in INTERMITTENT_WINDOW_DAYS)
@@ -17,6 +18,8 @@
 const { categorize } = require('./classify');
 
 const CONFIRM_CHECKS = Math.max(1, parseInt(process.env.CONFIRM_CHECKS || '4', 10)); // 4 checks = 24h
+// Also require elapsed time: extra checks (e.g. after a restart) must not shorten the window
+const CONFIRM_MIN_HOURS = Math.max(0, parseFloat(process.env.CONFIRM_MIN_HOURS || '18'));
 const INTERMITTENT_WINDOW_DAYS = 30;
 const INTERMITTENT_MIN_CHANGES = 3;
 const VALIDITY_WINDOW = 20;
@@ -152,7 +155,8 @@ class HistoryTracker {
       } else {
         s.pending = { category, since: at, count: 1 };
       }
-      if (s.pending.count >= CONFIRM_CHECKS) {
+      const pendingHours = (at - new Date(s.pending.since)) / 3600000;
+      if (s.pending.count >= CONFIRM_CHECKS && pendingHours >= CONFIRM_MIN_HOURS) {
         const windowStart = new Date(at.getTime() - INTERMITTENT_WINDOW_DAYS * DAY_MS);
         const recent = (s.recentChanges || []).filter(d => new Date(d) >= windowStart);
         this.emit('status', domain, s.pending.since, checkId, {

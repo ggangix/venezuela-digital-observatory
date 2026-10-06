@@ -445,7 +445,7 @@
     "title": "Changes",
     "subtitle": "Every site that goes down, comes back, changes hosting or appears, with the date we detected it.",
     "howTitle": "How a change is detected",
-    "how": "A change is published once it holds for 4 consecutive checks (24 hours), so momentary outages are not reported. The date is the first check that observed it. Sites that change status 3 or more times in 30 days are grouped as intermittent."
+    "how": "A change is published once it holds for at least 24 hours (4 consecutive checks), so momentary outages are not reported. Until then it shows as “under observation”. The date is the first check that observed it. Sites that change status 3 or more times in 30 days are grouped as intermittent."
   },
   "domainExtra": {
     "since": "In this state since {date}",
@@ -550,5 +550,21 @@
     "archiveText": "Every day we send a copy of every active site to the Internet Archive, starting with those never archived and those that just changed, so a record remains if a site disappears. Sites that are down are not sent.",
     "estimatesTitle": "Estimated classification",
     "estimatesText": "Level of government, state and sector are inferred from the domain name, because WHOIS does not identify the agency in most cases. They are approximations."
+  },
+  "observing": {
+    "title": "Under observation",
+    "description": "Changes seen in the latest checks that have not held for 24 hours yet. If they persist they move to the change list; otherwise they are dropped.",
+    "down": "not responding since {date}",
+    "downDns": "not resolving in DNS since {date}",
+    "up": "responding again since {date}",
+    "transition": "went from {from} to {to} on {date}",
+    "checks": "{count, plural, one {# check} other {# checks in a row}}",
+    "homeLine": "{count, plural, one {# site} other {# sites}} under observation (unconfirmed)",
+    "showAll": "View all ({count})",
+    "domainDown": "Under observation: not responding since {date}",
+    "domainDownDns": "Under observation: not resolving in DNS since {date}",
+    "domainUp": "Under observation: responding again since {date}",
+    "domainTransition": "Under observation: became “{to}” on {date}",
+    "domainHelp": "{count, plural, one {# check} other {# checks in a row}}. It will be recorded as a change if it holds for 24 hours."
   }
 }

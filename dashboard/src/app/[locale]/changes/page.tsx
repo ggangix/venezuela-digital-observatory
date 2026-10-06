@@ -2,8 +2,9 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Activity, ChevronDown, Info, Rss } from 'lucide-react';
+import { Activity, ChevronDown, Eye, Info, Rss } from 'lucide-react';
 import { EventList, type MonitorEvent } from '@/components/EventList';
+import { ObservingList, type ObservingItem } from '@/components/ObservingList';
 import { cn } from '@/lib/utils';
 
 type Filter = 'all' | 'up' | 'down' | 'new_domain' | 'hosting_change';
@@ -19,12 +20,15 @@ const FILTER_PARAMS: Record<Filter, string> = {
 export default function ChangesPage() {
   const t = useTranslations('changes');
   const tEvents = useTranslations('events');
+  const tObs = useTranslations('observing');
 
   const [filter, setFilter] = useState<Filter>('all');
   const [intermittent, setIntermittent] = useState(false);
   const [events, setEvents] = useState<MonitorEvent[]>([]);
   const [nextBefore, setNextBefore] = useState<string | null>(null);
   const [intermittentCount, setIntermittentCount] = useState(0);
+  const [observing, setObserving] = useState<ObservingItem[]>([]);
+  const [showAllObserving, setShowAllObserving] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const load = useCallback(
@@ -38,6 +42,7 @@ export default function ChangesPage() {
           setEvents((prev) => (before ? [...prev, ...data.events] : data.events));
           setNextBefore(data.nextBefore);
           setIntermittentCount(data.intermittentLast30Days);
+          if (!before) setObserving(filter === 'all' || filter === 'up' || filter === 'down' ? data.observing || [] : []);
         }
       } catch (error) {
         console.error('Failed to fetch events:', error);
@@ -101,6 +106,23 @@ export default function ChangesPage() {
           {intermittentCount > 0 && <span className="badge badge-intermittent">{intermittentCount}</span>}
         </label>
       </div>
+
+      {observing.length > 0 && (
+        <div id="observing" className="card mb-6 border-amber-200 bg-amber-50/40 dark:border-amber-900/50 dark:bg-amber-950/10">
+          <h2 className="mb-1 flex items-center gap-2 text-lg font-semibold">
+            <Eye className="h-5 w-5 text-amber-600" />
+            {tObs('title')}
+            <span className="badge badge-failing">{observing.length}</span>
+          </h2>
+          <p className="mb-2 text-sm text-muted-foreground">{tObs('description')}</p>
+          <ObservingList items={showAllObserving ? observing : observing.slice(0, 8)} />
+          {observing.length > 8 && !showAllObserving && (
+            <button onClick={() => setShowAllObserving(true)} className="mt-2 text-sm font-medium text-blue-600 hover:underline">
+              {tObs('showAll', { count: observing.length })}
+            </button>
+          )}
+        </div>
+      )}
 
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="card lg:col-span-2">

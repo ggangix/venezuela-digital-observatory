@@ -445,7 +445,7 @@
     "title": "Cambios",
     "subtitle": "Cada sitio que se cae, vuelve, cambia de alojamiento o aparece, con la fecha en que lo detectamos.",
     "howTitle": "Cómo se detecta un cambio",
-    "how": "Un cambio se publica cuando se mantiene durante 4 verificaciones seguidas (24 horas), para no reportar caídas momentáneas. La fecha es la de la primera verificación que lo observó. Los sitios que cambian de estado 3 o más veces en 30 días se agrupan como intermitentes."
+    "how": "Un cambio se publica cuando se mantiene al menos 24 horas (4 verificaciones seguidas), para no reportar caídas momentáneas. Mientras tanto aparece como «en observación». La fecha es la de la primera verificación que lo observó. Los sitios que cambian de estado 3 o más veces en 30 días se agrupan como intermitentes."
   },
   "domainExtra": {
     "since": "En este estado desde {date}",
@@ -550,5 +550,21 @@
     "archiveText": "Cada día enviamos al Internet Archive una copia de todos los sitios activos, empezando por los que nunca se archivaron y los que acaban de cambiar, para que quede constancia si un sitio desaparece. Los sitios caídos no se envían.",
     "estimatesTitle": "Clasificación estimada",
     "estimatesText": "El nivel de gobierno, el estado y el sector se deducen del nombre del dominio, porque el registro WHOIS no identifica al organismo en la mayoría de los casos. Son aproximaciones."
+  },
+  "observing": {
+    "title": "En observación",
+    "description": "Cambios vistos en las últimas revisiones que aún no cumplen 24 horas. Si se mantienen, pasarán a la lista de cambios; si no, se descartan.",
+    "down": "no responde desde el {date}",
+    "downDns": "no resuelve en DNS desde el {date}",
+    "up": "vuelve a responder desde el {date}",
+    "transition": "pasó de {from} a {to} el {date}",
+    "checks": "{count, plural, one {# revisión seguida} other {# revisiones seguidas}}",
+    "homeLine": "{count, plural, one {# sitio} other {# sitios}} en observación (sin confirmar)",
+    "showAll": "Ver todos ({count})",
+    "domainDown": "En observación: no responde desde el {date}",
+    "domainDownDns": "En observación: no resuelve en DNS desde el {date}",
+    "domainUp": "En observación: vuelve a responder desde el {date}",
+    "domainTransition": "En observación: pasó a «{to}» el {date}",
+    "domainHelp": "{count, plural, one {# revisión seguida} other {# revisiones seguidas}}. Se registrará como cambio si se mantiene 24 horas."
   }
 }
