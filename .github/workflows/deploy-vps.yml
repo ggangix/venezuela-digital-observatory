@@ -53,6 +53,10 @@ jobs:
 
   deploy-dashboard:
     needs: detect-changes
+    # Both jobs update the same checkout on the server: run them one at a time
+    concurrency:
+      group: vps-checkout
+      cancel-in-progress: false
     if: needs.detect-changes.outputs.dashboard == 'true' || github.event.inputs.service == 'dashboard' || github.event.inputs.service == 'both'
     runs-on: ubuntu-latest
     steps:
@@ -89,6 +93,10 @@ jobs:
 
   deploy-monitor:
     needs: detect-changes
+    # Both jobs update the same checkout on the server: run them one at a time
+    concurrency:
+      group: vps-checkout
+      cancel-in-progress: false
     if: needs.detect-changes.outputs.monitor == 'true' || github.event.inputs.service == 'monitor' || github.event.inputs.service == 'both'
     runs-on: ubuntu-latest
     steps:
