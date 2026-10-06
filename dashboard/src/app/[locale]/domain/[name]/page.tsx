@@ -4,14 +4,35 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
-import { ArrowLeft, ExternalLink, Shield, Server, Clock, AlertCircle, Globe, ChevronDown } from 'lucide-react';
-import { StatusBadge } from '@/components/StatusBadge';
+import { ArrowLeft, ExternalLink, Shield, Server, Clock, AlertCircle, Globe, ChevronDown, Activity, Archive, Tag } from 'lucide-react';
 import { SSLBadge } from '@/components/SSLBadge';
-import { formatResponseTime, formatDateTime, formatDate, cn } from '@/lib/utils';
+import { CategoryBadge } from '@/components/CategoryBadge';
+import { StatusStrip } from '@/components/StatusStrip';
+import { EventList, type MonitorEvent } from '@/components/EventList';
+import { formatResponseTime, formatDateTime, formatDate, formatRelativeTime, percentage, cn } from '@/lib/utils';
+import { categorize, type Category } from '@/lib/checks';
+import { stateName } from '@/lib/classify';
+
+type Uptime = { checks: number; active: number };
 
 type DomainData = {
   domain: string;
+  classification: { level: string; state: string | null; sector: string };
+  strip: { checkedAt: string; category: Category; httpCode: number | null }[];
+  state: {
+    category: Category;
+    since: string;
+    firstSeenAt: string;
+    firstActiveAt: string | null;
+    lastActiveAt: string | null;
+    intermittent?: boolean;
+    lastArchivedAt?: string | null;
+  } | null;
+  events: MonitorEvent[];
+  uptime: { last30Days: Uptime; last90Days: Uptime; totalChecks: number };
   current: {
+    category: Category;
+    hosting?: { ip?: string; asn: number; asName?: string | null; country?: string | null } | null;
     status: 'online' | 'offline';
     httpCode: number | null;
     responseTime: number | null;
@@ -70,6 +91,9 @@ type DomainData = {
 export default function DomainDetailPage() {
   const params = useParams<{ name: string }>();
   const t = useTranslations('domain');
+  const tx = useTranslations('domainExtra');
+  const tl = useTranslations('levels');
+  const ts = useTranslations('sectors');
   const locale = useLocale();
   const domainName = decodeURIComponent(params.name);
 
@@ -151,7 +175,7 @@ export default function DomainDetailPage() {
       <div className="mb-8">
         <div className="flex flex-wrap items-center gap-4">
           <h1 className="font-mono text-2xl md:text-3xl">{data.domain}</h1>
-          <StatusBadge status={current.status} />
+          <CategoryBadge category={current.category} intermittent={data.state?.intermittent} />
           <a
             href={`https://${data.domain}`}
             target="_blank"
@@ -162,12 +186,139 @@ export default function DomainDetailPage() {
             {t('visit')}
           </a>
         </div>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <p className="mt-2 text-sm">{tx(`categoryExplain.${current.category}`)}</p>
+        <p className="mt-1 text-sm text-muted-foreground">
+          {data.state?.since && data.state.category === current.category && (
+            <>
+              {data.state.since === data.state.firstSeenAt
+                ? tx('sinceMonitoringStart', { date: formatDate(data.state.since, locale) })
+                : tx('since', { date: formatDate(data.state.since, locale) })}{' '}
+              ·{' '}
+            </>
+          )}
+          {current.category !== 'active' &&
+            (data.state?.lastActiveAt ? (
+              <>{tx('lastActive', { date: formatDate(data.state.lastActiveAt, locale) })} · </>
+            ) : (
+              <>{tx('neverActive')} · </>
+            ))}
           {t('lastChecked')}: {formatDateTime(current.checkedAt, locale)}
         </p>
       </div>
 
+      {/* Availability: uptime + one bar per recent check */}
+      <div className="card mb-6">
+        <div className="mb-4 flex flex-wrap items-end justify-between gap-4">
+          <h2 className="flex items-center gap-2 text-lg font-semibold">
+            <Activity className="h-5 w-5 text-green-600" />
+            {tx('uptime')}
+          </h2>
+          <div className="flex gap-6">
+            {[
+              { label: tx('uptime30'), u: data.uptime.last30Days },
+              { label: tx('uptime90'), u: data.uptime.last90Days },
+            ].map(({ label, u }) => (
+              <div key={label} className="text-right">
+                <p className="stat-value text-2xl">{u.checks > 0 ? percentage(u.active, u.checks) : '-'}</p>
+                <p className="text-xs text-muted-foreground">
+                  {label} · {tx('uptimeChecks', { active: u.active, total: u.checks })}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <p className="mb-2 text-xs text-muted-foreground">
+          {tx('strip', { count: data.strip.length })} — {tx('stripHelp')}
+        </p>
+        <StatusStrip strip={data.strip} />
+        <div className="mt-1 flex justify-between text-xs text-muted-foreground">
+          <span>{data.strip[0] && formatDate(data.strip[0].checkedAt, locale)}</span>
+          <span>{data.strip.length > 0 && formatDate(data.strip[data.strip.length - 1].checkedAt, locale)}</span>
+        </div>
+      </div>
+
       <div className="grid gap-6 lg:grid-cols-2">
+        {/* Change history */}
+        <div className="card">
+          <h2 className="mb-2 flex items-center gap-2 text-lg font-semibold">
+            <Activity className="h-5 w-5" />
+            {tx('changes')}
+          </h2>
+          {data.events.length > 0 ? (
+            <EventList events={data.events.slice(0, 10)} hideDomain />
+          ) : (
+            <p className="text-sm text-muted-foreground">{tx('noChanges')}</p>
+          )}
+        </div>
+
+        {/* Classification + hosting + archive */}
+        <div className="card">
+          <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
+            <Tag className="h-5 w-5" />
+            {tx('classification')}
+            <span className="text-xs font-normal text-muted-foreground">({tx('estimated')})</span>
+          </h2>
+          <dl className="grid gap-3">
+            <div className="flex justify-between">
+              <dt className="text-muted-foreground">{tx('level')}</dt>
+              <dd className="text-sm">{tl(data.classification.level)}</dd>
+            </div>
+            {data.classification.state && (
+              <div className="flex justify-between">
+                <dt className="text-muted-foreground">{tx('state')}</dt>
+                <dd className="text-sm">{stateName(data.classification.state)}</dd>
+              </div>
+            )}
+            <div className="flex justify-between">
+              <dt className="text-muted-foreground">{tx('sector')}</dt>
+              <dd className="text-sm">{ts(data.classification.sector)}</dd>
+            </div>
+          </dl>
+
+          {current.hosting && (
+            <>
+              <h3 className="mb-3 mt-6 flex items-center gap-2 font-semibold">
+                <Server className="h-4 w-4" />
+                {tx('hosting')}
+              </h3>
+              <dl className="grid gap-3">
+                <div className="flex justify-between gap-4">
+                  <dt className="text-muted-foreground">{tx('network')}</dt>
+                  <dd className="text-right text-sm">
+                    {current.hosting.asName || '-'} <span className="font-mono text-xs text-muted-foreground">AS{current.hosting.asn}</span>
+                  </dd>
+                </div>
+                {current.hosting.country && (
+                  <div className="flex justify-between">
+                    <dt className="text-muted-foreground">{tx('country')}</dt>
+                    <dd className="text-sm">{current.hosting.country}</dd>
+                  </div>
+                )}
+              </dl>
+            </>
+          )}
+
+          <h3 className="mb-2 mt-6 flex items-center gap-2 font-semibold">
+            <Archive className="h-4 w-4" />
+            {tx('archive')}
+          </h3>
+          <p className="mb-2 text-xs text-muted-foreground">{tx('archiveHelp')}</p>
+          <p className="mb-2 text-sm">
+            {data.state?.lastArchivedAt
+              ? tx('archiveLast', { date: formatRelativeTime(data.state.lastArchivedAt, locale) })
+              : tx('archivePending')}
+          </p>
+          <a
+            href={`https://web.archive.org/web/*/${data.domain}*`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-sm text-blue-600 hover:underline"
+          >
+            <ExternalLink className="h-4 w-4" />
+            {tx('archiveView')}
+          </a>
+        </div>
+
         {/* WHOIS Information */}
         {data.whois && (
           <div className="card">
@@ -400,7 +551,7 @@ export default function DomainDetailPage() {
               {data.history.slice(0, visibleHistory).map((h, i) => (
                 <tr key={i}>
                   <td className="text-sm">{formatDateTime(h.checkedAt, locale)}</td>
-                  <td><StatusBadge status={h.status} /></td>
+                  <td><CategoryBadge category={categorize(h)} /></td>
                   <td className="font-mono text-sm">{h.httpCode || '-'}</td>
                   <td className="font-mono text-sm">{formatResponseTime(h.responseTime)}</td>
                 </tr>

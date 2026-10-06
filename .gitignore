@@ -22,3 +22,6 @@ process/
 # Root level package files
 /node_modules/
 /package-lock.json
+
+# Dependencies
+node_modules/

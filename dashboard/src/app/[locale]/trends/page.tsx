@@ -1,81 +1,154 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
-import { TrendingUp, Clock, Shield, ShieldCheck, ShieldX, ShieldAlert, Server, PieChart, Activity, Globe, CalendarPlus, ChevronDown } from 'lucide-react';
+import {
+  Shield,
+  ShieldCheck,
+  ShieldX,
+  ShieldAlert,
+  Server,
+  Globe,
+  CalendarPlus,
+  ChevronDown,
+  Layers,
+  MapPin,
+  Lock,
+  History,
+} from 'lucide-react';
 import {
   AreaChart,
   Area,
-  LineChart,
-  Line,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  PieChart as RechartsPieChart,
-  Pie,
-  Cell,
-  Legend,
   BarChart,
   Bar,
+  Legend,
 } from 'recharts';
-import { formatResponseTime, formatDate } from '@/lib/utils';
+import { cn, formatDate, formatNumberWithSeparator, percentage } from '@/lib/utils';
+import { CATEGORY_STYLE } from '@/lib/categories';
+
+type DomainDays = { domain: string; daysUntilExpiry: number };
 
 type TrendData = {
-  timeline: {
-    date: string;
-    online: number;
-    offline: number;
-    total: number;
-    avgResponseTime: number;
-    withSSL: number;
-    validSSL: number;
-  }[];
+  timeline: { date: string; active: number; failing: number | null; noDns: number | null; total: number }[];
+  monitoring: { checksInPeriod: number; discardedInPeriod: number };
   insights: {
-    expiringSSL: { domain: string; daysUntilExpiry: number }[];
-    expiredSSL: { domain: string; daysUntilExpiry: number }[];
-    renewedSSL: { domain: string; daysUntilExpiry: number }[];
+    expiringSSL: DomainDays[];
+    expiredSSL: DomainDays[];
+    renewedSSL: DomainDays[];
     inconsistentSSL: { domain: string; issue: string }[];
-    slowestDomains: { domain: string; responseTime: number }[];
     recentlyRegistered: { domain: string; registeredDate: string; org: string }[];
   };
   distributions: {
-    httpCodes: { code: string; count: number }[];
-    servers: { server: string; count: number }[];
     nameservers: { provider: string; count: number; example: string }[];
+    nameserverGroups: { state: number; national: number; foreign: number; none: number };
+    registrationsByYear: { year: number; count: number }[];
+    byLevel: { level: string; total: number; active: number; failing: number; noDns: number }[];
+    byState: { state: string; name: string; total: number; active: number }[];
   };
-  period: {
-    start: string;
-    end: string;
-    days: number;
+  security: { active: number; https: number; validCertificate: number; hsts: number | null };
+  hosting: {
+    measured: number;
+    networks: { network: string; country: string | null; total: number; active: number }[];
+    countries: { country: string; count: number }[];
   };
 };
 
-const HTTP_CODE_COLORS: Record<string, string> = {
-  '2xx': '#22c55e',
-  '3xx': '#3b82f6',
-  '4xx': '#f59e0b',
-  '5xx': '#ef4444',
-  'error': '#6b7280',
+const TOOLTIP_STYLE = {
+  backgroundColor: 'var(--color-background)',
+  borderRadius: '8px',
+  border: '1px solid var(--color-border)',
+  color: 'var(--color-foreground)',
 };
+
+function DomainDaysList({
+  items,
+  tone,
+  emptyText,
+  daysLabel,
+  locale,
+  showMoreLabel,
+}: {
+  items: DomainDays[];
+  tone: 'red' | 'amber' | 'green';
+  emptyText: string;
+  daysLabel: string;
+  locale: string;
+  showMoreLabel: string;
+}) {
+  const [visible, setVisible] = useState(10);
+  const toneClass = {
+    red: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
+    amber: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
+    green: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
+  }[tone];
+
+  if (items.length === 0) return <p className="py-4 text-center text-muted-foreground">{emptyText}</p>;
+
+  return (
+    <>
+      <ol className="space-y-2">
+        {items.slice(0, visible).map((d) => (
+          <li key={d.domain} className="flex items-center justify-between gap-2 rounded-lg bg-slate-50 px-3 py-2 dark:bg-slate-800">
+            <Link href={`/${locale}/domain/${encodeURIComponent(d.domain)}`} className="font-mono text-sm hover:text-primary hover:underline">
+              {d.domain}
+            </Link>
+            <span className={cn('rounded-full px-2 py-0.5 text-xs font-medium', toneClass)}>
+              {Math.abs(d.daysUntilExpiry)} {daysLabel}
+            </span>
+          </li>
+        ))}
+      </ol>
+      {items.length > visible && (
+        <button
+          onClick={() => setVisible((prev) => prev + 10)}
+          className="mt-3 flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-slate-50 hover:text-foreground dark:border-slate-700 dark:hover:bg-slate-800"
+        >
+          <ChevronDown className="h-4 w-4" />
+          {showMoreLabel} ({items.length - visible})
+        </button>
+      )}
+    </>
+  );
+}
+
+function Meter({ label, value, total, className }: { label: string; value: number; total: number; className?: string }) {
+  const pct = total > 0 ? (value / total) * 100 : 0;
+  return (
+    <div>
+      <div className="mb-1 flex justify-between text-sm">
+        <span>{label}</span>
+        <span className="tabular-nums text-muted-foreground">
+          {value} · {percentage(value, total)}
+        </span>
+      </div>
+      <div className="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+        <div className={cn('h-full rounded-full', className || 'bg-blue-500')} style={{ width: `${pct}%` }} />
+      </div>
+    </div>
+  );
+}
 
 export default function TrendsPage() {
   const t = useTranslations('trends');
+  const ta = useTranslations('analysis');
+  const tc = useTranslations('categories');
+  const tl = useTranslations('levels');
   const tCommon = useTranslations('common');
   const locale = useLocale();
 
   const [data, setData] = useState<TrendData | null>(null);
   const [loading, setLoading] = useState(true);
   const [days, setDays] = useState(30);
-  const [visibleExpiredSSL, setVisibleExpiredSSL] = useState(10);
-  const [visibleRenewedSSL, setVisibleRenewedSSL] = useState(10);
 
   useEffect(() => {
     async function fetchTrends() {
       setLoading(true);
-      setVisibleExpiredSSL(10);
-      setVisibleRenewedSSL(10);
       try {
         const res = await fetch(`/api/monitor/trends?days=${days}`);
         if (res.ok) {
@@ -89,47 +162,31 @@ export default function TrendsPage() {
     fetchTrends();
   }, [days]);
 
-  // Format timeline data for charts
-  const chartData = data?.timeline.map((point) => ({
-    ...point,
-    date: formatDate(point.date, locale),
-    availabilityPercent: point.total > 0 ? ((point.online / point.total) * 100).toFixed(1) : 0,
-    avgResponseTimeSec: point.avgResponseTime ? (point.avgResponseTime / 1000).toFixed(2) : 0,
-  })) || [];
+  const chartData =
+    data?.timeline.map((point) => ({
+      ...point,
+      label: formatDate(point.date, locale),
+    })) || [];
+  const hasCategoryHistory = chartData.some((p) => p.failing !== null);
 
-  // Format HTTP code data for pie chart
-  const httpCodeData = data?.distributions?.httpCodes?.map((item) => ({
-    name: t(`httpCodes.${item.code}`),
-    value: item.count,
-    code: item.code,
-  })) || [];
+  const levelData =
+    data?.distributions.byLevel
+      .filter((l) => l.total > 0)
+      .map((l) => ({ ...l, name: tl(l.level) })) || [];
 
-  // Format server data for bar chart
-  const serverData = data?.distributions?.servers?.map((item) => ({
-    name: item.server.length > 20 ? item.server.substring(0, 20) + '...' : item.server,
-    fullName: item.server,
-    count: item.count,
-  })) || [];
+  const registrationsTotal = data?.distributions.registrationsByYear.reduce((sum, r) => sum + r.count, 0) || 0;
 
-  // Format nameserver data for bar chart
-  const nameserverData = data?.distributions?.nameservers?.map((item) => ({
-    name: item.provider.length > 15 ? item.provider.substring(0, 15) + '...' : item.provider,
-    fullName: item.example,
-    count: item.count,
-  })) || [];
+  const nameserverData =
+    data?.distributions?.nameservers?.slice(0, 10).map((item) => ({
+      name: item.provider.length > 15 ? item.provider.substring(0, 15) + '...' : item.provider,
+      fullName: item.example,
+      count: item.count,
+    })) || [];
 
-  // Calculate days since domain was registered
   const formatTimeAgo = (registeredDate: string) => {
-    const registered = new Date(registeredDate);
-    const now = new Date();
-    const diffTime = now.getTime() - registered.getTime();
-    const daysAgo = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-    if (daysAgo < 30) {
-      return `${daysAgo} ${t('time.days')}`;
-    } else if (daysAgo < 365) {
-      return `${Math.floor(daysAgo / 30)} ${t('time.months')}`;
-    }
+    const daysAgo = Math.ceil((Date.now() - new Date(registeredDate).getTime()) / 86400000);
+    if (daysAgo < 30) return `${daysAgo} ${t('time.days')}`;
+    if (daysAgo < 365) return `${Math.floor(daysAgo / 30)} ${t('time.months')}`;
     return `${Math.floor(daysAgo / 365)} ${t('time.years')}`;
   };
 
@@ -141,16 +198,15 @@ export default function TrendsPage() {
       </div>
 
       {/* Period selector */}
-      <div className="mb-8 flex gap-2">
+      <div className="mb-8 flex flex-wrap items-center gap-2">
         {[7, 30, 90].map((d) => (
-          <button
-            key={d}
-            onClick={() => setDays(d)}
-            className={`btn ${days === d ? 'btn-primary' : 'btn-outline'}`}
-          >
+          <button key={d} onClick={() => setDays(d)} className={`btn ${days === d ? 'btn-primary' : 'btn-outline'}`}>
             {t(`period.${d}days`)}
           </button>
         ))}
+        {data && data.monitoring.discardedInPeriod > 0 && (
+          <span className="text-xs text-muted-foreground">{ta('discarded', { count: data.monitoring.discardedInPeriod })}</span>
+        )}
       </div>
 
       {loading ? (
@@ -158,419 +214,254 @@ export default function TrendsPage() {
           <p className="text-muted-foreground">{tCommon('loading')}</p>
         </div>
       ) : data ? (
-        <div className="grid gap-6">
-          {/* Availability Over Time - Area Chart */}
+        <div className="space-y-6">
+          {/* Status of every domain over time */}
           <div className="card">
-            <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
-              <TrendingUp className="h-5 w-5 text-green-600" />
-              {t('charts.availability')}
+            <h2 className="mb-1 flex items-center gap-2 text-lg font-semibold">
+              <History className="h-5 w-5 text-green-600" />
+              {hasCategoryHistory ? ta('infraOverTime') : ta('activeOverTime')}
             </h2>
+            <p className="mb-4 text-sm text-muted-foreground">
+              {ta('activeOverTimeDesc')}
+              {hasCategoryHistory && chartData.length > 0 && (
+                <> {ta('noDnsHidden', { count: formatNumberWithSeparator(chartData[chartData.length - 1].noDns || 0, locale) })}</>
+              )}
+            </p>
             {chartData.length > 0 ? (
               <div className="h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-                    <defs>
-                      <linearGradient id="colorOnline" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#22c55e" stopOpacity={0.8} />
-                        <stop offset="95%" stopColor="#22c55e" stopOpacity={0.1} />
-                      </linearGradient>
-                      <linearGradient id="colorOffline" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#ef4444" stopOpacity={0.8} />
-                        <stop offset="95%" stopColor="#ef4444" stopOpacity={0.1} />
-                      </linearGradient>
-                    </defs>
                     <CartesianGrid strokeDasharray="3 3" className="stroke-slate-200 dark:stroke-slate-700" />
-                    <XAxis
-                      dataKey="date"
-                      tick={{ fontSize: 12 }}
-                      tickLine={false}
-                      axisLine={false}
-                      interval="preserveStartEnd"
-                    />
-                    <YAxis tick={{ fontSize: 12 }} tickLine={false} axisLine={false} />
-                    <Tooltip
-                      contentStyle={{
-                        backgroundColor: 'var(--color-background)',
-                        borderRadius: '8px',
-                        border: '1px solid var(--color-border)',
-                        color: 'var(--color-foreground)',
-                      }}
-                      formatter={(value: number, name: string) => [
-                        value,
-                        name === 'online' ? t('legend.online') : t('legend.offline'),
-                      ]}
-                    />
-                    <Legend
-                      formatter={(value) =>
-                        value === 'online' ? t('legend.online') : t('legend.offline')
-                      }
-                    />
-                    <Area
-                      type="monotone"
-                      dataKey="online"
-                      stackId="1"
-                      stroke="#22c55e"
-                      fill="url(#colorOnline)"
-                    />
-                    <Area
-                      type="monotone"
-                      dataKey="offline"
-                      stackId="1"
-                      stroke="#ef4444"
-                      fill="url(#colorOffline)"
-                    />
+                    <XAxis dataKey="label" tick={{ fontSize: 12 }} tickLine={false} axisLine={false} minTickGap={40} />
+                    <YAxis tick={{ fontSize: 12 }} tickLine={false} axisLine={false} allowDecimals={false} />
+                    <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(value: number, name: string) => [value, tc(`${name === 'noDns' ? 'no_dns' : name}.label`)]} />
+                    <Legend formatter={(value: string) => tc(`${value === 'noDns' ? 'no_dns' : value}.label`)} />
+                    <Area type="monotone" dataKey="active" stackId="1" stroke={CATEGORY_STYLE.active.chart} fill={CATEGORY_STYLE.active.chart} fillOpacity={0.7} />
+                    {hasCategoryHistory && (
+                      <Area type="monotone" dataKey="failing" stackId="1" stroke={CATEGORY_STYLE.failing.chart} fill={CATEGORY_STYLE.failing.chart} fillOpacity={0.6} />
+                    )}
                   </AreaChart>
                 </ResponsiveContainer>
               </div>
             ) : (
-              <p className="text-muted-foreground py-8 text-center">{t('noData')}</p>
+              <p className="py-8 text-center text-muted-foreground">{t('noData')}</p>
             )}
           </div>
 
-          {/* Response Time Trend - Line Chart */}
-          <div className="card">
-            <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
-              <Activity className="h-5 w-5 text-blue-600" />
-              {t('charts.responseTime')}
-            </h2>
-            {chartData.length > 0 ? (
-              <div className="h-[250px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-                    <CartesianGrid strokeDasharray="3 3" className="stroke-slate-200 dark:stroke-slate-700" />
-                    <XAxis
-                      dataKey="date"
-                      tick={{ fontSize: 12 }}
-                      tickLine={false}
-                      axisLine={false}
-                      interval="preserveStartEnd"
-                    />
-                    <YAxis
-                      tick={{ fontSize: 12 }}
-                      tickLine={false}
-                      axisLine={false}
-                      tickFormatter={(value) => `${value}s`}
-                    />
-                    <Tooltip
-                      contentStyle={{
-                        backgroundColor: 'var(--color-background)',
-                        borderRadius: '8px',
-                        border: '1px solid var(--color-border)',
-                        color: 'var(--color-foreground)',
-                      }}
-                      formatter={(value: number) => [`${value}s`, t('legend.avgResponse')]}
-                    />
-                    <Line
-                      type="monotone"
-                      dataKey="avgResponseTimeSec"
-                      stroke="#3b82f6"
-                      strokeWidth={2}
-                      dot={false}
-                      activeDot={{ r: 4 }}
-                    />
-                  </LineChart>
-                </ResponsiveContainer>
-              </div>
-            ) : (
-              <p className="text-muted-foreground py-8 text-center">{t('noData')}</p>
-            )}
-          </div>
-
-          {/* Distribution Charts Row */}
+          {/* By level / by state */}
           <div className="grid gap-6 lg:grid-cols-2">
-            {/* HTTP Code Distribution - Pie Chart */}
             <div className="card">
-              <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
-                <PieChart className="h-5 w-5 text-purple-600" />
-                {t('distributions.httpCodes')}
+              <h2 className="mb-1 flex items-center gap-2 text-lg font-semibold">
+                <Layers className="h-5 w-5 text-indigo-600" />
+                {ta('byLevel')}
               </h2>
-              {httpCodeData.length > 0 ? (
-                <div className="h-[280px]">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <RechartsPieChart>
-                      <Pie
-                        data={httpCodeData}
-                        cx="50%"
-                        cy="50%"
-                        innerRadius={60}
-                        outerRadius={90}
-                        paddingAngle={2}
-                        dataKey="value"
-                        label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
-                        labelLine={false}
-                      >
-                        {httpCodeData.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={HTTP_CODE_COLORS[entry.code] || '#6b7280'} />
-                        ))}
-                      </Pie>
-                      <Tooltip
-                        formatter={(value: number, name: string) => [value, name]}
-                        contentStyle={{
-                          backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                          borderRadius: '8px',
-                          border: '1px solid #e2e8f0',
-                        }}
-                      />
-                      <Legend />
-                    </RechartsPieChart>
-                  </ResponsiveContainer>
-                </div>
-              ) : (
-                <p className="text-muted-foreground py-8 text-center">{t('noData')}</p>
-              )}
-            </div>
-
-            {/* Server Distribution - Bar Chart */}
-            <div className="card">
-              <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
-                <Server className="h-5 w-5 text-orange-600" />
-                {t('distributions.servers')}
-              </h2>
-              {serverData.length > 0 ? (
-                <div className="h-[280px]">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={serverData} layout="vertical" margin={{ top: 0, right: 10, left: 0, bottom: 0 }}>
-                      <CartesianGrid strokeDasharray="3 3" className="stroke-slate-200 dark:stroke-slate-700" />
-                      <XAxis type="number" tick={{ fontSize: 11 }} tickLine={false} axisLine={false} />
-                      <YAxis
-                        type="category"
-                        dataKey="name"
-                        tick={{ fontSize: 10 }}
-                        tickLine={false}
-                        axisLine={false}
-                        width={100}
-                      />
-                      <Tooltip
-                        formatter={(value: number) => [value, t('legend.domains')]}
-                        labelFormatter={(label, payload) => payload?.[0]?.payload?.fullName || label}
-                        contentStyle={{
-                          backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                          borderRadius: '8px',
-                          border: '1px solid #e2e8f0',
-                        }}
-                      />
-                      <Bar dataKey="count" fill="#f97316" radius={[0, 4, 4, 0]} />
-                    </BarChart>
-                  </ResponsiveContainer>
-                </div>
-              ) : (
-                <p className="text-muted-foreground py-8 text-center">{t('noData')}</p>
-              )}
-            </div>
-          </div>
-
-          {/* Nameserver Distribution - Bar Chart */}
-          <div className="card">
-            <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
-              <Globe className="h-5 w-5 text-cyan-600" />
-              {t('distributions.nameservers')}
-            </h2>
-            <p className="mb-4 text-sm text-muted-foreground">{t('distributions.nameserversDesc')}</p>
-            {nameserverData.length > 0 ? (
-              <div className="h-[350px]">
+              <p className="mb-4 text-sm text-muted-foreground">{ta('byLevelDesc')}</p>
+              <div className="h-[220px]">
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={nameserverData} layout="vertical" margin={{ top: 0, right: 10, left: 0, bottom: 0 }}>
-                    <CartesianGrid strokeDasharray="3 3" className="stroke-slate-200 dark:stroke-slate-700" />
-                    <XAxis type="number" tick={{ fontSize: 11 }} tickLine={false} axisLine={false} />
-                    <YAxis
-                      type="category"
-                      dataKey="name"
-                      tick={{ fontSize: 10 }}
-                      tickLine={false}
-                      axisLine={false}
-                      width={110}
-                    />
+                  <BarChart data={levelData} layout="vertical" stackOffset="expand" margin={{ top: 0, right: 10, left: 0, bottom: 0 }}>
+                    <XAxis type="number" tickFormatter={(v: number) => `${Math.round(v * 100)}%`} tick={{ fontSize: 11 }} tickLine={false} axisLine={false} />
+                    <YAxis type="category" dataKey="name" tick={{ fontSize: 12 }} tickLine={false} axisLine={false} width={80} />
                     <Tooltip
-                      formatter={(value: number) => [value, t('legend.domains')]}
-                      labelFormatter={(label, payload) => payload?.[0]?.payload?.fullName || label}
-                      contentStyle={{
-                        backgroundColor: 'var(--color-background)',
-                        borderRadius: '8px',
-                        border: '1px solid var(--color-border)',
-                        color: 'var(--color-foreground)',
-                      }}
+                      contentStyle={TOOLTIP_STYLE}
+                      formatter={(value: number, name: string, item: { payload?: { total: number } }) => [
+                        `${value} (${percentage(value, item.payload?.total || 0)})`,
+                        tc(`${name === 'noDns' ? 'no_dns' : name}.label`),
+                      ]}
                     />
-                    <Bar dataKey="count" fill="#06b6d4" radius={[0, 4, 4, 0]} />
+                    <Bar dataKey="active" stackId="a" fill={CATEGORY_STYLE.active.chart} />
+                    <Bar dataKey="failing" stackId="a" fill={CATEGORY_STYLE.failing.chart} />
+                    <Bar dataKey="noDns" stackId="a" fill={CATEGORY_STYLE.no_dns.chart} radius={[0, 4, 4, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
-            ) : (
-              <p className="text-muted-foreground py-8 text-center">{t('noData')}</p>
-            )}
+              <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-muted-foreground">
+                {levelData.map((l) => (
+                  <li key={l.level}>
+                    {l.name}: {ta('activeOf', { active: l.active, total: formatNumberWithSeparator(l.total, locale) })}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="card">
+              <h2 className="mb-1 flex items-center gap-2 text-lg font-semibold">
+                <MapPin className="h-5 w-5 text-rose-600" />
+                {ta('byState')}
+              </h2>
+              <p className="mb-4 text-sm text-muted-foreground">{ta('byStateDesc')}</p>
+              <ol className="max-h-[300px] space-y-2 overflow-y-auto pr-1">
+                {data.distributions.byState.map((s) => (
+                  <li key={s.state}>
+                    <Link href={`/${locale}/domains?state=${s.state}`} className="block hover:text-blue-600">
+                      <Meter label={s.name} value={s.active} total={s.total} className={CATEGORY_STYLE.active.bar} />
+                    </Link>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
 
-          {/* Insights Row */}
+          {/* Registrations per year / DNS operators */}
           <div className="grid gap-6 lg:grid-cols-2">
-            {/* Slowest Domains */}
             <div className="card">
-              <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
-                <Clock className="h-5 w-5 text-amber-600" />
-                {t('insights.slowestDomains')}
+              <h2 className="mb-1 flex items-center gap-2 text-lg font-semibold">
+                <CalendarPlus className="h-5 w-5 text-emerald-600" />
+                {ta('registrations')}
               </h2>
-              {data.insights.slowestDomains.length > 0 ? (
-                <ol className="space-y-2">
-                  {data.insights.slowestDomains.map((d, i) => (
-                    <li key={d.domain} className="flex items-center justify-between gap-2 rounded-lg bg-slate-50 px-3 py-2 dark:bg-slate-800">
-                      <span className="flex items-center gap-2">
-                        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-amber-100 text-xs font-medium text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
-                          {i + 1}
-                        </span>
-                        <a
-                          href={`/${locale}/domain/${encodeURIComponent(d.domain)}`}
-                          className="font-mono text-sm hover:text-primary hover:underline"
-                        >
-                          {d.domain}
-                        </a>
-                      </span>
-                      <span className="font-mono text-sm font-medium text-amber-600 dark:text-amber-400">
-                        {formatResponseTime(d.responseTime)}
-                      </span>
-                    </li>
-                  ))}
-                </ol>
+              <p className="mb-4 text-sm text-muted-foreground">
+                {ta('registrationsDesc', { total: formatNumberWithSeparator(registrationsTotal, locale) })}
+              </p>
+              <div className="h-[240px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={data.distributions.registrationsByYear} margin={{ top: 0, right: 10, left: -10, bottom: 0 }}>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} className="stroke-slate-200 dark:stroke-slate-700" />
+                    <XAxis dataKey="year" tick={{ fontSize: 11 }} tickLine={false} axisLine={false} minTickGap={20} />
+                    <YAxis tick={{ fontSize: 11 }} tickLine={false} axisLine={false} allowDecimals={false} />
+                    <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(value: number) => [value, t('legend.domains')]} />
+                    <Bar dataKey="count" fill="#10b981" radius={[3, 3, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+
+            <div className="card">
+              <h2 className="mb-1 flex items-center gap-2 text-lg font-semibold">
+                <Globe className="h-5 w-5 text-cyan-600" />
+                {ta('nameserverGroups')}
+              </h2>
+              <p className="mb-4 text-sm text-muted-foreground">{ta('nameserverGroupsDesc')}</p>
+              {(() => {
+                const g = data.distributions.nameserverGroups;
+                const total = g.state + g.national + g.foreign + g.none;
+                return (
+                  <div className="mb-5 space-y-3">
+                    <Meter label={ta('nsGroups.state')} value={g.state} total={total} className="bg-blue-500" />
+                    <Meter label={ta('nsGroups.national')} value={g.national} total={total} className="bg-cyan-500" />
+                    <Meter label={ta('nsGroups.foreign')} value={g.foreign} total={total} className="bg-orange-500" />
+                    <Meter label={ta('nsGroups.none')} value={g.none} total={total} className="bg-slate-400" />
+                  </div>
+                );
+              })()}
+              {nameserverData.length > 0 && (
+                <div className="h-[220px]">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={nameserverData} layout="vertical" margin={{ top: 0, right: 10, left: 0, bottom: 0 }}>
+                      <XAxis type="number" tick={{ fontSize: 11 }} tickLine={false} axisLine={false} />
+                      <YAxis type="category" dataKey="name" tick={{ fontSize: 10 }} tickLine={false} axisLine={false} width={100} />
+                      <Tooltip
+                        formatter={(value: number) => [value, t('legend.domains')]}
+                        labelFormatter={(label, payload) => payload?.[0]?.payload?.fullName || label}
+                        contentStyle={TOOLTIP_STYLE}
+                      />
+                      <Bar dataKey="count" fill="#06b6d4" radius={[0, 4, 4, 0]} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Hosting / security */}
+          <div className="grid gap-6 lg:grid-cols-2">
+            <div className="card">
+              <h2 className="mb-1 flex items-center gap-2 text-lg font-semibold">
+                <Server className="h-5 w-5 text-violet-600" />
+                {ta('hosting')}
+              </h2>
+              <p className="mb-4 text-sm text-muted-foreground">{ta('hostingDesc')}</p>
+              {data.hosting.measured === 0 ? (
+                <p className="rounded-lg bg-slate-50 py-6 text-center text-sm text-muted-foreground dark:bg-slate-800">{ta('measuringSoon')}</p>
               ) : (
-                <p className="text-muted-foreground py-4 text-center">{t('noDataShort')}</p>
+                <>
+                  <div className="mb-4 space-y-2">
+                    {data.hosting.networks.map((n) => (
+                      <Meter
+                        key={n.network}
+                        label={`${n.network}${n.country ? ` (${n.country})` : ''}`}
+                        value={n.total}
+                        total={data.hosting.measured}
+                        className="bg-violet-500"
+                      />
+                    ))}
+                  </div>
+                  <p className="mb-2 text-sm font-medium">{ta('hostingCountries')}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {data.hosting.countries.map((c) => (
+                      <span key={c.country} className="badge badge-ssl-none">
+                        {c.country} · {percentage(c.count, data.hosting.measured)}
+                      </span>
+                    ))}
+                  </div>
+                </>
               )}
             </div>
 
-            {/* Expiring SSL */}
+            <div className="card">
+              <h2 className="mb-1 flex items-center gap-2 text-lg font-semibold">
+                <Lock className="h-5 w-5 text-blue-600" />
+                {ta('security')}
+              </h2>
+              <p className="mb-4 text-sm text-muted-foreground">{ta('securityDesc')}</p>
+              <div className="space-y-4">
+                <Meter label={ta('https')} value={data.security.https} total={data.security.active} className="bg-blue-500" />
+                <Meter label={ta('validCert')} value={data.security.validCertificate} total={data.security.active} className="bg-emerald-500" />
+                {data.security.hsts === null ? (
+                  <div>
+                    <p className="mb-1 text-sm">{ta('hsts')}</p>
+                    <p className="text-xs text-muted-foreground">{ta('measuringSoon')}</p>
+                  </div>
+                ) : (
+                  <Meter label={ta('hsts')} value={data.security.hsts} total={data.security.active} className="bg-indigo-500" />
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* SSL certificates */}
+          <div className="grid gap-6 lg:grid-cols-2">
             <div className="card">
               <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
                 <Shield className="h-5 w-5 text-amber-600" />
                 {t('insights.expiringSSL')}
               </h2>
-              {data.insights.expiringSSL.length > 0 ? (
-                <ol className="space-y-2">
-                  {data.insights.expiringSSL.map((d) => (
-                    <li key={d.domain} className="flex items-center justify-between gap-2 rounded-lg bg-slate-50 px-3 py-2 dark:bg-slate-800">
-                      <a
-                        href={`/${locale}/domain/${encodeURIComponent(d.domain)}`}
-                        className="font-mono text-sm hover:text-primary hover:underline"
-                      >
-                        {d.domain}
-                      </a>
-                      <span
-                        className={`rounded-full px-2 py-0.5 text-xs font-medium ${
-                          d.daysUntilExpiry <= 7
-                            ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
-                            : 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400'
-                        }`}
-                      >
-                        {d.daysUntilExpiry} {t('table.days')}
-                      </span>
-                    </li>
-                  ))}
-                </ol>
-              ) : (
-                <p className="text-muted-foreground py-4 text-center">{t('noCertificates')}</p>
-              )}
+              <DomainDaysList items={data.insights.expiringSSL} tone="amber" emptyText={t('noCertificates')} daysLabel={t('table.days')} locale={locale} showMoreLabel={t('showMore')} />
             </div>
-          </div>
-
-          {/* SSL Status Row - Expired and Renewed */}
-          <div className="grid gap-6 lg:grid-cols-2">
-            {/* Expired SSL */}
             <div className="card">
               <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
                 <ShieldX className="h-5 w-5 text-red-600" />
                 {t('insights.expiredSSL')}
               </h2>
-              {data.insights.expiredSSL && data.insights.expiredSSL.length > 0 ? (
-                <>
-                  <ol className="space-y-2">
-                    {data.insights.expiredSSL.slice(0, visibleExpiredSSL).map((d) => (
-                      <li key={d.domain} className="flex items-center justify-between gap-2 rounded-lg bg-slate-50 px-3 py-2 dark:bg-slate-800">
-                        <a
-                          href={`/${locale}/domain/${encodeURIComponent(d.domain)}`}
-                          className="font-mono text-sm hover:text-primary hover:underline"
-                        >
-                          {d.domain}
-                        </a>
-                        <span className="rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-700 dark:bg-red-900/30 dark:text-red-400">
-                          {Math.abs(d.daysUntilExpiry)} {t('table.days')}
-                        </span>
-                      </li>
-                    ))}
-                  </ol>
-                  {data.insights.expiredSSL.length > visibleExpiredSSL && (
-                    <button
-                      onClick={() => setVisibleExpiredSSL((prev) => prev + 10)}
-                      className="mt-3 flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-slate-50 hover:text-foreground dark:border-slate-700 dark:hover:bg-slate-800"
-                    >
-                      <ChevronDown className="h-4 w-4" />
-                      {t('showMore')} ({data.insights.expiredSSL.length - visibleExpiredSSL})
-                    </button>
-                  )}
-                </>
-              ) : (
-                <p className="text-muted-foreground py-4 text-center">{t('noExpiredCertificates')}</p>
-              )}
+              <DomainDaysList items={data.insights.expiredSSL || []} tone="red" emptyText={t('noExpiredCertificates')} daysLabel={t('table.days')} locale={locale} showMoreLabel={t('showMore')} />
             </div>
-
-            {/* Renewed SSL */}
             <div className="card">
               <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
                 <ShieldCheck className="h-5 w-5 text-green-600" />
                 {t('insights.renewedSSL')}
               </h2>
-              {data.insights.renewedSSL && data.insights.renewedSSL.length > 0 ? (
-                <>
-                  <ol className="space-y-2">
-                    {data.insights.renewedSSL.slice(0, visibleRenewedSSL).map((d) => (
-                      <li key={d.domain} className="flex items-center justify-between gap-2 rounded-lg bg-slate-50 px-3 py-2 dark:bg-slate-800">
-                        <a
-                          href={`/${locale}/domain/${encodeURIComponent(d.domain)}`}
-                          className="font-mono text-sm hover:text-primary hover:underline"
-                        >
-                          {d.domain}
-                        </a>
-                        <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700 dark:bg-green-900/30 dark:text-green-400">
-                          {d.daysUntilExpiry} {t('table.days')}
-                        </span>
-                      </li>
-                    ))}
-                  </ol>
-                  {data.insights.renewedSSL.length > visibleRenewedSSL && (
-                    <button
-                      onClick={() => setVisibleRenewedSSL((prev) => prev + 10)}
-                      className="mt-3 flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-slate-50 hover:text-foreground dark:border-slate-700 dark:hover:bg-slate-800"
-                    >
-                      <ChevronDown className="h-4 w-4" />
-                      {t('showMore')} ({data.insights.renewedSSL.length - visibleRenewedSSL})
-                    </button>
-                  )}
-                </>
-              ) : (
-                <p className="text-muted-foreground py-4 text-center">{t('noRenewedCertificates')}</p>
-              )}
+              <DomainDaysList items={data.insights.renewedSSL || []} tone="green" emptyText={t('noRenewedCertificates')} daysLabel={t('table.days')} locale={locale} showMoreLabel={t('showMore')} />
             </div>
+            {data.insights.inconsistentSSL && data.insights.inconsistentSSL.length > 0 && (
+              <div className="card">
+                <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
+                  <ShieldAlert className="h-5 w-5 text-orange-600" />
+                  {t('insights.inconsistentSSL')}
+                </h2>
+                <p className="mb-4 text-sm text-muted-foreground">{t('insights.inconsistentSSLDesc')}</p>
+                <ol className="space-y-2">
+                  {data.insights.inconsistentSSL.map((d) => (
+                    <li key={d.domain} className="flex items-center justify-between gap-2 rounded-lg bg-slate-50 px-3 py-2 dark:bg-slate-800">
+                      <Link href={`/${locale}/domain/${encodeURIComponent(d.domain)}`} className="font-mono text-sm hover:text-primary hover:underline">
+                        {d.domain}
+                      </Link>
+                      <span className="rounded-full bg-orange-100 px-2 py-0.5 text-xs font-medium text-orange-700 dark:bg-orange-900/30 dark:text-orange-400">
+                        {d.issue}
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )}
           </div>
-
-          {/* Inconsistent SSL - servers with different certificates */}
-          {data.insights.inconsistentSSL && data.insights.inconsistentSSL.length > 0 && (
-            <div className="card mb-4">
-              <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
-                <ShieldAlert className="h-5 w-5 text-orange-600" />
-                {t('insights.inconsistentSSL')}
-              </h2>
-              <p className="mb-4 text-sm text-muted-foreground">{t('insights.inconsistentSSLDesc')}</p>
-              <ol className="space-y-2">
-                {data.insights.inconsistentSSL.map((d) => (
-                  <li key={d.domain} className="flex items-center justify-between gap-2 rounded-lg bg-slate-50 px-3 py-2 dark:bg-slate-800">
-                    <a
-                      href={`/${locale}/domain/${encodeURIComponent(d.domain)}`}
-                      className="font-mono text-sm hover:text-primary hover:underline"
-                    >
-                      {d.domain}
-                    </a>
-                    <span className="rounded-full bg-orange-100 px-2 py-0.5 text-xs font-medium text-orange-700 dark:bg-orange-900/30 dark:text-orange-400">
-                      {d.issue}
-                    </span>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          )}
 
           {/* Recently Registered Domains (WHOIS) */}
           <div className="card">
@@ -594,12 +485,9 @@ export default function TrendsPage() {
                     {data.insights.recentlyRegistered.map((d) => (
                       <tr key={d.domain}>
                         <td>
-                          <a
-                            href={`/${locale}/domain/${encodeURIComponent(d.domain)}`}
-                            className="font-mono text-sm hover:text-primary hover:underline"
-                          >
+                          <Link href={`/${locale}/domain/${encodeURIComponent(d.domain)}`} className="font-mono text-sm hover:text-primary hover:underline">
                             {d.domain}
-                          </a>
+                          </Link>
                         </td>
                         <td className="text-sm text-muted-foreground">{d.org || '-'}</td>
                         <td className="text-sm">{formatDate(d.registeredDate, locale)}</td>
@@ -614,7 +502,7 @@ export default function TrendsPage() {
                 </table>
               </div>
             ) : (
-              <p className="text-muted-foreground py-4 text-center">{t('noRecentDomains')}</p>
+              <p className="py-4 text-center text-muted-foreground">{t('noRecentDomains')}</p>
             )}
           </div>
         </div>

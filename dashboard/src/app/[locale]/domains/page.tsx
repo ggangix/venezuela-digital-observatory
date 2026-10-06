@@ -4,12 +4,23 @@ import { useState, useEffect, useCallback } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
 import { Search, Filter, ChevronLeft, ChevronRight } from 'lucide-react';
-import { StatusBadge } from '@/components/StatusBadge';
+import { CategoryBadge } from '@/components/CategoryBadge';
 import { SSLBadge } from '@/components/SSLBadge';
 import { formatResponseTime, formatRelativeTime } from '@/lib/utils';
+import { VE_STATES } from '@/lib/classify';
+import type { Category } from '@/lib/checks';
+
+type CategoryFilter = 'all' | Category | 'intermittent';
+type LevelFilter = 'all' | 'national' | 'state' | 'municipal' | 'military';
+const CATEGORY_FILTERS: CategoryFilter[] = ['all', 'active', 'failing', 'no_dns', 'intermittent'];
+const LEVEL_FILTERS: LevelFilter[] = ['all', 'national', 'state', 'municipal', 'military'];
 
 type Domain = {
   domain: string;
+  category: Category;
+  intermittent: boolean;
+  since: string | null;
+  sinceStart: boolean;
   status: 'online' | 'offline';
   httpCode: number | null;
   responseTime: number | null;
@@ -34,23 +45,44 @@ type DomainsResponse = {
 
 export default function DomainsPage() {
   const t = useTranslations('domains');
+  const tx = useTranslations('domainsExtra');
+  const tc = useTranslations('categories');
+  const tl = useTranslations('levels');
   const locale = useLocale();
 
   const [data, setData] = useState<DomainsResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
-  const [status, setStatus] = useState<'all' | 'online' | 'offline'>('all');
+  const [category, setCategory] = useState<CategoryFilter>('all');
+  const [level, setLevel] = useState<LevelFilter>('all');
+  const [stateId, setStateId] = useState('');
+  const [ready, setReady] = useState(false);
   const [ssl, setSsl] = useState<'all' | 'valid' | 'invalid' | 'none'>('all');
   const [httpCode, setHttpCode] = useState<'all' | '2xx' | '3xx' | '4xx' | '5xx' | 'error'>('all');
   const [page, setPage] = useState(1);
 
+  // Filters can come from links (e.g. /domains?category=failing from the home page)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const c = params.get('category') as CategoryFilter | null;
+    const l = params.get('level') as LevelFilter | null;
+    const st = params.get('state');
+    if (c && CATEGORY_FILTERS.includes(c)) setCategory(c);
+    if (l && LEVEL_FILTERS.includes(l)) setLevel(l);
+    if (st && VE_STATES.some((s) => s.id === st)) setStateId(st);
+    setReady(true);
+  }, []);
+
   const fetchDomains = useCallback(async () => {
+    if (!ready) return;
     setLoading(true);
     try {
       const params = new URLSearchParams({
         page: page.toString(),
         limit: '50',
-        status,
+        category,
+        level,
+        ...(stateId && { state: stateId }),
         ssl,
         httpCode,
         ...(search && { search }),
@@ -65,7 +97,7 @@ export default function DomainsPage() {
       console.error('Failed to fetch domains:', error);
     }
     setLoading(false);
-  }, [page, status, ssl, httpCode, search]);
+  }, [ready, page, category, level, stateId, ssl, httpCode, search]);
 
   useEffect(() => {
     fetchDomains();
@@ -74,7 +106,7 @@ export default function DomainsPage() {
   // Reset page when filters change
   useEffect(() => {
     setPage(1);
-  }, [status, ssl, httpCode, search]);
+  }, [category, level, stateId, ssl, httpCode, search]);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -101,15 +133,49 @@ export default function DomainsPage() {
         <div className="flex items-center gap-2">
           <Filter className="h-4 w-4 text-muted-foreground" />
           <select
-            value={status}
-            onChange={(e) => setStatus(e.target.value as typeof status)}
+            value={category}
+            onChange={(e) => setCategory(e.target.value as CategoryFilter)}
             className="input w-auto"
+            aria-label={tx('category')}
           >
-            <option value="all">{t('filters.all')}</option>
-            <option value="online">{t('filters.online')}</option>
-            <option value="offline">{t('filters.offline')}</option>
+            <option value="all">{tx('allCategories')}</option>
+            {CATEGORY_FILTERS.filter((c) => c !== 'all').map((c) => (
+              <option key={c} value={c}>
+                {tc(`${c}.label`)}
+              </option>
+            ))}
           </select>
         </div>
+
+        {/* Level Filter */}
+        <select
+          value={level}
+          onChange={(e) => setLevel(e.target.value as LevelFilter)}
+          className="input w-auto"
+          aria-label={tx('level')}
+        >
+          <option value="all">{tx('allLevels')}</option>
+          {LEVEL_FILTERS.filter((l) => l !== 'all').map((l) => (
+            <option key={l} value={l}>
+              {tl(l)}
+            </option>
+          ))}
+        </select>
+
+        {/* State Filter */}
+        <select
+          value={stateId}
+          onChange={(e) => setStateId(e.target.value)}
+          className="input w-auto"
+          aria-label={tx('state')}
+        >
+          <option value="">{tx('allStates')}</option>
+          {VE_STATES.map((s) => (
+            <option key={s.id} value={s.id}>
+              {s.name}
+            </option>
+          ))}
+        </select>
 
         {/* SSL Filter */}
         <select
@@ -142,6 +208,7 @@ export default function DomainsPage() {
       {data && (
         <p className="mb-4 text-sm text-muted-foreground">
           {data.total.toLocaleString()} {t('resultsCount')}
+          {category !== 'all' && <> · {tc(`${category}.description`)}</>}
         </p>
       )}
 
@@ -161,7 +228,7 @@ export default function DomainsPage() {
                   <th>{t('columns.httpCode')}</th>
                   <th>{t('columns.responseTime')}</th>
                   <th>{t('columns.ssl')}</th>
-                  <th className="hidden lg:table-cell">{t('columns.server')}</th>
+                  <th className="hidden lg:table-cell">{tx('since')}</th>
                   <th className="hidden md:table-cell">{t('columns.lastCheck')}</th>
                 </tr>
               </thead>
@@ -177,7 +244,7 @@ export default function DomainsPage() {
                       </Link>
                     </td>
                     <td>
-                      <StatusBadge status={domain.status} />
+                      <CategoryBadge category={domain.category} intermittent={domain.intermittent} />
                     </td>
                     <td className="font-mono text-sm">
                       {domain.httpCode || '-'}
@@ -189,7 +256,7 @@ export default function DomainsPage() {
                       <SSLBadge ssl={domain.ssl} />
                     </td>
                     <td className="hidden text-sm text-muted-foreground lg:table-cell">
-                      {domain.headers?.server || '-'}
+                      {domain.sinceStart ? tx('sinceStart') : domain.since ? formatRelativeTime(domain.since, locale) : '-'}
                     </td>
                     <td className="hidden text-sm text-muted-foreground md:table-cell">
                       {formatRelativeTime(domain.checkedAt, locale)}

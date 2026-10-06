@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getMonitorCollection } from '@/lib/mongodb';
 import { trendsQuerySchema } from '@/lib/validation';
+import { VALID_CHECK_FILTER, categorize, type DomainRecord } from '@/lib/checks';
+import { classifyDomain, LEVELS, VE_STATES } from '@/lib/classify';
+import { groupNameserver } from '@/lib/hosting';
 
 export const revalidate = 300; // Cache for 5 minutes
 
@@ -9,14 +12,14 @@ export async function GET(request: NextRequest) {
     const searchParams = Object.fromEntries(request.nextUrl.searchParams);
     const { days } = trendsQuerySchema.parse(searchParams);
 
-    const { checks, domains } = await getMonitorCollection();
+    const { checks, domains, whois } = await getMonitorCollection();
 
     const startDate = new Date();
     startDate.setDate(startDate.getDate() - days);
 
-    // Get all checks in the time range
+    // Get all valid checks in the time range (discarded checks are monitor failures)
     const checkResults = await checks
-      .find({ checkedAt: { $gte: startDate } })
+      .find({ checkedAt: { $gte: startDate }, ...VALID_CHECK_FILTER })
       .sort({ checkedAt: 1 })
       .project({
         _id: 1,
@@ -164,101 +167,101 @@ export async function GET(request: NextRequest) {
       }));
     }
 
-    // Get slowest domains from latest check
-    let slowestDomains: { domain: string; responseTime: number }[] = [];
-
-    if (latestCheck) {
-      const slowest = await domains
-        .find({
-          checkId: latestCheck._id,
-          status: 'online',
-          responseTime: { $gt: 0 },
-        })
-        .sort({ responseTime: -1 })
-        .limit(10)
-        .project({
-          _id: 0,
-          domain: 1,
-          responseTime: 1,
-        })
-        .toArray();
-
-      slowestDomains = slowest.map((d) => ({
-        domain: d.domain,
-        responseTime: d.responseTime || 0,
-      }));
-    }
-
-    // Get HTTP code distribution from latest check
-    let httpCodeDistribution: { code: string; count: number }[] = [];
-
-    if (latestCheck) {
-      const httpAggregation = await domains
-        .aggregate([
-          { $match: { checkId: latestCheck._id } },
-          {
-            $group: {
-              _id: {
-                $switch: {
-                  branches: [
-                    { case: { $and: [{ $gte: ['$httpCode', 200] }, { $lt: ['$httpCode', 300] }] }, then: '2xx' },
-                    { case: { $and: [{ $gte: ['$httpCode', 300] }, { $lt: ['$httpCode', 400] }] }, then: '3xx' },
-                    { case: { $and: [{ $gte: ['$httpCode', 400] }, { $lt: ['$httpCode', 500] }] }, then: '4xx' },
-                    { case: { $and: [{ $gte: ['$httpCode', 500] }, { $lt: ['$httpCode', 600] }] }, then: '5xx' },
-                  ],
-                  default: 'error',
-                },
-              },
-              count: { $sum: 1 },
-            },
-          },
-          { $sort: { _id: 1 } },
-        ])
-        .toArray();
-
-      httpCodeDistribution = httpAggregation.map((item) => ({
-        code: item._id as string,
-        count: item.count,
-      }));
-    }
-
-    // Get server distribution from latest check
-    let serverDistribution: { server: string; count: number }[] = [];
-
-    if (latestCheck) {
-      const serverAggregation = await domains
-        .aggregate([
-          { $match: { checkId: latestCheck._id, 'headers.server': { $exists: true, $ne: null } } },
-          {
-            $group: {
-              _id: '$headers.server',
-              count: { $sum: 1 },
-            },
-          },
-          { $sort: { count: -1 } },
-          { $limit: 10 },
-        ])
-        .toArray();
-
-      serverDistribution = serverAggregation.map((item) => ({
-        server: item._id as string,
-        count: item.count,
-      }));
-    }
-
-    // Format timeline data
+    // Category counts over time. Checks saved before categories existed only have
+    // online/offline: active == online, and failing/noDns are filled in by the
+    // monitor's history rebuild; until then they are null.
     const timeline = checkResults.map((check) => ({
       date: check.checkedAt,
-      online: check.summary?.online || 0,
-      offline: check.summary?.offline || 0,
+      active: check.summary?.active ?? check.summary?.online ?? 0,
+      failing: check.summary?.failing ?? null,
+      noDns: check.summary?.noDns ?? null,
       total: check.summary?.totalDomains || 0,
-      avgResponseTime: check.summary?.avgResponseTime || 0,
-      withSSL: check.summary?.withSSL || 0,
-      validSSL: check.summary?.validSSL || 0,
     }));
 
-    // Get WHOIS data: expiring domains and nameserver distribution
-    const { whois } = await getMonitorCollection();
+    // Latest check, joined with name-based classification
+    const latestRecords = latestCheck
+      ? await domains
+          .find({ checkId: latestCheck._id })
+          .project<DomainRecord>({
+            _id: 0,
+            domain: 1,
+            status: 1,
+            category: 1,
+            error: 1,
+            'reachability.dns.ok': 1,
+            'ssl.enabled': 1,
+            'ssl.valid': 1,
+            headers: 1,
+            hosting: 1,
+          })
+          .toArray()
+      : [];
+    const rows = latestRecords.map((r) => ({ ...r, category: categorize(r), ...classifyDomain(r.domain) }));
+    const activeRows = rows.filter((r) => r.category === 'active');
+
+    // Availability by government level and by state (estimated from domain names)
+    const byLevel = LEVELS.map((level) => {
+      const inLevel = rows.filter((r) => r.level === level);
+      return {
+        level,
+        total: inLevel.length,
+        active: inLevel.filter((r) => r.category === 'active').length,
+        failing: inLevel.filter((r) => r.category === 'failing').length,
+        noDns: inLevel.filter((r) => r.category === 'no_dns').length,
+      };
+    });
+    const byState = VE_STATES.map((st) => {
+      const inState = rows.filter((r) => r.state === st.id);
+      return {
+        state: st.id,
+        name: st.name,
+        total: inState.length,
+        active: inState.filter((r) => r.category === 'active').length,
+      };
+    })
+      .filter((s) => s.total > 0)
+      .sort((a, b) => b.active / b.total - a.active / a.total || b.total - a.total);
+
+    // Security posture of active sites (aggregate only, never per-site software versions)
+    const hstsMeasured = activeRows.some((r) => r.headers && 'hsts' in r.headers);
+    const security = {
+      active: activeRows.length,
+      https: activeRows.filter((r) => r.ssl?.enabled).length,
+      validCertificate: activeRows.filter((r) => r.ssl?.valid).length,
+      hsts: hstsMeasured ? activeRows.filter((r) => r.headers?.hsts).length : null,
+    };
+
+    // Hosting network of every domain that resolves (needs the monitor's ASN lookup)
+    const hostedRows = rows.filter((r): r is typeof r & { hosting: NonNullable<DomainRecord['hosting']> } => !!r.hosting?.asn);
+    const networkCounts = new Map<string, { network: string; country: string | null; total: number; active: number }>();
+    for (const r of hostedRows) {
+      const key = String(r.hosting.asn);
+      const entry = networkCounts.get(key) || { network: r.hosting.asName || `AS${r.hosting.asn}`, country: r.hosting.country || null, total: 0, active: 0 };
+      entry.total++;
+      if (r.category === 'active') entry.active++;
+      networkCounts.set(key, entry);
+    }
+    const hostingCountries = new Map<string, number>();
+    for (const r of hostedRows) {
+      const c = r.hosting.country || '??';
+      hostingCountries.set(c, (hostingCountries.get(c) || 0) + 1);
+    }
+    const hosting = {
+      measured: hostedRows.length,
+      networks: Array.from(networkCounts.values()).sort((a, b) => b.total - a.total).slice(0, 12),
+      countries: Array.from(hostingCountries.entries())
+        .map(([country, count]) => ({ country, count }))
+        .sort((a, b) => b.count - a.count),
+    };
+
+    // Domains registered per year: how the state's web presence grew over time
+    const registrationsByYear = await whois
+      .aggregate([
+        { $match: { registeredDate: { $ne: null } } },
+        { $group: { _id: { $year: '$registeredDate' }, count: { $sum: 1 } } },
+        { $sort: { _id: 1 } },
+      ])
+      .toArray();
 
     // Recently registered domains (last 2 years)
     const twoYearsAgo = new Date();
@@ -307,14 +310,25 @@ export async function GET(request: NextRequest) {
       example: item.fullExample as string,
     }));
 
+    // Who runs the DNS of each domain: the state, Venezuelan companies or foreign providers
+    const nameserverRows = await whois.find({}).project({ _id: 0, nameservers: 1 }).toArray();
+    const nameserverGroups = { state: 0, national: 0, foreign: 0, none: 0 };
+    for (const r of nameserverRows) {
+      const first = r.nameservers?.[0];
+      nameserverGroups[first ? groupNameserver(first) : 'none']++;
+    }
+
     return NextResponse.json({
       timeline,
+      monitoring: {
+        checksInPeriod: checkResults.length,
+        discardedInPeriod: await checks.countDocuments({ checkedAt: { $gte: startDate }, valid: false }),
+      },
       insights: {
         expiringSSL,
         expiredSSL,
         renewedSSL,
         inconsistentSSL,
-        slowestDomains,
         recentlyRegistered: recentlyRegistered.map((d) => ({
           domain: d.domain,
           registeredDate: d.registeredDate,
@@ -322,10 +336,14 @@ export async function GET(request: NextRequest) {
         })),
       },
       distributions: {
-        httpCodes: httpCodeDistribution,
-        servers: serverDistribution,
         nameservers: nameserverDistribution,
+        nameserverGroups,
+        registrationsByYear: registrationsByYear.map((r) => ({ year: r._id as number, count: r.count as number })),
+        byLevel,
+        byState,
       },
+      security,
+      hosting,
       period: {
         start: startDate,
         end: new Date(),

@@ -1,27 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getMonitorCollection } from '@/lib/mongodb';
 import { domainsQuerySchema } from '@/lib/validation';
+import { categorize, getLatestValidCheck, type DomainRecord } from '@/lib/checks';
+import { classifyDomain } from '@/lib/classify';
 
 export const revalidate = 60; // Cache for 60 seconds
+
+const CATEGORY_ORDER = { active: 0, failing: 1, no_dns: 2 } as const;
 
 export async function GET(request: NextRequest) {
   try {
     const searchParams = Object.fromEntries(request.nextUrl.searchParams);
     const query = domainsQuerySchema.parse(searchParams);
 
-    const { checks, domains } = await getMonitorCollection();
+    const { checks, domains, state } = await getMonitorCollection();
 
-    // Get the latest check ID
-    const latestCheck = await checks.findOne({}, { sort: { checkedAt: -1 } });
+    const latestCheck = await getLatestValidCheck(checks);
 
     if (!latestCheck) {
       return NextResponse.json({ domains: [], total: 0, page: 1, limit: query.limit });
     }
 
-    // Build filter
-    const filter: Record<string, unknown> = {
-      checkId: latestCheck._id,
-    };
+    // Filters that map directly to stored fields run in MongoDB
+    const filter: Record<string, unknown> = { checkId: latestCheck._id };
 
     if (query.status !== 'all') {
       filter.status = query.status;
@@ -48,7 +49,6 @@ export async function GET(request: NextRequest) {
       filter.domain = { $regex: escapedSearch, $options: 'i' };
     }
 
-    // HTTP code filter
     if (query.httpCode !== 'all') {
       switch (query.httpCode) {
         case '2xx':
@@ -69,46 +69,84 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    // Build sort - for status sort, online comes first (asc means online first)
-    let sortField: string;
-    let sortOrder: 1 | -1;
-
-    if (query.sort === 'status') {
-      // For status: asc = online first (alphabetically 'online' < 'offline' is false, so we need desc)
-      sortField = 'status';
-      sortOrder = query.order === 'asc' ? -1 : 1; // Invert because 'online' should come first
-    } else {
-      sortField = query.sort === 'domain' ? 'domain' : query.sort;
-      sortOrder = query.order === 'asc' ? 1 : -1;
-    }
-
-    // Execute query
-    const skip = (query.page - 1) * query.limit;
-
-    const [domainResults, total] = await Promise.all([
+    // One check holds ~2,600 small records: join with per-domain state and
+    // name-based classification in memory, then filter, sort and paginate.
+    const [records, states] = await Promise.all([
       domains
         .find(filter)
-        .sort({ [sortField]: sortOrder })
-        .skip(skip)
-        .limit(query.limit)
-        .project({
+        .project<DomainRecord>({
           _id: 0,
           domain: 1,
           status: 1,
+          category: 1,
+          error: 1,
+          'reachability.dns.ok': 1,
           httpCode: 1,
           responseTime: 1,
           ssl: 1,
-          headers: 1,
-          error: 1,
+          'headers.server': 1,
+          'hosting.asName': 1,
+          'hosting.country': 1,
           checkedAt: 1,
           finalUrl: 1,
         })
         .toArray(),
-      domains.countDocuments(filter),
+      state
+        .find({})
+        .project({ _id: 0, domain: 1, since: 1, firstSeenAt: 1, intermittent: 1, lastActiveAt: 1, firstActiveAt: 1 })
+        .toArray(),
     ]);
+    const stateByDomain = new Map(states.map((s) => [s.domain, s]));
+
+    let rows = records.map((r) => {
+      const s = stateByDomain.get(r.domain);
+      const classification = classifyDomain(r.domain);
+      return {
+        ...r,
+        category: categorize(r),
+        since: s?.since ?? null,
+        // Unchanged since monitoring started: the real start date is unknown
+        sinceStart: !!s?.since && String(s.since) === String(s.firstSeenAt),
+        intermittent: s?.intermittent === true,
+        lastActiveAt: s?.lastActiveAt ?? null,
+        everActive: !!s?.firstActiveAt,
+        ...classification,
+      };
+    });
+
+    if (query.category === 'intermittent') rows = rows.filter((r) => r.intermittent);
+    else if (query.category !== 'all') rows = rows.filter((r) => r.category === query.category);
+    if (query.level !== 'all') rows = rows.filter((r) => r.level === query.level);
+    if (query.state) rows = rows.filter((r) => r.state === query.state);
+
+    const dir = query.order === 'asc' ? 1 : -1;
+    const value = (r: (typeof rows)[number]): number | string => {
+      switch (query.sort) {
+        case 'status':
+          return CATEGORY_ORDER[r.category];
+        case 'domain':
+          return r.domain;
+        case 'since':
+          return r.since ? new Date(r.since).getTime() : 0;
+        case 'checkedAt':
+          return new Date(r.checkedAt).getTime();
+        default:
+          return r[query.sort] ?? Number.MAX_SAFE_INTEGER;
+      }
+    };
+    rows.sort((a, b) => {
+      const va = value(a);
+      const vb = value(b);
+      if (va < vb) return -1 * dir;
+      if (va > vb) return 1 * dir;
+      return a.domain.localeCompare(b.domain);
+    });
+
+    const total = rows.length;
+    const skip = (query.page - 1) * query.limit;
 
     return NextResponse.json({
-      domains: domainResults,
+      domains: rows.slice(skip, skip + query.limit),
       total,
       page: query.page,
       limit: query.limit,

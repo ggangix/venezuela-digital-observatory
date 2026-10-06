@@ -13,7 +13,7 @@
         "description": "Browse and search all monitored Venezuelan government domains. Filter by status, SSL certificate validity, and HTTP response codes."
       },
       "trends": {
-        "title": "Trends & Analytics - Venezuela Digital Observatory",
+        "title": "Analysis - Venezuela Digital Observatory",
         "description": "Historical availability data, response time trends, and SSL certificate expiration tracking for Venezuelan government websites."
       },
       "domain": {
@@ -23,22 +23,27 @@
       "about": {
         "title": "About - Venezuela Digital Observatory",
         "description": "Learn about the Venezuela Digital Observatory project: our mission, what we monitor, and how you can use this data for transparency and civic engagement."
+      },
+      "changes": {
+        "title": "Changes in Venezuelan government websites - Venezuela Digital Observatory",
+        "description": "Venezuelan government websites that go down, come back, change hosting or appear, detected by automated monitoring every 6 hours. Subscribe via RSS."
       }
     }
   },
   "nav": {
     "overview": "Overview",
     "domains": "Domains",
-    "trends": "Trends",
+    "trends": "Analysis",
     "about": "About",
-    "export": "Export"
+    "export": "Export",
+    "changes": "Changes"
   },
   "overview": {
     "title": "Venezuela Digital Observatory",
-    "subtitle": "Real-time monitoring of Venezuelan government websites",
+    "subtitle": "We check Venezuelan government websites every 6 hours and record what changes",
     "lastUpdate": "Last update",
     "viewAll": "View all domains",
-    "realTime": "Real-time",
+    "realTime": "Checked every 6 h",
     "publicData": "Public Data",
     "loadError": "Unable to load data. Please try again later."
   },
@@ -73,7 +78,7 @@
       "redirects": "Redirect chains",
       "serverHeaders": "Server headers"
     },
-    "viewAllTrends": "View all trends",
+    "viewAllTrends": "View full analysis",
     "learnMore": "About this project",
     "loading": "Loading..."
   },
@@ -102,12 +107,12 @@
     },
     "whatWeMonitor": "What do we monitor?",
     "monitorItems": {
-      "availability": "Availability (online/offline)",
+      "availability": "Availability (active / failing / no DNS)",
       "httpCodes": "HTTP response codes",
       "responseTimes": "Response times",
       "sslCerts": "SSL certificates and validity",
       "redirects": "Redirect chains",
-      "serverHeaders": "Server headers"
+      "serverHeaders": "Security headers and hosting network"
     },
     "support": {
       "title": "Support the project",
@@ -233,8 +238,8 @@
     }
   },
   "trends": {
-    "title": "Trends & Analytics",
-    "subtitle": "Historical data and performance trends",
+    "title": "Analysis",
+    "subtitle": "How the Venezuelan state's web presence evolves: availability, hosting, security and registrations",
     "charts": {
       "availability": "Availability Over Time",
       "responseTime": "Average Response Time",
@@ -348,5 +353,188 @@
   },
   "time": {
     "justNow": "just now"
+  },
+  "categories": {
+    "active": {
+      "label": "Active",
+      "one": "Active",
+      "description": "The site responds."
+    },
+    "failing": {
+      "label": "Failing",
+      "one": "Failing",
+      "description": "The domain exists but the site does not respond."
+    },
+    "no_dns": {
+      "label": "No DNS",
+      "one": "No DNS",
+      "description": "The domain does not resolve: abandoned or misconfigured."
+    },
+    "intermittent": {
+      "label": "Intermittent",
+      "one": "Intermittent",
+      "description": "Changed status 3 or more times in 30 days."
+    },
+    "ofTotal": "of {total} registered domains",
+    "withInfra": "{active} of {withInfra} sites with infrastructure respond",
+    "viewList": "View list",
+    "registered": "There are {total} registered .gob.ve and .mil.ve domains; {noDns} no longer resolve in DNS."
+  },
+  "live": {
+    "verified": "Last check {time}",
+    "next": "next ≈ {time}",
+    "overdue": "The next check is overdue",
+    "every": "Every {hours} hours we check each of the {count} .gob.ve and .mil.ve domains",
+    "checks": "checks",
+    "observations": "observations recorded",
+    "days": "days of history",
+    "changesWeek": "changes this week",
+    "since": "since {date}"
+  },
+  "levels": {
+    "national": "National",
+    "state": "State",
+    "municipal": "Municipal",
+    "military": "Military"
+  },
+  "sectors": {
+    "executive": "Executive",
+    "legislative": "Legislative",
+    "oversight": "Audit & oversight",
+    "justice": "Justice",
+    "security": "Security & defense",
+    "health": "Health",
+    "education": "Education & science",
+    "utilities": "Public services",
+    "culture": "Culture, sports & tourism",
+    "economy": "Economy & finance",
+    "other": "Other"
+  },
+  "events": {
+    "title": "What changed",
+    "subtitle": "Changes confirmed for at least 24 hours",
+    "up": "is back online",
+    "appeared": "started responding",
+    "down": "stopped responding",
+    "downDns": "stopped resolving in DNS",
+    "transition": "went from {from} to {to}",
+    "newDomain": "new domain monitored",
+    "hostingChange": "changed hosting: {from} → {to}",
+    "sslExpired": "its SSL certificate expired",
+    "sslRenewed": "renewed its SSL certificate",
+    "wasFor": "after {duration} {state}",
+    "intermittentNote": "{count} more changes from intermittent sites in the last 30 days",
+    "showIntermittent": "Also show intermittent sites",
+    "empty": "No changes in this period",
+    "viewAll": "View all changes",
+    "loadMore": "Load more",
+    "rss": "Subscribe via RSS",
+    "all": "All",
+    "onlyUp": "Back online",
+    "onlyDown": "Went down",
+    "onlyNew": "New domains",
+    "onlyHosting": "Hosting changes",
+    "prevState": {
+      "active": "active",
+      "failing": "failing",
+      "no_dns": "without DNS"
+    },
+    "wasForAtLeast": "after more than {duration} {state}"
+  },
+  "changes": {
+    "title": "Changes",
+    "subtitle": "Every site that goes down, comes back, changes hosting or appears, with the date we detected it.",
+    "howTitle": "How a change is detected",
+    "how": "A change is published once it holds for 4 consecutive checks (24 hours), so momentary outages are not reported. The date is the first check that observed it. Sites that change status 3 or more times in 30 days are grouped as intermittent."
+  },
+  "domainExtra": {
+    "since": "In this state since {date}",
+    "sinceShort": "since {date}",
+    "lastActive": "Last seen online: {date}",
+    "neverActive": "Has not responded since we started monitoring it",
+    "uptime": "Availability",
+    "uptime30": "Last 30 days",
+    "uptime90": "Last 90 days",
+    "uptimeChecks": "{active} of {total} checks",
+    "strip": "Last {count} checks",
+    "stripHelp": "Each bar is one check (every 6 h). Hover to see the date.",
+    "changes": "Change history",
+    "noChanges": "No changes recorded since we started monitoring it",
+    "archive": "Archive",
+    "archiveHelp": "Copies saved in the Internet Archive so they are not lost if the site disappears.",
+    "archiveView": "View copies on the Wayback Machine",
+    "archiveLast": "Last copy submitted: {date}",
+    "archivePending": "No copy submitted yet",
+    "hosting": "Hosting",
+    "network": "Network",
+    "country": "Country",
+    "classification": "Classification",
+    "estimated": "estimated from the domain name",
+    "level": "Level",
+    "state": "State",
+    "sector": "Sector",
+    "categoryExplain": {
+      "active": "The site responded in the last check.",
+      "failing": "The domain resolves in DNS but the server did not respond (connection refused, reset or timed out).",
+      "no_dns": "The domain does not resolve in DNS. This usually means it was abandoned or its DNS servers are misconfigured."
+    },
+    "sinceMonitoringStart": "Unchanged since we started monitoring it ({date})"
+  },
+  "domainsExtra": {
+    "category": "Status",
+    "level": "Level",
+    "allCategories": "All statuses",
+    "allLevels": "All levels",
+    "since": "Since",
+    "allStates": "All Venezuelan states",
+    "state": "State",
+    "sinceStart": "since start"
+  },
+  "analysis": {
+    "activeOverTime": "Active sites over time",
+    "activeOverTimeDesc": "Number of sites that responded in each check. Discarded checks (when our own connection failed) are not shown.",
+    "discarded": "{count} checks discarded in this period",
+    "categoriesOverTime": "Status of all domains",
+    "registrations": "Domains registered per year",
+    "registrationsDesc": "Registration year of the {total} monitored .gob.ve domains. Shows how the state's web presence grew (and stalled).",
+    "byLevel": "By level of government",
+    "byLevelDesc": "Estimated from the domain name (alcaldía, gobernación, .mil.ve…).",
+    "byState": "By state",
+    "byStateDesc": "Share of active sites among domains that name a state (estimated).",
+    "activeOf": "{active} of {total} active",
+    "security": "Basic security of active sites",
+    "securityDesc": "Aggregate figures only: we do not publish per-site software versions.",
+    "https": "Use HTTPS",
+    "validCert": "Valid certificate",
+    "hsts": "Enforce HTTPS (HSTS)",
+    "measuringSoon": "Measured starting with the next check",
+    "hosting": "Where are they hosted?",
+    "hostingDesc": "Network (ASN) that owns the IP of each domain that resolves.",
+    "hostingCountries": "By network country",
+    "nameserverGroups": "Who runs their DNS?",
+    "nameserverGroupsDesc": "Based on the first DNS server registered in WHOIS.",
+    "nsGroups": {
+      "state": "State networks (gob.ve, CANTV, REACCIUN)",
+      "national": "Venezuelan companies",
+      "foreign": "Foreign providers",
+      "none": "No data"
+    },
+    "infraOverTime": "Sites with infrastructure over time",
+    "noDnsHidden": "The {count} domains without DNS are not shown."
+  },
+  "methodology": {
+    "title": "How we measure",
+    "frequency": "Frequency",
+    "frequencyText": "Every 6 hours an automated monitor visits each of the 2,500+ domains (HTTPS, falling back to HTTP), with a second pass for the ones that did not respond. Every result is stored: the history grows with each check.",
+    "categoriesTitle": "Categories",
+    "vantage": "Vantage point",
+    "vantageText": "Checks go out through an IP that geolocation databases place in Caracas, Venezuela (a VPN server physically in Miami). This avoids country-based blocking, but it does not measure the experience of a user on a Venezuelan network.",
+    "quality": "Discarded checks",
+    "qualityText": "If the number of active sites in a check drops below half of the usual, the problem is our connection, not the sites: that check is discarded and does not appear in charts or history.",
+    "changesTitle": "Changes",
+    "archiveTitle": "Preservation",
+    "archiveText": "Every day we send a copy of every active site to the Internet Archive, starting with those never archived and those that just changed, so a record remains if a site disappears. Sites that are down are not sent.",
+    "estimatesTitle": "Estimated classification",
+    "estimatesText": "Level of government, state and sector are inferred from the domain name, because WHOIS does not identify the agency in most cases. They are approximations."
   }
 }

@@ -13,7 +13,7 @@
         "description": "Explora y busca todos los dominios gubernamentales venezolanos monitoreados. Filtra por estado, validez de certificado SSL y códigos de respuesta HTTP."
       },
       "trends": {
-        "title": "Tendencias y Análisis - Observatorio Digital de Venezuela",
+        "title": "Análisis - Observatorio Digital de Venezuela",
         "description": "Datos históricos de disponibilidad, tendencias de tiempo de respuesta y seguimiento de expiración de certificados SSL para sitios web del gobierno venezolano."
       },
       "domain": {
@@ -23,22 +23,27 @@
       "about": {
         "title": "Acerca de - Observatorio Digital de Venezuela",
         "description": "Conoce el proyecto Observatorio Digital de Venezuela: nuestra misión, qué monitoreamos y cómo puedes usar estos datos para la transparencia y participación ciudadana."
+      },
+      "changes": {
+        "title": "Cambios en sitios del gobierno venezolano - Observatorio Digital de Venezuela",
+        "description": "Sitios web del Estado venezolano que se caen, vuelven, cambian de alojamiento o aparecen, detectados por monitoreo automático cada 6 horas. Suscríbete por RSS."
       }
     }
   },
   "nav": {
     "overview": "Inicio",
     "domains": "Dominios",
-    "trends": "Tendencias",
+    "trends": "Análisis",
     "about": "Acerca de",
-    "export": "Exportar"
+    "export": "Exportar",
+    "changes": "Cambios"
   },
   "overview": {
     "title": "Observatorio Digital de Venezuela",
-    "subtitle": "Monitoreo en tiempo real de sitios web del gobierno venezolano",
+    "subtitle": "Verificamos cada 6 horas los sitios web del Estado venezolano y registramos qué cambia",
     "lastUpdate": "Última actualización",
     "viewAll": "Ver todos los dominios",
-    "realTime": "Tiempo Real",
+    "realTime": "Verificado cada 6 h",
     "publicData": "Datos Públicos",
     "loadError": "No se pueden cargar los datos. Por favor, intenta más tarde."
   },
@@ -73,7 +78,7 @@
       "redirects": "Cadenas de redirección",
       "serverHeaders": "Cabeceras de servidor"
     },
-    "viewAllTrends": "Ver todas las tendencias",
+    "viewAllTrends": "Ver análisis completo",
     "learnMore": "Acerca de este proyecto",
     "loading": "Cargando..."
   },
@@ -102,12 +107,12 @@
     },
     "whatWeMonitor": "¿Qué monitoreamos?",
     "monitorItems": {
-      "availability": "Disponibilidad (online/offline)",
+      "availability": "Disponibilidad (activo / con fallas / sin DNS)",
       "httpCodes": "Códigos de respuesta HTTP",
       "responseTimes": "Tiempos de respuesta",
       "sslCerts": "Certificados SSL y su validez",
       "redirects": "Cadenas de redirección",
-      "serverHeaders": "Cabeceras de servidor"
+      "serverHeaders": "Cabeceras de seguridad y red de alojamiento"
     },
     "support": {
       "title": "Apoya el proyecto",
@@ -233,8 +238,8 @@
     }
   },
   "trends": {
-    "title": "Tendencias y Análisis",
-    "subtitle": "Datos históricos y tendencias de rendimiento",
+    "title": "Análisis",
+    "subtitle": "Cómo evoluciona la presencia web del Estado venezolano: disponibilidad, alojamiento, seguridad y registros",
     "charts": {
       "availability": "Disponibilidad en el Tiempo",
       "responseTime": "Tiempo de Respuesta Promedio",
@@ -348,5 +353,188 @@
   },
   "time": {
     "justNow": "ahora"
+  },
+  "categories": {
+    "active": {
+      "label": "Activos",
+      "one": "Activo",
+      "description": "El sitio responde."
+    },
+    "failing": {
+      "label": "Con fallas",
+      "one": "Con fallas",
+      "description": "El dominio existe pero el sitio no responde."
+    },
+    "no_dns": {
+      "label": "Sin DNS",
+      "one": "Sin DNS",
+      "description": "El dominio no resuelve: abandonado o mal configurado."
+    },
+    "intermittent": {
+      "label": "Intermitentes",
+      "one": "Intermitente",
+      "description": "Cambió de estado 3 o más veces en 30 días."
+    },
+    "ofTotal": "de {total} dominios registrados",
+    "withInfra": "{active} de {withInfra} sitios con infraestructura responden",
+    "viewList": "Ver lista",
+    "registered": "Hay {total} dominios .gob.ve y .mil.ve registrados; {noDns} ya no resuelven en DNS."
+  },
+  "live": {
+    "verified": "Última verificación {time}",
+    "next": "próxima ≈ {time}",
+    "overdue": "La próxima verificación está demorada",
+    "every": "Cada {hours} horas revisamos uno por uno los {count} dominios .gob.ve y .mil.ve",
+    "checks": "verificaciones",
+    "observations": "observaciones registradas",
+    "days": "días de historial",
+    "changesWeek": "cambios esta semana",
+    "since": "desde {date}"
+  },
+  "levels": {
+    "national": "Nacional",
+    "state": "Estatal",
+    "municipal": "Municipal",
+    "military": "Militar"
+  },
+  "sectors": {
+    "executive": "Ejecutivo",
+    "legislative": "Legislativo",
+    "oversight": "Control fiscal",
+    "justice": "Justicia",
+    "security": "Seguridad y defensa",
+    "health": "Salud",
+    "education": "Educación y ciencia",
+    "utilities": "Servicios públicos",
+    "culture": "Cultura, deporte y turismo",
+    "economy": "Economía y finanzas",
+    "other": "Otros"
+  },
+  "events": {
+    "title": "Qué cambió",
+    "subtitle": "Cambios confirmados durante al menos 24 horas",
+    "up": "volvió a estar en línea",
+    "appeared": "empezó a responder",
+    "down": "dejó de responder",
+    "downDns": "dejó de resolver en DNS",
+    "transition": "pasó de {from} a {to}",
+    "newDomain": "nuevo dominio monitoreado",
+    "hostingChange": "cambió de alojamiento: {from} → {to}",
+    "sslExpired": "venció su certificado SSL",
+    "sslRenewed": "renovó su certificado SSL",
+    "wasFor": "tras {duration} {state}",
+    "intermittentNote": "{count} cambios más de sitios intermitentes en los últimos 30 días",
+    "showIntermittent": "Mostrar también los intermitentes",
+    "empty": "Sin cambios en este periodo",
+    "viewAll": "Ver todos los cambios",
+    "loadMore": "Cargar más",
+    "rss": "Suscribirse por RSS",
+    "all": "Todos",
+    "onlyUp": "Volvieron",
+    "onlyDown": "Se cayeron",
+    "onlyNew": "Nuevos dominios",
+    "onlyHosting": "Cambios de alojamiento",
+    "prevState": {
+      "active": "activo",
+      "failing": "con fallas",
+      "no_dns": "sin DNS"
+    },
+    "wasForAtLeast": "tras más de {duration} {state}"
+  },
+  "changes": {
+    "title": "Cambios",
+    "subtitle": "Cada sitio que se cae, vuelve, cambia de alojamiento o aparece, con la fecha en que lo detectamos.",
+    "howTitle": "Cómo se detecta un cambio",
+    "how": "Un cambio se publica cuando se mantiene durante 4 verificaciones seguidas (24 horas), para no reportar caídas momentáneas. La fecha es la de la primera verificación que lo observó. Los sitios que cambian de estado 3 o más veces en 30 días se agrupan como intermitentes."
+  },
+  "domainExtra": {
+    "since": "En este estado desde {date}",
+    "sinceShort": "desde {date}",
+    "lastActive": "Último momento en línea: {date}",
+    "neverActive": "No ha respondido desde que empezamos a monitorearlo",
+    "uptime": "Disponibilidad",
+    "uptime30": "Últimos 30 días",
+    "uptime90": "Últimos 90 días",
+    "uptimeChecks": "{active} de {total} verificaciones",
+    "strip": "Últimas {count} verificaciones",
+    "stripHelp": "Cada barra es una verificación (cada 6 h). Pasa el cursor para ver la fecha.",
+    "changes": "Historial de cambios",
+    "noChanges": "Sin cambios registrados desde que empezamos a monitorearlo",
+    "archive": "Archivo",
+    "archiveHelp": "Copias guardadas en el Internet Archive para que no se pierdan si el sitio desaparece.",
+    "archiveView": "Ver copias en el Wayback Machine",
+    "archiveLast": "Última copia enviada: {date}",
+    "archivePending": "Aún no se ha enviado una copia",
+    "hosting": "Alojamiento",
+    "network": "Red",
+    "country": "País",
+    "classification": "Clasificación",
+    "estimated": "estimado a partir del nombre del dominio",
+    "level": "Nivel",
+    "state": "Estado",
+    "sector": "Sector",
+    "categoryExplain": {
+      "active": "El sitio respondió en la última verificación.",
+      "failing": "El dominio resuelve en DNS, pero el servidor no respondió (conexión rechazada, reiniciada o sin respuesta).",
+      "no_dns": "El dominio no resuelve en DNS. Suele significar que fue abandonado o que sus servidores DNS están mal configurados."
+    },
+    "sinceMonitoringStart": "Sin cambios desde que empezamos a monitorearlo ({date})"
+  },
+  "domainsExtra": {
+    "category": "Estado",
+    "level": "Nivel",
+    "allCategories": "Todos los estados",
+    "allLevels": "Todos los niveles",
+    "since": "Desde",
+    "allStates": "Todos los estados del país",
+    "state": "Estado del país",
+    "sinceStart": "desde el inicio"
+  },
+  "analysis": {
+    "activeOverTime": "Sitios activos en el tiempo",
+    "activeOverTimeDesc": "Número de sitios que respondieron en cada verificación. Las verificaciones descartadas (cuando falló nuestra conexión) no se muestran.",
+    "discarded": "{count} verificaciones descartadas en este periodo",
+    "categoriesOverTime": "Estado de todos los dominios",
+    "registrations": "Dominios registrados por año",
+    "registrationsDesc": "Año de registro de los {total} dominios .gob.ve monitoreados. Muestra cómo creció (y se frenó) la presencia web del Estado.",
+    "byLevel": "Por nivel de gobierno",
+    "byLevelDesc": "Estimado a partir del nombre del dominio (alcaldía, gobernación, .mil.ve…).",
+    "byState": "Por estado",
+    "byStateDesc": "Porcentaje de sitios activos entre los dominios que mencionan un estado en su nombre (estimado).",
+    "activeOf": "{active} de {total} activos",
+    "security": "Seguridad básica de los sitios activos",
+    "securityDesc": "Solo cifras agregadas: no publicamos versiones de software por sitio.",
+    "https": "Usan HTTPS",
+    "validCert": "Con certificado válido",
+    "hsts": "Fuerzan HTTPS (HSTS)",
+    "measuringSoon": "Se empieza a medir con la próxima verificación",
+    "hosting": "¿Dónde están alojados?",
+    "hostingDesc": "Red (ASN) a la que pertenece la IP de cada dominio que resuelve.",
+    "hostingCountries": "Por país de la red",
+    "nameserverGroups": "¿Quién gestiona su DNS?",
+    "nameserverGroupsDesc": "Según el primer servidor DNS registrado en WHOIS.",
+    "nsGroups": {
+      "state": "Redes del Estado (gob.ve, CANTV, REACCIUN)",
+      "national": "Empresas venezolanas",
+      "foreign": "Proveedores extranjeros",
+      "none": "Sin datos"
+    },
+    "infraOverTime": "Sitios con infraestructura en el tiempo",
+    "noDnsHidden": "Los {count} dominios sin DNS no se muestran."
+  },
+  "methodology": {
+    "title": "Cómo medimos",
+    "frequency": "Frecuencia",
+    "frequencyText": "Cada 6 horas un monitor automático visita uno por uno los más de 2.500 dominios (HTTPS y, si falla, HTTP), con una segunda pasada para los que no respondieron. Cada resultado se guarda: el historial crece con cada verificación.",
+    "categoriesTitle": "Categorías",
+    "vantage": "Desde dónde",
+    "vantageText": "Las verificaciones salen por una IP que las bases de geolocalización ubican en Caracas, Venezuela (servidor VPN físicamente en Miami). Así evitamos los bloqueos por país, pero no medimos la experiencia de un usuario conectado desde una red venezolana.",
+    "quality": "Verificaciones descartadas",
+    "qualityText": "Si en una verificación el número de sitios activos cae a menos de la mitad de lo habitual, el problema es nuestra conexión y no los sitios: esa verificación se descarta y no aparece en gráficas ni en el historial.",
+    "changesTitle": "Cambios",
+    "archiveTitle": "Preservación",
+    "archiveText": "Cada día enviamos al Internet Archive una copia de todos los sitios activos, empezando por los que nunca se archivaron y los que acaban de cambiar, para que quede constancia si un sitio desaparece. Los sitios caídos no se envían.",
+    "estimatesTitle": "Clasificación estimada",
+    "estimatesText": "El nivel de gobierno, el estado y el sector se deducen del nombre del dominio, porque el registro WHOIS no identifica al organismo en la mayoría de los casos. Son aproximaciones."
   }
 }
