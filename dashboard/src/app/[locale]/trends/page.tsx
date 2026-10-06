@@ -145,6 +145,7 @@ export default function TrendsPage() {
   const [data, setData] = useState<TrendData | null>(null);
   const [loading, setLoading] = useState(true);
   const [days, setDays] = useState(30);
+  const [visibleRegistered, setVisibleRegistered] = useState(10);
 
   useEffect(() => {
     async function fetchTrends() {
@@ -469,7 +470,7 @@ export default function TrendsPage() {
               <CalendarPlus className="h-5 w-5 text-emerald-600" />
               {t('insights.recentlyRegistered')}
             </h2>
-            <p className="mb-4 text-sm text-muted-foreground">{t('insights.recentlyRegisteredDesc')}</p>
+            <p className="mb-4 text-sm text-muted-foreground">{t('insights.recentlyRegisteredDesc', { count: data.insights.recentlyRegistered?.length ?? 0 })}</p>
             {data.insights.recentlyRegistered && data.insights.recentlyRegistered.length > 0 ? (
               <div className="overflow-x-auto">
                 <table className="table">
@@ -482,7 +483,7 @@ export default function TrendsPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {data.insights.recentlyRegistered.map((d) => (
+                    {data.insights.recentlyRegistered.slice(0, visibleRegistered).map((d) => (
                       <tr key={d.domain}>
                         <td>
                           <Link href={`/${locale}/domain/${encodeURIComponent(d.domain)}`} className="font-mono text-sm hover:text-primary hover:underline">
@@ -500,6 +501,15 @@ export default function TrendsPage() {
                     ))}
                   </tbody>
                 </table>
+                {data.insights.recentlyRegistered.length > visibleRegistered && (
+                  <button
+                    onClick={() => setVisibleRegistered((prev) => prev + 10)}
+                    className="mt-3 flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-slate-50 hover:text-foreground dark:border-slate-700 dark:hover:bg-slate-800"
+                  >
+                    <ChevronDown className="h-4 w-4" />
+                    {t('showMore')} ({data.insights.recentlyRegistered.length - visibleRegistered})
+                  </button>
+                )}
               </div>
             ) : (
               <p className="py-4 text-center text-muted-foreground">{t('noRecentDomains')}</p>

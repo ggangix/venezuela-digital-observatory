@@ -261,7 +261,7 @@
       "inconsistentSSL": "Inconsistent SSL Certificates",
       "inconsistentSSLDesc": "Domains serving different SSL certificates across checks (indicates misconfigured servers or load balancers)",
       "recentlyRegistered": "Recently Registered Domains",
-      "recentlyRegisteredDesc": "New government domains registered in the last 2 years"
+      "recentlyRegisteredDesc": "Government domains registered in the last 2 years ({count}), newest first"
     },
     "period": {
       "7days": "Last 7 days",
