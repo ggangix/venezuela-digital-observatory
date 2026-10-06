@@ -272,7 +272,7 @@ export async function GET(request: NextRequest) {
         registeredDate: { $gte: twoYearsAgo },
       })
       .sort({ registeredDate: -1 })
-      .limit(10)
+      .limit(200)
       .project({
         _id: 0,
         domain: 1,
