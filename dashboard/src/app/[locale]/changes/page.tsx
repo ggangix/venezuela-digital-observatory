@@ -115,7 +115,7 @@ export default function ChangesPage() {
             <span className="badge badge-failing">{observing.length}</span>
           </h2>
           <p className="mb-2 text-sm text-muted-foreground">{tObs('description')}</p>
-          <ObservingList items={showAllObserving ? observing : observing.slice(0, 8)} />
+          <ObservingList items={showAllObserving ? observing : observing.slice(0, 8)} showRaw />
           {observing.length > 8 && !showAllObserving && (
             <button onClick={() => setShowAllObserving(true)} className="mt-2 text-sm font-medium text-blue-600 hover:underline">
               {tObs('showAll', { count: observing.length })}
@@ -129,7 +129,7 @@ export default function ChangesPage() {
           {loading && events.length === 0 ? (
             <p className="py-8 text-center text-muted-foreground">{tEvents('loadMore')}…</p>
           ) : (
-            <EventList events={events} />
+            <EventList events={events} showRaw />
           )}
           {nextBefore && (
             <button

@@ -566,5 +566,12 @@
     "domainUp": "En observación: vuelve a responder desde el {date}",
     "domainTransition": "En observación: pasó a «{to}» el {date}",
     "domainHelp": "{count, plural, one {# revisión seguida} other {# revisiones seguidas}}. Se registrará como cambio si se mantiene 24 horas."
+  },
+  "rawJson": {
+    "show": "Ver datos en JSON",
+    "hide": "Ocultar JSON",
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "api": "API"
   }
 }

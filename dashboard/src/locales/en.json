@@ -566,5 +566,12 @@
     "domainUp": "Under observation: responding again since {date}",
     "domainTransition": "Under observation: became “{to}” on {date}",
     "domainHelp": "{count, plural, one {# check} other {# checks in a row}}. It will be recorded as a change if it holds for 24 hours."
+  },
+  "rawJson": {
+    "show": "View JSON data",
+    "hide": "Hide JSON",
+    "copy": "Copy",
+    "copied": "Copied",
+    "api": "API"
   }
 }
