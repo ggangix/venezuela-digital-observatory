@@ -1,11 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { ArrowDownCircle, ArrowUpCircle, PlusCircle, Server, ShieldX, ShieldCheck, RefreshCw } from 'lucide-react';
 import { cn, formatDateTime, formatRelativeTime, formatSpan } from '@/lib/utils';
 import { stateName } from '@/lib/classify';
 import type { Category } from '@/lib/checks';
+import { RawJsonPanel, RawJsonToggle } from '@/components/RawJson';
 
 type Network = { asn?: number; asName?: string | null; country?: string | null };
 
@@ -25,6 +27,8 @@ type Props = {
   events: MonitorEvent[];
   /** Hide the domain name (used on a domain's own page) */
   hideDomain?: boolean;
+  /** Let each event expand to its raw JSON */
+  showRaw?: boolean;
 };
 
 function networkLabel(n?: Network) {
@@ -32,7 +36,8 @@ function networkLabel(n?: Network) {
   return `${n.asName || `AS${n.asn}`}${n.country ? ` (${n.country})` : ''}`;
 }
 
-export function EventList({ events, hideDomain }: Props) {
+export function EventList({ events, hideDomain, showRaw }: Props) {
+  const [openKey, setOpenKey] = useState<string | null>(null);
   const t = useTranslations('events');
   const tc = useTranslations('categories');
   const tl = useTranslations('levels');
@@ -81,8 +86,9 @@ export function EventList({ events, hideDomain }: Props) {
           e.type === 'status' && e.previousSince
             ? new Date(e.at).getTime() - new Date(e.previousSince).getTime()
             : null;
+        const key = `${e.domain}-${e.at}-${i}`;
         return (
-          <li key={`${e.domain}-${e.at}-${i}`} className="flex gap-3 py-3">
+          <li key={key} className="flex gap-3 py-3">
             <d.icon className={cn('mt-0.5 h-5 w-5 shrink-0', d.color)} />
             <div className="min-w-0 flex-1">
               <p className="text-sm">
@@ -117,7 +123,11 @@ export function EventList({ events, hideDomain }: Props) {
                 )}
                 {e.intermittent && <span className="badge badge-intermittent">{tc('intermittent.one')}</span>}
               </p>
+              {showRaw && openKey === key && (
+                <RawJsonPanel value={e} apiHref={`/api/monitor/events?domain=${encodeURIComponent(e.domain)}&type=all`} />
+              )}
             </div>
+            {showRaw && <RawJsonToggle open={openKey === key} onToggle={() => setOpenKey(openKey === key ? null : key)} />}
           </li>
         );
       })}

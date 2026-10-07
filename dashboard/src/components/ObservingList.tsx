@@ -1,11 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Eye } from 'lucide-react';
 import { formatDateTime } from '@/lib/utils';
 import { stateName } from '@/lib/classify';
 import type { Category } from '@/lib/checks';
+import { RawJsonPanel, RawJsonToggle } from '@/components/RawJson';
 
 export type ObservingItem = {
   domain: string;
@@ -18,7 +20,8 @@ export type ObservingItem = {
 };
 
 /** Changes seen in the latest checks that are not confirmed yet (< 24h). */
-export function ObservingList({ items }: { items: ObservingItem[] }) {
+export function ObservingList({ items, showRaw }: { items: ObservingItem[]; showRaw?: boolean }) {
+  const [openKey, setOpenKey] = useState<string | null>(null);
   const t = useTranslations('observing');
   const tc = useTranslations('categories');
   const tl = useTranslations('levels');
@@ -58,7 +61,13 @@ export function ObservingList({ items }: { items: ObservingItem[] }) {
                   </>
                 )}
               </p>
+              {showRaw && openKey === o.domain && (
+                <RawJsonPanel value={o} apiHref={`/api/monitor/domains/${encodeURIComponent(o.domain)}`} />
+              )}
             </div>
+            {showRaw && (
+              <RawJsonToggle open={openKey === o.domain} onToggle={() => setOpenKey(openKey === o.domain ? null : o.domain)} />
+            )}
           </li>
         );
       })}
