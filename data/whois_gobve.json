@@ -2,13 +2,28 @@
   "_meta": {
     "description": "WHOIS data for Venezuelan government domains (.gob.ve)",
     "source": "whois.nic.ve",
-    "generated": "2026-10-05T13:44:29.734Z",
-    "total": 2557,
-    "recent_2025_2026": 42,
+    "generated": "2026-10-13T11:26:03.170Z",
+    "total": 2558,
+    "recent_2025_2026": 43,
     "privacy_note": "Personal names of registrants have been excluded",
     "license": "CC0 - Public Domain"
   },
   "domains": [
+    {
+      "domain": "intu.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2026-10-05",
+      "registered_year": "2026",
+      "expire": "2036-10-05",
+      "changed": "2026-10-08",
+      "org": "Instituto Nacional De Tierras Urbanas",
+      "city": "1060",
+      "country": "VE",
+      "nameservers": [
+        "dell.ns.cloudflare.com",
+        "lars.ns.cloudflare.com"
+      ]
+    },
     {
       "domain": "cmelhatillo.gob.ve",
       "registrar": "NIC-VE",
