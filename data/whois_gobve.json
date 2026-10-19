@@ -2,13 +2,28 @@
   "_meta": {
     "description": "WHOIS data for Venezuelan government domains (.gob.ve)",
     "source": "whois.nic.ve",
-    "generated": "2026-10-13T11:26:03.170Z",
-    "total": 2558,
-    "recent_2025_2026": 43,
+    "generated": "2026-10-19T20:30:04.424Z",
+    "total": 2559,
+    "recent_2025_2026": 44,
     "privacy_note": "Personal names of registrants have been excluded",
     "license": "CC0 - Public Domain"
   },
   "domains": [
+    {
+      "domain": "shn.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2026-10-14",
+      "registered_year": "2026",
+      "expire": "2036-10-14",
+      "changed": "2026-10-14",
+      "org": "Comandancia General De La Armada",
+      "city": "1101",
+      "country": "VE",
+      "nameservers": [
+        "ns3.fastglobalserver.com",
+        "ns4.fastglobalserver.com"
+      ]
+    },
     {
       "domain": "intu.gob.ve",
       "registrar": "NIC-VE",
