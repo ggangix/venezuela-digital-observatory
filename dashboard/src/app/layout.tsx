@@ -25,28 +25,18 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: '/favicon.ico',
-    apple: '/og-image.png',
   },
   openGraph: {
     title: 'Venezuela Digital Observatory',
     description: 'Real-time monitoring of Venezuelan government websites (.gob.ve and .mil.ve). Track availability, SSL certificates, and server status.',
     url: 'https://venezueladigitalobservatory.com',
     siteName: 'Venezuela Digital Observatory',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Venezuela Digital Observatory',
-      },
-    ],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Venezuela Digital Observatory',
     description: 'Real-time monitoring of Venezuelan government websites (.gob.ve and .mil.ve). Track availability, SSL certificates, and server status.',
-    images: ['/og-image.png'],
   },
 };
 

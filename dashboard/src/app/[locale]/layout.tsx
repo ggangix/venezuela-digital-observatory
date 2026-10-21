@@ -29,14 +29,6 @@ export async function generateMetadata({ params }: Props) {
       description: t('description'),
       url: `https://venezueladigitalobservatory.com/${locale}`,
       siteName: 'Venezuela Digital Observatory',
-      images: [
-        {
-          url: '/og-image.png',
-          width: 1200,
-          height: 630,
-          alt: 'Venezuela Digital Observatory',
-        },
-      ],
       locale: locale === 'es' ? 'es_VE' : 'en_US',
       type: 'website',
     },
@@ -45,14 +37,6 @@ export async function generateMetadata({ params }: Props) {
       title: t('title'),
       description: t('description'),
       site: '@venezueladigitalobs',
-      images: [
-        {
-          url: '/og-image.png',
-          width: 1200,
-          height: 630,
-          alt: 'Venezuela Digital Observatory',
-        },
-      ],
     },
     alternates: {
       canonical: `https://venezueladigitalobservatory.com/${locale}`,
