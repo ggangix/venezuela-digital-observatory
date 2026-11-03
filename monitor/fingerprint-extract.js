@@ -4,7 +4,10 @@
  * downloaded and stores/compares the result.
  *
  * Covers observatory ideas #1-#4:
- *   #1 defacement: off-domain redirect + gambling/porn/pharma keywords
+ *   #1 defacement: gambling/porn/pharma keywords injected into the page.
+ *                  (The off-domain redirect signal lives in history.js instead:
+ *                  it only needs the status check's finalUrl, so it covers every
+ *                  active site, not just the ones this fingerprint pass fetched.)
  *   #2 trackers:   who the site reports your visit to (Google, Meta, ...)
  *   #3 stack:      CMS / framework the site is built with
  *   #4 obsolete:   end-of-life libraries and tech still in use
@@ -73,6 +76,23 @@ function hostOf(u) {
 }
 
 /**
+ * Off-domain redirect check (idea #1). A final host that is neither the domain
+ * nor any .gob/.gov/.mil.ve is a strong hijack signal on its own — the user's
+ * rule: "that the final URL is not a .gob.ve is enough to know something is
+ * wrong". Returns the offending host (evidence) or null. Used by history.js,
+ * which runs it over every active site's finalUrl (full coverage).
+ */
+function offsiteHost(domain, finalUrl) {
+  if (!finalUrl) return null;
+  const h = hostOf(finalUrl);
+  if (!h) return null;
+  const d = String(domain).toLowerCase();
+  if (h === d || h === `www.${d}`) return null;
+  if (/\.(gob|gov|mil)\.ve$/.test(h)) return null;
+  return h;
+}
+
+/**
  * @param {object} input
  * @param {string} input.domain     the monitored domain
  * @param {string} input.html       homepage HTML (first N KB)
@@ -93,13 +113,9 @@ function extract({ domain, html = '', finalUrl = null }) {
     evidence: ((html.match(o.re) || [])[0] || '').slice(0, 80),
   }));
 
-  // #1 defacement signals
+  // #1 defacement signals. The off-domain redirect lives in history.js (full
+  // coverage from finalUrl); here we catch SEO spam injected into the page.
   const flags = [];
-  // off-domain redirect: final host is neither the domain nor any .gob/.gov/.mil.ve
-  const fHost = finalUrl ? hostOf(finalUrl) : null;
-  if (fHost && fHost !== domain && fHost !== `www.${domain}` && !/\.(gob|gov|mil)\.ve$/.test(fHost)) {
-    flags.push({ id: 'offsite-redirect', label: 'redirige fuera de .gob.ve', evidence: finalUrl.slice(0, 120) });
-  }
   // spam keywords in title or body
   for (const s of SPAM) {
     const m = (title + ' ' + html).match(s.re);
@@ -125,4 +141,4 @@ function extract({ domain, html = '', finalUrl = null }) {
   };
 }
 
-module.exports = { extract, TRACKERS, CMS, OBSOLETE, SPAM };
+module.exports = { extract, offsiteHost, TRACKERS, CMS, OBSOLETE, SPAM };

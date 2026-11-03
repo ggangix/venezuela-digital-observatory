@@ -16,8 +16,13 @@
  */
 
 const { categorize } = require('./classify');
+const { offsiteHost } = require('./fingerprint-extract');
 
 const CONFIRM_CHECKS = Math.max(1, parseInt(process.env.CONFIRM_CHECKS || '4', 10)); // 4 checks = 24h
+// An off-domain redirect is unambiguous, so confirm it over fewer checks than a
+// status change: a couple of consecutive checks filters a transient redirect
+// while catching a real hijack within ~12h.
+const REDIRECT_CONFIRM_CHECKS = Math.max(1, parseInt(process.env.REDIRECT_CONFIRM_CHECKS || '2', 10));
 // Also require elapsed time: extra checks (e.g. after a restart) must not shorten the window
 const CONFIRM_MIN_HOURS = Math.max(0, parseFloat(process.env.CONFIRM_MIN_HOURS || '18'));
 const INTERMITTENT_WINDOW_DAYS = 30;
@@ -186,6 +191,36 @@ class HistoryTracker {
   applyDetails(s, record, checkId, at, isNew) {
     if (record.status === 'online') {
       s.url = record.finalUrl || `${record.ssl?.enabled ? 'https' : 'http'}://${record.domain}`;
+    }
+
+    // Off-domain redirect = likely hijack/defacement (idea #1). Uses the status
+    // check's finalUrl, so it covers every active site regardless of whether the
+    // fingerprint pass reached it. Confirmed over REDIRECT_CONFIRM_CHECKS
+    // consecutive checks before emitting, and reset once the site is back on a
+    // .gob.ve host (so a future hijack re-emits). Dated at first observation.
+    if (record.status === 'online') {
+      const off = offsiteHost(s.domain, record.finalUrl);
+      if (off) {
+        if (s.offsite && s.offsite.host === off) {
+          s.offsite.count++;
+        } else {
+          s.offsite = { host: off, since: at, count: 1, confirmed: false };
+        }
+        if (!s.offsite.confirmed && s.offsite.count >= REDIRECT_CONFIRM_CHECKS && !isNew) {
+          s.offsite.confirmed = true;
+          this.emit('defacement_suspected', s.domain, s.offsite.since, checkId, {
+            detectedAt: at,
+            flags: [{
+              id: 'offsite-redirect',
+              label: 'redirige fuera de .gob.ve',
+              evidence: String(record.finalUrl).slice(0, 120),
+            }],
+            finalUrl: record.finalUrl,
+          });
+        }
+      } else if (s.offsite) {
+        s.offsite = null;
+      }
     }
 
     // Hosting network (ASN), confirmed like status changes
