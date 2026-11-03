@@ -49,11 +49,18 @@ const OBSOLETE = [
   { id: 'xhtml', label: 'XHTML 1', eol: 2018, re: /<!DOCTYPE[^>]+XHTML/i },
 ];
 
-// --- #1 defacement: injected spam. Word-boundary to limit false positives.
+// --- #1 defacement: injected SEO spam. We match the unambiguous hijack
+// vocabulary (Indonesian gambling-spam, pharma brands), NOT generic Spanish
+// words like "casino" or "apuestas" that appear on legitimate sites such as
+// the national lottery (conalot.gob.ve).
 const SPAM = [
-  { id: 'gambling', label: 'apuestas / casino', re: /\b(casino|betting|apuestas|slot(s| gacor)|judi|togel|poker online|situs|bandar|sbobet|maxwin|gacor)\b/i },
-  { id: 'adult', label: 'contenido adulto', re: /\b(porn|xxx|bokep|escort|sex cam|hentai)\b/i },
-  { id: 'pharma', label: 'farmacia ilegal', re: /\b(viagra|cialis|tadalafil|pharmacy online|canadian pharmacy)\b/i },
+  {
+    id: 'gambling',
+    label: 'spam de apuestas',
+    re: /\b(judi|togel|gacor|maxwin|sbobet|situs\s?(judi|slot|togel|bola)|slot\s?(gacor|online|88|777)|bandar\s?(togel|judi|bola)|pragmatic\s?play|rtp\s?(live|slot)|bocoran\s?(rtp|slot)|akun\s?pro|depo(sit)?\s?pulsa)\b/i,
+  },
+  { id: 'adult', label: 'spam de contenido adulto', re: /\b(bokep|hentai|xvideos|pornhub|situs\s?porno|video\s?bokep)\b/i },
+  { id: 'pharma', label: 'spam de farmacia', re: /\b(viagra|cialis|tadalafil|canadian pharmacy|cheap meds online)\b/i },
 ];
 
 function attr(html, re) {
