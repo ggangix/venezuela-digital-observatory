@@ -439,7 +439,9 @@
       "failing": "con fallas",
       "no_dns": "sin DNS"
     },
-    "wasForAtLeast": "tras más de {duration} {state}"
+    "wasForAtLeast": "tras más de {duration} {state}",
+    "defacement": "posible secuestro: {what}",
+    "cmsChange": "cambió de gestor de contenido a {to}"
   },
   "changes": {
     "title": "Cambios",
@@ -478,7 +480,13 @@
       "failing": "El dominio resuelve en DNS, pero el servidor no respondió (conexión rechazada, reiniciada o sin respuesta).",
       "no_dns": "El dominio no resuelve en DNS. Suele significar que fue abandonado o que sus servidores DNS están mal configurados."
     },
-    "sinceMonitoringStart": "Sin cambios desde que empezamos a monitorearlo ({date})"
+    "sinceMonitoringStart": "Sin cambios desde que empezamos a monitorearlo ({date})",
+    "madeOf": "De qué está hecho",
+    "cms": "Gestor de contenido",
+    "trackers": "Rastreadores",
+    "obsolete": "Obsoleto",
+    "defacement": "Posible secuestro: {what}",
+    "defacementHelp": "Señal automática sin confirmar. Puede ser un sitio comprometido; conviene revisarlo."
   },
   "domainsExtra": {
     "category": "Estado",
@@ -534,7 +542,17 @@
     },
     "infraOverTime": "Sitios con infraestructura en el tiempo",
     "noDnsHidden": "Los {count} dominios sin DNS no se muestran.",
-    "registrationsClick": "Haz clic en un año para ver sus dominios."
+    "registrationsClick": "Haz clic en un año para ver sus dominios.",
+    "madeOf": "De qué está hecho",
+    "madeOfDesc": "CMS detectado en los {measured} sitios activos que pudimos leer.",
+    "noCms": "Sin CMS reconocido",
+    "trackers": "¿Quién te rastrea?",
+    "trackersDesc": "Servicios de terceros que cargan al entrar y a los que el sitio reporta tu visita.",
+    "sendToGoogle": "reportan tu visita a Google",
+    "sendToMeta": "reportan tu visita a Meta",
+    "obsolete": "Tecnología obsoleta",
+    "obsoleteDesc": "{n} de {measured} sitios activos usan tecnología que ya no recibe soporte.",
+    "untilYear": "(sin soporte desde {year})"
   },
   "methodology": {
     "title": "Cómo medimos",

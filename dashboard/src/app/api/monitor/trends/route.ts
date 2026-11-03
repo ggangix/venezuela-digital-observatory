@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
     const searchParams = Object.fromEntries(request.nextUrl.searchParams);
     const { days } = trendsQuerySchema.parse(searchParams);
 
-    const { checks, domains, whois } = await getMonitorCollection();
+    const { checks, domains, whois, state } = await getMonitorCollection();
 
     const startDate = new Date();
     startDate.setDate(startDate.getDate() - days);
@@ -318,6 +318,28 @@ export async function GET(request: NextRequest) {
       nameserverGroups[first ? groupNameserver(first) : 'none']++;
     }
 
+
+    // Composition of active sites (idea #2/#3/#4), from the fingerprint pass.
+    const fpBase = { fingerprint: { $ne: null }, category: 'active' };
+    const [cmsAgg, trackerAgg, obsoleteAgg, fpMeasured, withAnyTracker, withGoogle, withMeta, withObsolete] = await Promise.all([
+      state.aggregate([{ $match: fpBase }, { $unwind: '$fingerprint.cms' }, { $group: { _id: '$fingerprint.cms.label', count: { $sum: 1 } } }, { $sort: { count: -1 } }]).toArray(),
+      state.aggregate([{ $match: fpBase }, { $unwind: '$fingerprint.trackers' }, { $group: { _id: '$fingerprint.trackers.label', count: { $sum: 1 } } }, { $sort: { count: -1 } }]).toArray(),
+      state.aggregate([{ $match: fpBase }, { $unwind: '$fingerprint.obsolete' }, { $group: { _id: { label: '$fingerprint.obsolete.label', eol: '$fingerprint.obsolete.eol' }, count: { $sum: 1 } } }, { $sort: { count: -1 } }]).toArray(),
+      state.countDocuments(fpBase),
+      state.countDocuments({ ...fpBase, 'fingerprint.trackers.0': { $exists: true } }),
+      state.countDocuments({ ...fpBase, 'fingerprint.trackers.id': { $in: ['google-analytics','google-tag-manager','google-fonts','google-maps','recaptcha','youtube'] } }),
+      state.countDocuments({ ...fpBase, 'fingerprint.trackers.id': 'meta-pixel' }),
+      state.countDocuments({ ...fpBase, 'fingerprint.obsolete.0': { $exists: true } }),
+    ]);
+    const composition = {
+      measured: fpMeasured,
+      cms: cmsAgg.map((c) => ({ label: c._id as string, count: c.count as number })),
+      trackers: trackerAgg.map((t) => ({ label: t._id as string, count: t.count as number })),
+      obsolete: obsoleteAgg.map((o) => ({ label: o._id.label as string, eol: o._id.eol as number, count: o.count as number })),
+      tracked: { any: withAnyTracker, google: withGoogle, meta: withMeta },
+      withObsolete,
+    };
+
     return NextResponse.json({
       timeline,
       monitoring: {
@@ -344,6 +366,7 @@ export async function GET(request: NextRequest) {
       },
       security,
       hosting,
+      composition,
       period: {
         start: startDate,
         end: new Date(),

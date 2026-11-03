@@ -7,7 +7,7 @@ export const revalidate = 300;
 
 // Change types shown in the public feed. SSL renewals are routine (Let's Encrypt
 // renews every ~60 days) and only listed when explicitly requested.
-const FEED_TYPES = ['status', 'new_domain', 'hosting_change', 'ssl_expired'];
+const FEED_TYPES = ['defacement_suspected', 'status', 'new_domain', 'hosting_change', 'cms_change', 'ssl_expired'];
 
 export async function GET(request: NextRequest) {
   try {

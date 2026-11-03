@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { ArrowDownCircle, ArrowUpCircle, PlusCircle, Server, ShieldX, ShieldCheck, RefreshCw } from 'lucide-react';
+import { ArrowDownCircle, ArrowUpCircle, PlusCircle, Server, ShieldX, ShieldCheck, RefreshCw, AlertTriangle, LayoutTemplate } from 'lucide-react';
 import { cn, formatDateTime, formatRelativeTime, formatSpan } from '@/lib/utils';
 import { stateName } from '@/lib/classify';
 import type { Category } from '@/lib/checks';
@@ -11,12 +11,15 @@ import { RawJsonPanel, RawJsonToggle } from '@/components/RawJson';
 
 type Network = { asn?: number; asName?: string | null; country?: string | null };
 
+type Flag = { id: string; label: string; evidence?: string };
+
 export type MonitorEvent = {
-  type: 'status' | 'new_domain' | 'hosting_change' | 'ssl_expired' | 'ssl_renewed';
+  type: 'status' | 'new_domain' | 'hosting_change' | 'ssl_expired' | 'ssl_renewed' | 'defacement_suspected' | 'cms_change';
   domain: string;
   at: string;
-  from?: Category | Network;
-  to?: Category | Network;
+  from?: Category | Network | Array<{ label: string }>;
+  to?: Category | Network | Array<{ label: string }>;
+  flags?: Flag[];
   previousSince?: string;
   previousSinceIsStart?: boolean;
   intermittent?: boolean;
@@ -74,6 +77,20 @@ export function EventList({ events, hideDomain, showRaw }: Props) {
         return { text: t('sslExpired'), icon: ShieldX, color: 'text-amber-600 dark:text-amber-400' };
       case 'ssl_renewed':
         return { text: t('sslRenewed'), icon: ShieldCheck, color: 'text-emerald-600 dark:text-emerald-400' };
+      case 'defacement_suspected':
+        return {
+          text: t('defacement', { what: (e.flags || []).map((f) => f.label).join(', ') }),
+          icon: AlertTriangle,
+          color: 'text-red-600 dark:text-red-400',
+        };
+      case 'cms_change':
+        return {
+          text: t('cmsChange', {
+            to: (Array.isArray(e.to) ? e.to.map((x) => x.label).join(', ') : '') || '?',
+          }),
+          icon: LayoutTemplate,
+          color: 'text-indigo-600 dark:text-indigo-400',
+        };
     }
   };
 

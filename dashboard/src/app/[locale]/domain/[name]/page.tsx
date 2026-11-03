@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
-import { ArrowLeft, ExternalLink, Shield, Server, Clock, AlertCircle, Globe, ChevronDown, Activity, Archive, Tag, Eye } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Shield, Server, Clock, AlertCircle, Globe, ChevronDown, Activity, Archive, Tag, Eye, AlertTriangle, LayoutTemplate } from 'lucide-react';
 import { SSLBadge } from '@/components/SSLBadge';
 import { CategoryBadge } from '@/components/CategoryBadge';
 import { StatusStrip } from '@/components/StatusStrip';
@@ -28,6 +28,13 @@ type DomainData = {
     intermittent?: boolean;
     lastArchivedAt?: string | null;
     pending?: { category: Category; since: string; count: number } | null;
+    fingerprint?: {
+      generator?: string | null;
+      cms?: { label: string }[];
+      trackers?: { label: string }[];
+      obsolete?: { label: string; eol: number }[];
+      flags?: { id: string; label: string; evidence?: string }[];
+    } | null;
   } | null;
   events: MonitorEvent[];
   uptime: { last30Days: Uptime; last90Days: Uptime; totalChecks: number };
@@ -232,6 +239,24 @@ export default function DomainDetailPage() {
         );
       })()}
 
+      {/* Possible hijack */}
+      {data.state?.fingerprint?.flags && data.state.fingerprint.flags.length > 0 && (
+        <div className="mb-6 flex gap-3 rounded-lg border border-red-300 bg-red-50 p-4 dark:border-red-800 dark:bg-red-950/30">
+          <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-red-600" />
+          <div>
+            <p className="font-medium text-red-900 dark:text-red-200">
+              {tx('defacement', { what: data.state.fingerprint.flags.map((f) => f.label).join(', ') })}
+            </p>
+            {data.state.fingerprint.flags.map((f) => (
+              <p key={f.id} className="mt-0.5 break-all font-mono text-xs text-red-800/80 dark:text-red-300/80">
+                {f.evidence}
+              </p>
+            ))}
+            <p className="mt-1 text-sm text-red-800/80 dark:text-red-300/80">{tx('defacementHelp')}</p>
+          </div>
+        </div>
+      )}
+
       {/* Availability: uptime + one bar per recent check */}
       <div className="card mb-6">
         <div className="mb-4 flex flex-wrap items-end justify-between gap-4">
@@ -344,6 +369,42 @@ export default function DomainDetailPage() {
             {tx('archiveView')}
           </a>
         </div>
+
+        {/* What it is made of (fingerprint) */}
+        {data.state?.fingerprint && (data.state.fingerprint.cms?.length || data.state.fingerprint.trackers?.length || data.state.fingerprint.obsolete?.length) ? (
+          <div className="card">
+            <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold">
+              <LayoutTemplate className="h-5 w-5" />
+              {tx('madeOf')}
+            </h2>
+            <dl className="grid gap-3">
+              {data.state.fingerprint.cms && data.state.fingerprint.cms.length > 0 && (
+                <div className="flex justify-between gap-4">
+                  <dt className="text-muted-foreground">{tx('cms')}</dt>
+                  <dd className="text-right text-sm">{data.state.fingerprint.cms.map((c) => c.label).join(', ')}</dd>
+                </div>
+              )}
+              {data.state.fingerprint.trackers && data.state.fingerprint.trackers.length > 0 && (
+                <div className="flex justify-between gap-4">
+                  <dt className="text-muted-foreground">{tx('trackers')}</dt>
+                  <dd className="text-right text-sm">{data.state.fingerprint.trackers.map((t2) => t2.label).join(', ')}</dd>
+                </div>
+              )}
+              {data.state.fingerprint.obsolete && data.state.fingerprint.obsolete.length > 0 && (
+                <div className="flex justify-between gap-4">
+                  <dt className="text-muted-foreground">{tx('obsolete')}</dt>
+                  <dd className="flex flex-wrap justify-end gap-1">
+                    {data.state.fingerprint.obsolete.map((o) => (
+                      <span key={o.label} className="rounded bg-amber-100 px-1.5 py-0.5 text-xs text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
+                        {o.label}
+                      </span>
+                    ))}
+                  </dd>
+                </div>
+              )}
+            </dl>
+          </div>
+        ) : null}
 
         {/* WHOIS Information */}
         {data.whois && (

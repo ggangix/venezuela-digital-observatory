@@ -439,7 +439,9 @@
       "failing": "failing",
       "no_dns": "without DNS"
     },
-    "wasForAtLeast": "after more than {duration} {state}"
+    "wasForAtLeast": "after more than {duration} {state}",
+    "defacement": "possible hijack: {what}",
+    "cmsChange": "changed content manager to {to}"
   },
   "changes": {
     "title": "Changes",
@@ -478,7 +480,13 @@
       "failing": "The domain resolves in DNS but the server did not respond (connection refused, reset or timed out).",
       "no_dns": "The domain does not resolve in DNS. This usually means it was abandoned or its DNS servers are misconfigured."
     },
-    "sinceMonitoringStart": "Unchanged since we started monitoring it ({date})"
+    "sinceMonitoringStart": "Unchanged since we started monitoring it ({date})",
+    "madeOf": "What it is made of",
+    "cms": "Content manager",
+    "trackers": "Trackers",
+    "obsolete": "Obsolete",
+    "defacement": "Possible hijack: {what}",
+    "defacementHelp": "Automatic, unconfirmed signal. The site may be compromised; worth checking."
   },
   "domainsExtra": {
     "category": "Status",
@@ -534,7 +542,17 @@
     },
     "infraOverTime": "Sites with infrastructure over time",
     "noDnsHidden": "The {count} domains without DNS are not shown.",
-    "registrationsClick": "Click a year to see its domains."
+    "registrationsClick": "Click a year to see its domains.",
+    "madeOf": "What it is made of",
+    "madeOfDesc": "CMS detected across the {measured} active sites we could read.",
+    "noCms": "No recognized CMS",
+    "trackers": "Who tracks you?",
+    "trackersDesc": "Third-party services that load on entry and to which the site reports your visit.",
+    "sendToGoogle": "report your visit to Google",
+    "sendToMeta": "report your visit to Meta",
+    "obsolete": "Obsolete technology",
+    "obsoleteDesc": "{n} of {measured} active sites run technology that is no longer supported.",
+    "untilYear": "(unsupported since {year})"
   },
   "methodology": {
     "title": "How we measure",
