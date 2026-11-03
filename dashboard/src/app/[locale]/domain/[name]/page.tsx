@@ -239,23 +239,29 @@ export default function DomainDetailPage() {
         );
       })()}
 
-      {/* Possible hijack */}
-      {data.state?.fingerprint?.flags && data.state.fingerprint.flags.length > 0 && (
-        <div className="mb-6 flex gap-3 rounded-lg border border-red-300 bg-red-50 p-4 dark:border-red-800 dark:bg-red-950/30">
-          <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-red-600" />
-          <div>
-            <p className="font-medium text-red-900 dark:text-red-200">
-              {tx('defacement', { what: data.state.fingerprint.flags.map((f) => f.label).join(', ') })}
-            </p>
-            {data.state.fingerprint.flags.map((f) => (
-              <p key={f.id} className="mt-0.5 break-all font-mono text-xs text-red-800/80 dark:text-red-300/80">
-                {f.evidence}
+      {/* Possible hijack: only from a CONFIRMED event, never a raw first-pass flag,
+          so a legitimate site is never publicly shown as hijacked by mistake. */}
+      {(() => {
+        const hijack = data.events.find((e) => e.type === 'defacement_suspected');
+        if (!hijack) return null;
+        const flags = (hijack.flags || []) as { id: string; label: string; evidence?: string }[];
+        return (
+          <div className="mb-6 flex gap-3 rounded-lg border border-red-300 bg-red-50 p-4 dark:border-red-800 dark:bg-red-950/30">
+            <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-red-600" />
+            <div>
+              <p className="font-medium text-red-900 dark:text-red-200">
+                {tx('defacement', { what: flags.map((f) => f.label).join(', ') })}
               </p>
-            ))}
-            <p className="mt-1 text-sm text-red-800/80 dark:text-red-300/80">{tx('defacementHelp')}</p>
+              {flags.map((f) => (
+                <p key={f.id} className="mt-0.5 break-all font-mono text-xs text-red-800/80 dark:text-red-300/80">
+                  {f.evidence}
+                </p>
+              ))}
+              <p className="mt-1 text-sm text-red-800/80 dark:text-red-300/80">{tx('defacementHelp')}</p>
+            </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
 
       {/* Availability: uptime + one bar per recent check */}
       <div className="card mb-6">
