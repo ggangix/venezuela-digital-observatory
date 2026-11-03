@@ -41,14 +41,16 @@ while true; do
 
   node check-status.js
 
-  # Send active sites to the Internet Archive in the background (see archive.js),
-  # so archiving never delays the next check. Skip if the previous run is still going.
+  # Background post-check work, so the extra downloads never delay the next check:
+  # fingerprint the active sites (see fingerprint.js) and then send them to the
+  # Internet Archive (see archive.js). Chained so they don't flood the VPN at once.
+  # Skip if the previous background run is still going.
   if [ -n "$MONGO_URI" ]; then
-    if [ -z "$ARCHIVE_PID" ] || ! kill -0 "$ARCHIVE_PID" 2>/dev/null; then
-      node archive.js &
-      ARCHIVE_PID=$!
+    if [ -z "$BG_PID" ] || ! kill -0 "$BG_PID" 2>/dev/null; then
+      ( node fingerprint.js; node archive.js ) &
+      BG_PID=$!
     else
-      echo "Internet Archive: previous run still in progress, skipping"
+      echo "Background pass (fingerprint + archive): previous run still in progress, skipping"
     fi
   fi
 
