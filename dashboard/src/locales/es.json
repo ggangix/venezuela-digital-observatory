@@ -434,6 +434,7 @@
     "onlyDown": "Se cayeron",
     "onlyNew": "Nuevos dominios",
     "onlyHosting": "Cambios de alojamiento",
+    "onlyHijacked": "Secuestros",
     "prevState": {
       "active": "activo",
       "failing": "con fallas",

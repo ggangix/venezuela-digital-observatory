@@ -434,6 +434,7 @@
     "onlyDown": "Went down",
     "onlyNew": "New domains",
     "onlyHosting": "Hosting changes",
+    "onlyHijacked": "Hijacks",
     "prevState": {
       "active": "active",
       "failing": "failing",

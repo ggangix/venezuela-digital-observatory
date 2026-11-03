@@ -7,10 +7,11 @@ import { EventList, type MonitorEvent } from '@/components/EventList';
 import { ObservingList, type ObservingItem } from '@/components/ObservingList';
 import { cn } from '@/lib/utils';
 
-type Filter = 'all' | 'up' | 'down' | 'new_domain' | 'hosting_change';
+type Filter = 'all' | 'hijacked' | 'up' | 'down' | 'new_domain' | 'hosting_change';
 
 const FILTER_PARAMS: Record<Filter, string> = {
   all: 'type=all',
+  hijacked: 'type=defacement_suspected',
   up: 'type=status&direction=up',
   down: 'type=status&direction=down',
   new_domain: 'type=new_domain',
@@ -58,6 +59,7 @@ export default function ChangesPage() {
 
   const filters: { key: Filter; label: string }[] = [
     { key: 'all', label: tEvents('all') },
+    { key: 'hijacked', label: tEvents('onlyHijacked') },
     { key: 'down', label: tEvents('onlyDown') },
     { key: 'up', label: tEvents('onlyUp') },
     { key: 'new_domain', label: tEvents('onlyNew') },

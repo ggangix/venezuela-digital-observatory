@@ -20,7 +20,9 @@ export type DomainsQuery = z.infer<typeof domainsQuerySchema>;
 
 // Change events feed
 export const eventsQuerySchema = z.object({
-  type: z.enum(['all', 'status', 'new_domain', 'hosting_change', 'ssl_expired', 'ssl_renewed']).default('all'),
+  type: z
+    .enum(['all', 'status', 'new_domain', 'hosting_change', 'ssl_expired', 'ssl_renewed', 'defacement_suspected', 'cms_change'])
+    .default('all'),
   direction: z.enum(['all', 'up', 'down']).default('all'),
   domain: z.string().max(253).optional(),
   intermittent: z
