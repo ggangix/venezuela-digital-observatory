@@ -4,20 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
-import {
-  Shield,
-  ShieldCheck,
-  ShieldX,
-  ShieldAlert,
-  Server,
-  Globe,
-  CalendarPlus,
-  ChevronDown,
-  Layers,
-  MapPin,
-  Lock,
-  History,
-} from 'lucide-react';
+import { Shield, ShieldCheck, ShieldX, ShieldAlert, Server, Globe, CalendarPlus, ChevronDown, Layers, MapPin, Lock, History, LayoutTemplate, Eye } from 'lucide-react';
 import {
   AreaChart,
   Area,
@@ -57,6 +44,14 @@ type TrendData = {
     measured: number;
     networks: { network: string; country: string | null; total: number; active: number }[];
     countries: { country: string; count: number }[];
+  };
+  composition?: {
+    measured: number;
+    cms: { label: string; count: number }[];
+    trackers: { label: string; count: number }[];
+    obsolete: { label: string; eol: number; count: number }[];
+    tracked: { any: number; google: number; meta: number };
+    withObsolete: number;
   };
 };
 
@@ -428,6 +423,79 @@ export default function TrendsPage() {
               </div>
             </div>
           </div>
+
+          {/* Composition: what the active sites are made of (fingerprint) */}
+          {data.composition && data.composition.measured > 0 && (
+            <>
+              <div className="grid gap-6 lg:grid-cols-2">
+                {/* #3 CMS / stack */}
+                <div className="card">
+                  <h2 className="mb-1 flex items-center gap-2 text-lg font-semibold">
+                    <LayoutTemplate className="h-5 w-5 text-indigo-600" />
+                    {ta('madeOf')}
+                  </h2>
+                  <p className="mb-4 text-sm text-muted-foreground">
+                    {ta('madeOfDesc', { measured: formatNumberWithSeparator(data.composition.measured, locale) })}
+                  </p>
+                  <div className="space-y-2">
+                    {data.composition.cms.map((c) => (
+                      <Meter key={c.label} label={c.label} value={c.count} total={data.composition!.measured} className="bg-indigo-500" />
+                    ))}
+                    {data.composition.cms.length === 0 && <p className="text-sm text-muted-foreground">{ta('noCms')}</p>}
+                  </div>
+                </div>
+
+                {/* #2 trackers */}
+                <div className="card">
+                  <h2 className="mb-1 flex items-center gap-2 text-lg font-semibold">
+                    <Eye className="h-5 w-5 text-rose-600" />
+                    {ta('trackers')}
+                  </h2>
+                  <p className="mb-4 text-sm text-muted-foreground">{ta('trackersDesc')}</p>
+                  <div className="mb-4 grid grid-cols-2 gap-3">
+                    <div className="rounded-lg bg-rose-50 p-3 dark:bg-rose-950/30">
+                      <p className="text-2xl font-bold text-rose-700 dark:text-rose-300">
+                        {percentage(data.composition.tracked.google, data.composition.measured)}
+                      </p>
+                      <p className="text-xs text-muted-foreground">{ta('sendToGoogle')}</p>
+                    </div>
+                    <div className="rounded-lg bg-rose-50 p-3 dark:bg-rose-950/30">
+                      <p className="text-2xl font-bold text-rose-700 dark:text-rose-300">{data.composition.tracked.meta}</p>
+                      <p className="text-xs text-muted-foreground">{ta('sendToMeta')}</p>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    {data.composition.trackers.slice(0, 8).map((t) => (
+                      <Meter key={t.label} label={t.label} value={t.count} total={data.composition!.measured} className="bg-rose-500" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* #4 obsolete tech */}
+              {data.composition.obsolete.length > 0 && (
+                <div className="card">
+                  <h2 className="mb-1 flex items-center gap-2 text-lg font-semibold">
+                    <History className="h-5 w-5 text-amber-600" />
+                    {ta('obsolete')}
+                  </h2>
+                  <p className="mb-4 text-sm text-muted-foreground">
+                    {ta('obsoleteDesc', { n: data.composition.withObsolete, measured: formatNumberWithSeparator(data.composition.measured, locale) })}
+                  </p>
+                  <div className="grid gap-x-8 gap-y-2 sm:grid-cols-2">
+                    {data.composition.obsolete.map((o) => (
+                      <div key={o.label} className="flex items-center justify-between gap-2 border-b border-slate-100 py-1.5 dark:border-slate-800">
+                        <span className="text-sm">
+                          {o.label} <span className="text-xs text-muted-foreground">{ta('untilYear', { year: o.eol })}</span>
+                        </span>
+                        <span className="font-mono text-sm font-medium text-amber-600">{o.count}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </>
+          )}
 
           {/* SSL certificates */}
           <div className="grid gap-6 lg:grid-cols-2">
