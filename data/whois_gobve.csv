@@ -1,8 +1,10 @@
 domain,registered_date,registered_year,expire,changed,registrar,org,city,country,nameservers
+enafor.gob.ve,2026-11-05,2026,2036-11-05,2026-11-05,NIC-VE,Empresa Nacional Forestal   S A,1010,VE,"osmar.ns.cloudflare.com, tara.ns.cloudflare.com"
 shn.gob.ve,2026-10-14,2026,2036-10-14,2026-10-14,NIC-VE,Comandancia General De La Armada,1101,VE,"ns3.fastglobalserver.com, ns4.fastglobalserver.com"
 intu.gob.ve,2026-10-05,2026,2036-10-05,2026-10-08,NIC-VE,Instituto Nacional De Tierras Urbanas,1060,VE,"dell.ns.cloudflare.com, lars.ns.cloudflare.com"
 cmelhatillo.gob.ve,2026-09-30,2026,2036-09-30,2026-09-30,NIC-VE,Contraloria Municipal Del Municipio El Hatillo,1083,VE,"ns1.siteground.net, ns2.siteground.net"
 alcaldiajacura.gob.ve,2026-09-18,2026,2036-09-18,2026-09-18,NIC-VE,Alcaldia Municipio Jacura Edo Falcon,4110,VE,"ada.ns.cloudflare.com, toby.ns.cloudflare.com"
+alcaldiadeurdaneta.gob.ve,2026-09-18,2026,2036-09-18,2026-09-18,NIC-VE,Alcaldia Municipio Rafael Guillermo Urdaneta,2101,VE,"apollo.ns.cloudflare.com, collins.ns.cloudflare.com"
 secodena.gob.ve,2026-09-10,2026,2036-09-10,2026-09-16,NIC-VE,Consejo De Defensa De La Nacion,1090,VE,"ns1.digalo.gob.ve, ns2.digalo.gob.ve"
 imapsas.gob.ve,2026-09-09,2026,2036-09-09,2026-09-09,NIC-VE,Instituto Municipal Autonomo De Proteccion Y Saneamiento Ambiental Sucre,1071,VE,"ns1.prem.dns40.com, ns2.prem.dns40.com"
 fundambiente.gob.ve,2026-08-18,2026,2036-08-18,2026-08-18,NIC-VE,Fundaci  N De Educaci  N Ambiental,1010,VE,"ns1.vercel-dns.com, ns2.vercel-dns.com"
@@ -2558,5 +2560,3 @@ ejercito.mil.ve,1997-12-31,1997,2029-12-31,,NIC-VE,,Caracas,VE,"dns1.ejercito.mi
 fav.mil.ve,1997-12-31,1997,2029-12-31,,NIC-VE,,Caracas,VE,"dns1.telcel.net.ve, dns2.telcel.net.ve"
 guardia.mil.ve,1997-12-31,1997,2029-12-31,,NIC-VE,,Caracas,VE,"dns1.guardia.mil.ve, dns2.guardia.mil.ve"
 mindefensa.mil.ve,1997-12-31,1997,2029-12-31,,NIC-VE,,Caracas,VE,"dns1.bantel.net.ve, dns2.bantel.net.ve"
-alcaldiadeurdaneta.gob.ve,,,,,,,,,
-enafor.gob.ve,,,,,,,,,

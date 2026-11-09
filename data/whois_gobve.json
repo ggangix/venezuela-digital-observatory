@@ -2,13 +2,28 @@
   "_meta": {
     "description": "WHOIS data for Venezuelan government domains (.gob.ve)",
     "source": "whois.nic.ve",
-    "generated": "2026-11-09T08:08:39.787Z",
+    "generated": "2026-11-09T13:51:36.502Z",
     "total": 2561,
-    "recent_2025_2026": 44,
+    "recent_2025_2026": 46,
     "privacy_note": "Personal names of registrants have been excluded",
     "license": "CC0 - Public Domain"
   },
   "domains": [
+    {
+      "domain": "enafor.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2026-11-05",
+      "registered_year": "2026",
+      "expire": "2036-11-05",
+      "changed": "2026-11-05",
+      "org": "Empresa Nacional Forestal   S A",
+      "city": "1010",
+      "country": "VE",
+      "nameservers": [
+        "osmar.ns.cloudflare.com",
+        "tara.ns.cloudflare.com"
+      ]
+    },
     {
       "domain": "shn.gob.ve",
       "registrar": "NIC-VE",
@@ -67,6 +82,21 @@
       "nameservers": [
         "ada.ns.cloudflare.com",
         "toby.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "alcaldiadeurdaneta.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2026-09-18",
+      "registered_year": "2026",
+      "expire": "2036-09-18",
+      "changed": "2026-09-18",
+      "org": "Alcaldia Municipio Rafael Guillermo Urdaneta",
+      "city": "2101",
+      "country": "VE",
+      "nameservers": [
+        "apollo.ns.cloudflare.com",
+        "collins.ns.cloudflare.com"
       ]
     },
     {
@@ -37611,30 +37641,6 @@
         "dns1.bantel.net.ve",
         "dns2.bantel.net.ve"
       ]
-    },
-    {
-      "domain": "alcaldiadeurdaneta.gob.ve",
-      "registrar": "",
-      "registered_date": "",
-      "registered_year": "",
-      "expire": "",
-      "changed": "",
-      "org": "",
-      "city": "",
-      "country": "",
-      "nameservers": []
-    },
-    {
-      "domain": "enafor.gob.ve",
-      "registrar": "",
-      "registered_date": "",
-      "registered_year": "",
-      "expire": "",
-      "changed": "",
-      "org": "",
-      "city": "",
-      "country": "",
-      "nameservers": []
     }
   ]
 }
