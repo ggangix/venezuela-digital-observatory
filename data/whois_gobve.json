@@ -2,8 +2,8 @@
   "_meta": {
     "description": "WHOIS data for Venezuelan government domains (.gob.ve)",
     "source": "whois.nic.ve",
-    "generated": "2026-10-19T20:30:04.424Z",
-    "total": 2559,
+    "generated": "2026-11-09T08:08:39.787Z",
+    "total": 2561,
     "recent_2025_2026": 44,
     "privacy_note": "Personal names of registrants have been excluded",
     "license": "CC0 - Public Domain"
@@ -37611,6 +37611,30 @@
         "dns1.bantel.net.ve",
         "dns2.bantel.net.ve"
       ]
+    },
+    {
+      "domain": "alcaldiadeurdaneta.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "",
+      "country": "",
+      "nameservers": []
+    },
+    {
+      "domain": "enafor.gob.ve",
+      "registrar": "",
+      "registered_date": "",
+      "registered_year": "",
+      "expire": "",
+      "changed": "",
+      "org": "",
+      "city": "",
+      "country": "",
+      "nameservers": []
     }
   ]
 }
