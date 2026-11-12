@@ -107,7 +107,7 @@ async function run() {
         const flagIds = ids(fp.flags);
         if (flagIds.length) flagged++;
 
-        const prev = await state.findOne({ domain }, { projection: { fingerprint: 1, flagPending: 1 } });
+        const prev = await state.findOne({ domain }, { projection: { fingerprint: 1, flagPending: 1, lastCms: 1 } });
         const prevFp = prev?.fingerprint || {};
 
         // Confirm defacement flags over CONFIRM consecutive passes before emitting
@@ -128,21 +128,22 @@ async function run() {
           pending = { ids: flagIds, count: pending.count }; // keep, but confirmed now
         }
 
-        // CMS change event (meaningful, rare)
-        const prevCms = ids(prevFp.cms);
+        // CMS change event (meaningful, rare). Compare against the last CMS we actually
+        // detected: an empty fingerprint (page didn't expose one this pass) is not a CMS.
+        const prevCms = prev?.lastCms?.length ? prev.lastCms : ids(prevFp.cms);
         const newCms = ids(fp.cms);
-        if (prevFp.cms && !sameSet(prevCms, newCms) && newCms.length) {
+        if (prevCms.length && newCms.length && !sameSet(prevCms, newCms)) {
           await events.insertOne({
             type: 'cms_change',
             domain, at: new Date(), detectedAt: new Date(), checkId: null,
-            from: prevFp.cms, to: fp.cms,
+            from: (prevFp.cms || []).length ? prevFp.cms : prevCms.map((id) => ({ id })), to: fp.cms,
           });
           evented++;
         }
 
         await state.updateOne(
           { domain },
-          { $set: { fingerprint: fp, flagPending: pending, fingerprintAt: new Date() } },
+          { $set: { fingerprint: fp, flagPending: pending, fingerprintAt: new Date(), ...(newCms.length ? { lastCms: newCms } : {}) } },
           { upsert: true }
         );
       }
