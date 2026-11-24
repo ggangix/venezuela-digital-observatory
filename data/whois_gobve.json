@@ -2,9 +2,9 @@
   "_meta": {
     "description": "WHOIS data for Venezuelan government domains (.gob.ve)",
     "source": "whois.nic.ve",
-    "generated": "2026-11-09T13:51:36.502Z",
-    "total": 2561,
-    "recent_2025_2026": 46,
+    "generated": "2026-11-24T07:45:31.646Z",
+    "total": 2562,
+    "recent_2025_2026": 47,
     "privacy_note": "Personal names of registrants have been excluded",
     "license": "CC0 - Public Domain"
   },
@@ -22,6 +22,21 @@
       "nameservers": [
         "osmar.ns.cloudflare.com",
         "tara.ns.cloudflare.com"
+      ]
+    },
+    {
+      "domain": "contraloriamao.gob.ve",
+      "registrar": "NIC-VE",
+      "registered_date": "2026-11-05",
+      "registered_year": "2026",
+      "expire": "2036-11-05",
+      "changed": "2026-11-05",
+      "org": "Contraloria Municipal Municipio Heres",
+      "city": "8001",
+      "country": "VE",
+      "nameservers": [
+        "dns1.cantv.net",
+        "dns2.cantv.net"
       ]
     },
     {

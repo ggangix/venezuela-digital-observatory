@@ -1,5 +1,6 @@
 domain,registered_date,registered_year,expire,changed,registrar,org,city,country,nameservers
 enafor.gob.ve,2026-11-05,2026,2036-11-05,2026-11-05,NIC-VE,Empresa Nacional Forestal   S A,1010,VE,"osmar.ns.cloudflare.com, tara.ns.cloudflare.com"
+contraloriamao.gob.ve,2026-11-05,2026,2036-11-05,2026-11-05,NIC-VE,Contraloria Municipal Municipio Heres,8001,VE,"dns1.cantv.net, dns2.cantv.net"
 shn.gob.ve,2026-10-14,2026,2036-10-14,2026-10-14,NIC-VE,Comandancia General De La Armada,1101,VE,"ns3.fastglobalserver.com, ns4.fastglobalserver.com"
 intu.gob.ve,2026-10-05,2026,2036-10-05,2026-10-08,NIC-VE,Instituto Nacional De Tierras Urbanas,1060,VE,"dell.ns.cloudflare.com, lars.ns.cloudflare.com"
 cmelhatillo.gob.ve,2026-09-30,2026,2036-09-30,2026-09-30,NIC-VE,Contraloria Municipal Del Municipio El Hatillo,1083,VE,"ns1.siteground.net, ns2.siteground.net"
